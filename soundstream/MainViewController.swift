@@ -12,6 +12,10 @@ class MainViewController: UIViewController {
 
     private var presenter: MainPresenter!
     
+    @IBAction func onClickButtonPlaySound(sender: AnyObject) {
+        presenter.onClickButtonPlaySound()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = MainPresenter(view: self)

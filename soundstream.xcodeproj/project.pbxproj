@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B2524DBA26BD55295904CCE /* Pods_soundstream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58377B7444044C7F936BD5E /* Pods_soundstream.framework */; };
 		EC5BA4E91D86F879003FC885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4E81D86F879003FC885 /* AppDelegate.swift */; };
 		EC5BA4EB1D86F879003FC885 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4EA1D86F879003FC885 /* MainViewController.swift */; };
 		EC5BA4EE1D86F879003FC885 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5BA4EC1D86F879003FC885 /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.release.xcconfig"; sourceTree = "<group>"; };
+		D5E67E77C5187B83BD56C53E /* Pods-soundstream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.debug.xcconfig"; sourceTree = "<group>"; };
 		EC5BA4E51D86F879003FC885 /* soundstream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soundstream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5BA4E81D86F879003FC885 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC5BA4EA1D86F879003FC885 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 		EC5BA4F41D86F879003FC885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC5BA4FA1D86F927003FC885 /* MainViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewProtocol.swift; sourceTree = "<group>"; };
 		EC5BA4FC1D86F948003FC885 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		F58377B7444044C7F936BD5E /* Pods_soundstream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundstream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B2524DBA26BD55295904CCE /* Pods_soundstream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		369C8E1C3A55A16EE3526E6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F58377B7444044C7F936BD5E /* Pods_soundstream.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D172DA4FADB691F62210E25 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D5E67E77C5187B83BD56C53E /* Pods-soundstream.debug.xcconfig */,
+				6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EC5BA4DC1D86F879003FC885 = {
 			isa = PBXGroup;
 			children = (
 				EC5BA4E71D86F879003FC885 /* soundstream */,
 				EC5BA4E61D86F879003FC885 /* Products */,
+				9D172DA4FADB691F62210E25 /* Pods */,
+				369C8E1C3A55A16EE3526E6D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +82,40 @@
 		EC5BA4E71D86F879003FC885 /* soundstream */ = {
 			isa = PBXGroup;
 			children = (
+				EC5BA5001D86FBFB003FC885 /* storyboard */,
+				EC5BA4FF1D86FBEA003FC885 /* viewcontroller */,
+				EC5BA4FE1D86FBDB003FC885 /* presenter */,
 				EC5BA4E81D86F879003FC885 /* AppDelegate.swift */,
-				EC5BA4EA1D86F879003FC885 /* MainViewController.swift */,
-				EC5BA4EC1D86F879003FC885 /* Main.storyboard */,
 				EC5BA4EF1D86F879003FC885 /* Assets.xcassets */,
-				EC5BA4F11D86F879003FC885 /* LaunchScreen.storyboard */,
 				EC5BA4F41D86F879003FC885 /* Info.plist */,
+			);
+			path = soundstream;
+			sourceTree = "<group>";
+		};
+		EC5BA4FE1D86FBDB003FC885 /* presenter */ = {
+			isa = PBXGroup;
+			children = (
 				EC5BA4FA1D86F927003FC885 /* MainViewProtocol.swift */,
 				EC5BA4FC1D86F948003FC885 /* MainPresenter.swift */,
 			);
-			path = soundstream;
+			name = presenter;
+			sourceTree = "<group>";
+		};
+		EC5BA4FF1D86FBEA003FC885 /* viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				EC5BA4EA1D86F879003FC885 /* MainViewController.swift */,
+			);
+			name = viewcontroller;
+			sourceTree = "<group>";
+		};
+		EC5BA5001D86FBFB003FC885 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				EC5BA4EC1D86F879003FC885 /* Main.storyboard */,
+				EC5BA4F11D86F879003FC885 /* LaunchScreen.storyboard */,
+			);
+			name = storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +125,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC5BA4F71D86F879003FC885 /* Build configuration list for PBXNativeTarget "soundstream" */;
 			buildPhases = (
+				EAF81651A7E13049A4D542C2 /* [CP] Check Pods Manifest.lock */,
 				EC5BA4E11D86F879003FC885 /* Sources */,
 				EC5BA4E21D86F879003FC885 /* Frameworks */,
 				EC5BA4E31D86F879003FC885 /* Resources */,
+				8A5C102B4B9E066A6E09CE20 /* [CP] Embed Pods Frameworks */,
+				85DC4FF8BAA9F2B3091F1B56 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -135,6 +186,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		85DC4FF8BAA9F2B3091F1B56 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-soundstream/Pods-soundstream-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A5C102B4B9E066A6E09CE20 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-soundstream/Pods-soundstream-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAF81651A7E13049A4D542C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EC5BA4E11D86F879003FC885 /* Sources */ = {
@@ -257,6 +356,7 @@
 		};
 		EC5BA4F81D86F879003FC885 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5E67E77C5187B83BD56C53E /* Pods-soundstream.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = soundstream/Info.plist;
@@ -268,6 +368,7 @@
 		};
 		EC5BA4F91D86F879003FC885 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = soundstream/Info.plist;
@@ -296,6 +397,7 @@
 				EC5BA4F91D86F879003FC885 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

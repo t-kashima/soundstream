@@ -14,4 +14,8 @@ class MainPresenter {
     init(view: MainViewProtocol) {
         contactView = view
     }
+
+    func onClickButtonPlaySound() {
+        
+    }
 }
