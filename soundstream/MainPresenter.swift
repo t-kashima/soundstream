@@ -22,12 +22,28 @@ class MainPresenter {
         contactView = view
     }
     
-    func onClickButtonPlaySound() {
-        APIRepository.getSound("https://soundcloud.com/lovely_summer_chan/tofubeats-cover")
+    func onClickButtonPlaySound(soundUrl: String?) {
+        guard let soundUrl = soundUrl else {
+            // URLが入力されていない時は何もしない
+            return
+        }
+        
+        if (soundUrl.isEmpty) {
+            // URLが入力されていない時は何もしない
+            return
+        }
+        
+        APIRepository.getSound(soundUrl)
             .subscribe(onNext: { (SoundResourceEntity) in
                     print(SoundResourceEntity)
                 }, onError: { (error) in
-                    print("oError")
+                    switch(error) {
+                    case ResponseError.NotFoundSound:
+                        print("このURLには複数のトラックが含まれています")
+                    default:
+                        print("oError")
+                    }
+                    
                 }).addDisposableTo(disposeBag)
         
         

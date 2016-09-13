@@ -13,8 +13,10 @@ class MainViewController: UIViewController {
     private var presenter: MainPresenter!
     
     @IBAction func onClickButtonPlaySound(sender: AnyObject) {
-        presenter.onClickButtonPlaySound()
+        presenter.onClickButtonPlaySound(textFieldSoundUrl.text)
     }
+    
+    @IBOutlet weak var textFieldSoundUrl: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()

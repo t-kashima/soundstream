@@ -21,7 +21,14 @@ class APIRepository {
                 .responseObject { (response: Response<ResponseSoundCloudGetResolve, NSError>) in
                     switch(response.result) {
                     case .Success(let responseSoundCloud):
-                        observer.onNext(SoundResourceEntity(responseSoundClound: responseSoundCloud))
+                        let soundResourceEntity = SoundResourceEntity(responseSoundClound: responseSoundCloud)
+                        if (soundResourceEntity.soundUrl.isEmpty) {
+                            // TODO: 複数トラックなどで曲を取得できなかった時 
+                            // どの曲かを選択できるようにする
+                            observer.onError(ResponseError.NotFoundSound)
+                            return
+                        }
+                        observer.onNext(soundResourceEntity)
                         observer.onCompleted()
                     case .Failure(let error):
                         observer.onError(error)

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -34,16 +35,30 @@
                                     <action selector="onClickButtonPlaySound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q6l-79-hci"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-Bh-YDr">
+                                <rect key="frame" x="163" y="285" width="274" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tOe-Bh-YDr" secondAttribute="height" multiplier="137:15" id="I6a-3m-dsL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="tOe-Bh-YDr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="NHe-ML-zj2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gXP-56-hmR" secondAttribute="bottom" constant="98" id="oiu-2S-uk7"/>
+                            <constraint firstItem="tOe-Bh-YDr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tmy-6T-PHS"/>
                             <constraint firstItem="gXP-56-hmR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wwz-Gm-BaN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textFieldSoundUrl" destination="tOe-Bh-YDr" id="04i-Ka-LPF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="717" y="293"/>
         </scene>
     </scenes>
 </document>
