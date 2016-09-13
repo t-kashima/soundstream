@@ -7,10 +7,8 @@
 //
 
 import Foundation
-import Alamofire
 import AVFoundation
 import RxSwift
-import RealmSwift
 
 class MainPresenter {
     private let contactView: MainViewProtocol
