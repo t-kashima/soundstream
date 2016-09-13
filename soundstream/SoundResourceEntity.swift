@@ -22,4 +22,11 @@ class SoundResourceEntity: NSObject {
         self.imageUrl = imageUrl
         self.soundUrl = soundUrl
     }
+    
+    init(responseSoundClound: ResponseSoundCloudGetResolve) {
+        self.title = responseSoundClound.title
+        self.username = responseSoundClound.username
+        self.imageUrl = responseSoundClound.imageUrl
+        self.soundUrl = responseSoundClound.soundUrl
+    }
 }
