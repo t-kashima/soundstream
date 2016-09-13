@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import AVFoundation
+import RxSwift
 
 class MainPresenter {
     private let contactView: MainViewProtocol
@@ -17,31 +18,61 @@ class MainPresenter {
     
     private let ResolveUrl = "https://api.soundcloud.com/resolve.json"
     
+    private let disposeBag = DisposeBag()
+    
     init(view: MainViewProtocol) {
         contactView = view
     }
-
-    func onClickButtonPlaySound() {
-        let soundUrl = "https://soundcloud.com/lovely_summer_chan/tofubeats-cover"
-        let soundDetailUrl = ResolveUrl + "?url=" + soundUrl + "&client_id=a3600dee69af488f05b5d8c587559db6"
-        Alamofire.request(.GET, soundDetailUrl).responseJSON { response in
-            if let json = response.result.value {
-                let streamUrl = json["stream_url"] as! String
-                let soundStreamUrl = NSURL(string: streamUrl + "?client_id=a3600dee69af488f05b5d8c587559db6")!
-                
-                print("sound url: " + soundStreamUrl.absoluteString)
-                
-                let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-                let task = session.dataTaskWithURL(soundStreamUrl, completionHandler: { (data, resp, err) in
-                    do {
-                        self.player = try AVAudioPlayer(data: data!)
-                        self.player?.play()
-                    } catch {
-                        print("Failure sound streaming...")
+    
+    private func getSound(soundUrl: String) -> Observable<SoundResourceEntity> {
+        return Observable.create { observer -> Disposable in
+            let soundDetailUrl = self.ResolveUrl + "?url=" + soundUrl + "&client_id=a3600dee69af488f05b5d8c587559db6"
+            print("sound detail url: \(soundDetailUrl)")
+            let request = Alamofire.request(.GET, soundDetailUrl)
+                .responseJSON { response in
+                    switch response.result {
+                    case .Success(let value):
+                        let title = value.objectForKey("title") as! String
+                        let user = value.objectForKey("user") as! NSDictionary
+                        let username = user.objectForKey("username") as! String
+                        let imageUrl = value.objectForKey("artwork_url") as! String
+                        let streamUrl = value.objectForKey("stream_url") as! String
+                        let soundStreamUrl = NSURL(string: streamUrl + "?client_id=a3600dee69af488f05b5d8c587559db6")!
+                        print("sound url: " + soundStreamUrl.absoluteString)
+                        let soundResourceEntity = SoundResourceEntity(title: title,
+                                                                      username: username,
+                                                                      imageUrl: imageUrl,
+                                                                      soundUrl: streamUrl)
+                        observer.onNext(soundResourceEntity)
+                        observer.onCompleted()
+                    case .Failure(let error):
+                        observer.onError(error)
                     }
-                })
-                task.resume()
-            }
+                }
+                return AnonymousDisposable {
+                    request.cancel()
+                }
         }
+    }
+    
+    func onClickButtonPlaySound() {
+        getSound("https://soundcloud.com/lovely_summer_chan/tofubeats-cover")
+            .subscribe(onNext: { (SoundResourceEntity) in
+                    print(SoundResourceEntity)
+                }, onError: { (error) in
+                    print("oError")
+                }).addDisposableTo(disposeBag)
+        
+        
+//        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+//        let task = session.dataTaskWithURL(soundStreamUrl, completionHandler: { (data, resp, err) in
+//            do {
+//                self.player = try AVAudioPlayer(data: data!)
+//                self.player?.play()
+//            } catch {
+//                print("Failure sound streaming...")
+//            }
+//        })
+//        task.resume()
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B2524DBA26BD55295904CCE /* Pods_soundstream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58377B7444044C7F936BD5E /* Pods_soundstream.framework */; };
+		EC421BC91D88242200A54B98 /* SoundResourceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */; };
 		EC5BA4E91D86F879003FC885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4E81D86F879003FC885 /* AppDelegate.swift */; };
 		EC5BA4EB1D86F879003FC885 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4EA1D86F879003FC885 /* MainViewController.swift */; };
 		EC5BA4EE1D86F879003FC885 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5BA4EC1D86F879003FC885 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.release.xcconfig"; sourceTree = "<group>"; };
 		D5E67E77C5187B83BD56C53E /* Pods-soundstream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.debug.xcconfig"; sourceTree = "<group>"; };
+		EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundResourceEntity.swift; sourceTree = "<group>"; };
 		EC5BA4E51D86F879003FC885 /* soundstream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soundstream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5BA4E81D86F879003FC885 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC5BA4EA1D86F879003FC885 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EC421BC71D88240200A54B98 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */,
+			);
+			name = entity;
+			sourceTree = "<group>";
+		};
 		EC5BA4DC1D86F879003FC885 = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +92,7 @@
 		EC5BA4E71D86F879003FC885 /* soundstream */ = {
 			isa = PBXGroup;
 			children = (
+				EC421BC71D88240200A54B98 /* entity */,
 				EC5BA5001D86FBFB003FC885 /* storyboard */,
 				EC5BA4FF1D86FBEA003FC885 /* viewcontroller */,
 				EC5BA4FE1D86FBDB003FC885 /* presenter */,
@@ -242,6 +253,7 @@
 			files = (
 				EC5BA4FB1D86F927003FC885 /* MainViewProtocol.swift in Sources */,
 				EC5BA4EB1D86F879003FC885 /* MainViewController.swift in Sources */,
+				EC421BC91D88242200A54B98 /* SoundResourceEntity.swift in Sources */,
 				EC5BA4E91D86F879003FC885 /* AppDelegate.swift in Sources */,
 				EC5BA4FD1D86F948003FC885 /* MainPresenter.swift in Sources */,
 			);

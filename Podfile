@@ -7,4 +7,7 @@ target 'soundstream' do
 
   # Pods for soundstream
   pod 'Alamofire', '~> 3.4'
+  pod 'RxSwift',    '~> 2.6.0'
+  pod 'RxCocoa',    '~> 2.6.0'
 end
+
