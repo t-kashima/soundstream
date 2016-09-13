@@ -16,13 +16,6 @@ class SoundResourceEntity: NSObject {
     
     override var description: String { return "(title = \(title), username = \(username), imageUrl = \(imageUrl), soundUrl = \(soundUrl))" }
     
-    init(title: String, username: String, imageUrl: String, soundUrl: String) {
-        self.title = title
-        self.username = username
-        self.imageUrl = imageUrl
-        self.soundUrl = soundUrl
-    }
-    
     init(responseSoundClound: ResponseSoundCloudGetResolve) {
         self.title = responseSoundClound.title
         self.username = responseSoundClound.username

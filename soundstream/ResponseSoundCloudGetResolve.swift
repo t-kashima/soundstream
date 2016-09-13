@@ -19,7 +19,7 @@ class ResponseSoundCloudGetResolve: Mappable {
     
     func mapping(map: Map) {
         self.title <- map["title"]
-        self.username <- map["user"]["username"]
+        self.username <- map["user.username"]
         self.imageUrl <- map["artwork_url"]
         self.soundUrl <- map["stream_url"]
     }
