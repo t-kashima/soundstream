@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7B2524DBA26BD55295904CCE /* Pods_soundstream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58377B7444044C7F936BD5E /* Pods_soundstream.framework */; };
+		EC2410B51D884BA100C6D679 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410B41D884BA100C6D679 /* Sound.swift */; };
+		EC2410B81D884C9E00C6D679 /* SoundRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410B71D884C9E00C6D679 /* SoundRepository.swift */; };
+		EC2410BB1D884DEC00C6D679 /* SoundFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410BA1D884DEC00C6D679 /* SoundFactory.swift */; };
 		EC421BC91D88242200A54B98 /* SoundResourceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */; };
 		EC421BCC1D88339100A54B98 /* APIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BCB1D88339100A54B98 /* APIRepository.swift */; };
 		EC421BD11D88391900A54B98 /* ResponseSoundCloudGetResolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BD01D88391900A54B98 /* ResponseSoundCloudGetResolve.swift */; };
@@ -24,6 +27,9 @@
 /* Begin PBXFileReference section */
 		6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.release.xcconfig"; sourceTree = "<group>"; };
 		D5E67E77C5187B83BD56C53E /* Pods-soundstream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.debug.xcconfig"; sourceTree = "<group>"; };
+		EC2410B41D884BA100C6D679 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		EC2410B71D884C9E00C6D679 /* SoundRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundRepository.swift; sourceTree = "<group>"; };
+		EC2410BA1D884DEC00C6D679 /* SoundFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundFactory.swift; sourceTree = "<group>"; };
 		EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundResourceEntity.swift; sourceTree = "<group>"; };
 		EC421BCB1D88339100A54B98 /* APIRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRepository.swift; sourceTree = "<group>"; };
 		EC421BD01D88391900A54B98 /* ResponseSoundCloudGetResolve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSoundCloudGetResolve.swift; sourceTree = "<group>"; };
@@ -69,6 +75,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		EC2410B31D884B8000C6D679 /* realm */ = {
+			isa = PBXGroup;
+			children = (
+				EC2410B41D884BA100C6D679 /* Sound.swift */,
+			);
+			name = realm;
+			sourceTree = "<group>";
+		};
+		EC2410B61D884C8800C6D679 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				EC421BCB1D88339100A54B98 /* APIRepository.swift */,
+				EC2410B71D884C9E00C6D679 /* SoundRepository.swift */,
+				EC2410BA1D884DEC00C6D679 /* SoundFactory.swift */,
+			);
+			name = repository;
+			sourceTree = "<group>";
+		};
 		EC421BC71D88240200A54B98 /* entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +106,6 @@
 			children = (
 				EC421BD21D8844E300A54B98 /* error */,
 				EC421BCF1D8838EF00A54B98 /* response */,
-				EC421BCB1D88339100A54B98 /* APIRepository.swift */,
 			);
 			name = network;
 			sourceTree = "<group>";
@@ -124,6 +147,8 @@
 		EC5BA4E71D86F879003FC885 /* soundstream */ = {
 			isa = PBXGroup;
 			children = (
+				EC2410B61D884C8800C6D679 /* repository */,
+				EC2410B31D884B8000C6D679 /* realm */,
 				EC421BCA1D88336200A54B98 /* network */,
 				EC421BC71D88240200A54B98 /* entity */,
 				EC5BA5001D86FBFB003FC885 /* storyboard */,
@@ -289,8 +314,11 @@
 				EC5BA4FB1D86F927003FC885 /* MainViewProtocol.swift in Sources */,
 				EC5BA4EB1D86F879003FC885 /* MainViewController.swift in Sources */,
 				EC421BD11D88391900A54B98 /* ResponseSoundCloudGetResolve.swift in Sources */,
+				EC2410BB1D884DEC00C6D679 /* SoundFactory.swift in Sources */,
 				EC421BC91D88242200A54B98 /* SoundResourceEntity.swift in Sources */,
 				EC5BA4E91D86F879003FC885 /* AppDelegate.swift in Sources */,
+				EC2410B81D884C9E00C6D679 /* SoundRepository.swift in Sources */,
+				EC2410B51D884BA100C6D679 /* Sound.swift in Sources */,
 				EC5BA4FD1D86F948003FC885 /* MainPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +439,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soundstream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -423,6 +452,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soundstream;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

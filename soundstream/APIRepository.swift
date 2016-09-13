@@ -21,7 +21,7 @@ class APIRepository {
                 .responseObject { (response: Response<ResponseSoundCloudGetResolve, NSError>) in
                     switch(response.result) {
                     case .Success(let responseSoundCloud):
-                        let soundResourceEntity = SoundResourceEntity(responseSoundClound: responseSoundCloud)
+                        let soundResourceEntity = SoundFactory.create(responseSoundCloud)
                         if (soundResourceEntity.soundUrl.isEmpty) {
                             // TODO: 複数トラックなどで曲を取得できなかった時 
                             // どの曲かを選択できるようにする

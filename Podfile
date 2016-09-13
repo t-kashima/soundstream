@@ -10,5 +10,6 @@ target 'soundstream' do
   pod 'AlamofireObjectMapper', '~> 3.0'
   pod 'RxSwift',    '~> 2.6.0'
   pod 'RxCocoa',    '~> 2.6.0'
+  pod 'RealmSwift', '~> 1.0.2'
 end
 

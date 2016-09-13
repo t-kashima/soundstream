@@ -10,11 +10,12 @@ import Foundation
 import Alamofire
 import AVFoundation
 import RxSwift
+import RealmSwift
 
 class MainPresenter {
     private let contactView: MainViewProtocol
     
-    private var player: AVAudioPlayer? = nil
+    // private var player: AVAudioPlayer? = nil
        
     private let disposeBag = DisposeBag()
     
@@ -34,12 +35,14 @@ class MainPresenter {
         }
         
         APIRepository.getSound(soundUrl)
-            .subscribe(onNext: { (SoundResourceEntity) in
-                    print(SoundResourceEntity)
+            .subscribe(onNext: { (soundResourceEntity) in
+                    // TODO: データベースに追加する
+                    print(soundResourceEntity)
+                    SoundRepository.store(soundResourceEntity)
                 }, onError: { (error) in
                     switch(error) {
                     case ResponseError.NotFoundSound:
-                        print("このURLには複数のトラックが含まれています")
+                        print("曲を見つけられませんでした。複数のトラックが含まれている可能性があります。")
                     default:
                         print("oError")
                     }
