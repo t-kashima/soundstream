@@ -22,4 +22,8 @@ class SoundResourceEntity: NSObject {
         self.imageUrl = imageUrl
         self.soundUrl = soundUrl
     }
+    
+    func getStreamingSoundUrl() -> String {
+        return soundUrl + "?client_id=" + Constant.SoundCloudClientId
+    }
 }

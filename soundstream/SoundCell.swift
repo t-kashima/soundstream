@@ -10,6 +10,7 @@ import UIKit
 
 class SoundCell: UITableViewCell {
     @IBOutlet weak var imageThumbnail: UIImageView!
+    @IBOutlet weak var textName: UILabel!
     @IBOutlet weak var textTitle: UILabel!
     
     private weak var presenter: HomePresenter? = nil
@@ -21,6 +22,7 @@ class SoundCell: UITableViewCell {
     
     func initialize(soundResourceEntity: SoundResourceEntity, presenter: HomePresenter) {
         imageThumbnail.sd_setImageWithURL(NSURL(string: soundResourceEntity.imageUrl))
+        textName.text = soundResourceEntity.username
         textTitle.text = soundResourceEntity.title
         
         self.soundResourceEntity = soundResourceEntity

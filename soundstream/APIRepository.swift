@@ -12,11 +12,10 @@ import AlamofireObjectMapper
 
 class APIRepository {
     private static let SoundCloudResolveEndPoint = "https://api.soundcloud.com/resolve.json"
-    private static let SoundCloudClientId = "a3600dee69af488f05b5d8c587559db6"
     
     static func getSound(soundUrl: String) -> Observable<SoundResourceEntity> {
         return Observable.create { observer -> Disposable in
-            let resolveUrl = SoundCloudResolveEndPoint + "?url=" + soundUrl + "&client_id=" + SoundCloudClientId
+            let resolveUrl = SoundCloudResolveEndPoint + "?url=" + soundUrl + "&client_id=" + Constant.SoundCloudClientId
             let request = Alamofire.request(.GET, resolveUrl, parameters: nil)
                 .responseObject { (response: Response<ResponseSoundCloudGetResolve, NSError>) in
                     switch(response.result) {

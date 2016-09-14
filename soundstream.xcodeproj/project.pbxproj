@@ -27,6 +27,7 @@
 		ECCE50831D897E50007AEE22 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50821D897E50007AEE22 /* HomeViewProtocol.swift */; };
 		ECCE50851D897E5C007AEE22 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50841D897E5C007AEE22 /* HomePresenter.swift */; };
 		ECCE50881D898871007AEE22 /* SoundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50871D898871007AEE22 /* SoundCell.swift */; };
+		ECCE508E1D89A9FC007AEE22 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE508D1D89A9FC007AEE22 /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		ECCE50841D897E5C007AEE22 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		ECCE50871D898871007AEE22 /* SoundCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCell.swift; sourceTree = "<group>"; };
 		ECCE508B1D898BB0007AEE22 /* SoundStream-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundStream-Bridging-Header.h"; sourceTree = "<group>"; };
+		ECCE508D1D89A9FC007AEE22 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F58377B7444044C7F936BD5E /* Pods_soundstream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundstream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 		EC5BA4E71D86F879003FC885 /* soundstream */ = {
 			isa = PBXGroup;
 			children = (
+				ECCE508C1D89A9ED007AEE22 /* data */,
 				ECCE50861D89885E007AEE22 /* view */,
 				EC2410B61D884C8800C6D679 /* repository */,
 				EC2410B31D884B8000C6D679 /* realm */,
@@ -210,6 +213,14 @@
 				ECCE50871D898871007AEE22 /* SoundCell.swift */,
 			);
 			name = view;
+			sourceTree = "<group>";
+		};
+		ECCE508C1D89A9ED007AEE22 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				ECCE508D1D89A9FC007AEE22 /* Constant.swift */,
+			);
+			name = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +349,7 @@
 				EC421BCC1D88339100A54B98 /* APIRepository.swift in Sources */,
 				EC421BD41D8844FF00A54B98 /* ResponseError.swift in Sources */,
 				EC5BA4FB1D86F927003FC885 /* MainViewProtocol.swift in Sources */,
+				ECCE508E1D89A9FC007AEE22 /* Constant.swift in Sources */,
 				ECCE50881D898871007AEE22 /* SoundCell.swift in Sources */,
 				EC5BA4EB1D86F879003FC885 /* MainViewController.swift in Sources */,
 				EC421BD11D88391900A54B98 /* ResponseSoundCloudGetResolve.swift in Sources */,

@@ -7,15 +7,12 @@
 //
 
 import Foundation
-import AVFoundation
 
-class HomePresenter {
+class HomePresenter: NSObject {
     
     private let contactView: HomeViewProtocol
     
-    private let SoundCloudClientId = "a3600dee69af488f05b5d8c587559db6"
-    
-    private var player: AVAudioPlayer? = nil
+    private var playingSoundResourceEntity: SoundResourceEntity? = nil
     
     init(view: HomeViewProtocol) {
         contactView = view
@@ -23,26 +20,39 @@ class HomePresenter {
     
     func onViewDidLoad() {
         contactView.initialize()
-        contactView.setSoundList(SoundRepository.asEntitiesList())
+        let soundList = SoundRepository.asEntitiesList()
+        print("count songs: \(soundList.count)")
+        contactView.setSoundList(soundList)
     }
     
     func onClickButtonPlay(soundResourceEntity: SoundResourceEntity) {
         print(soundResourceEntity)
-        // 再生中の曲を止める
-        if (player != nil) {
-            player!.stop()
+        self.playingSoundResourceEntity = soundResourceEntity
+        contactView.playSound(soundResourceEntity)
+    }
+    
+    func onFinishPlayingSound() {
+        guard let playingSoundResourceEntity = playingSoundResourceEntity else {
+            print("Not exist playing sounds.")
+            return
         }
+        // 次の曲を再生する
+        // TODO: 種痘したものをどこかに保持しておくl
+        let soundList = SoundRepository.asEntitiesList()
         
-        let soundUrl = NSURL(string: soundResourceEntity.soundUrl + "?client_id=" + SoundCloudClientId)
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let task = session.dataTaskWithURL(soundUrl!, completionHandler: { (data, resp, err) in
-            do {
-                self.player = try AVAudioPlayer(data: data!)
-                self.player!.play()
-            } catch {
-                print("Failure sound streaming...")
-            }
-        })
-        task.resume()
+        // TODO: SoundEntityのIDで比較を行う
+        // 現在再生中の曲のindexを求める
+        guard let playingIndex = (soundList.indexOf {
+            $0.soundUrl == playingSoundResourceEntity.soundUrl
+        }) else {
+            print("Not found playing sounds.")
+            return
+        }
+        let nextIndex = playingIndex + 1
+        if (nextIndex < soundList.count) {
+            let soundResourceEntity = soundList[nextIndex]
+            print(soundResourceEntity)
+            contactView.playSound(soundResourceEntity)
+        }
     }
 }
