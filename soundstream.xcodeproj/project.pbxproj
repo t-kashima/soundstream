@@ -22,6 +22,10 @@
 		EC5BA4F31D86F879003FC885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5BA4F11D86F879003FC885 /* LaunchScreen.storyboard */; };
 		EC5BA4FB1D86F927003FC885 /* MainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4FA1D86F927003FC885 /* MainViewProtocol.swift */; };
 		EC5BA4FD1D86F948003FC885 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4FC1D86F948003FC885 /* MainPresenter.swift */; };
+		ECCE507F1D897D6C007AEE22 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECCE507E1D897D6C007AEE22 /* Home.storyboard */; };
+		ECCE50811D897D93007AEE22 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50801D897D93007AEE22 /* HomeViewController.swift */; };
+		ECCE50831D897E50007AEE22 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50821D897E50007AEE22 /* HomeViewProtocol.swift */; };
+		ECCE50851D897E5C007AEE22 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50841D897E5C007AEE22 /* HomePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +47,10 @@
 		EC5BA4F41D86F879003FC885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC5BA4FA1D86F927003FC885 /* MainViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewProtocol.swift; sourceTree = "<group>"; };
 		EC5BA4FC1D86F948003FC885 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		ECCE507E1D897D6C007AEE22 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		ECCE50801D897D93007AEE22 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		ECCE50821D897E50007AEE22 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
+		ECCE50841D897E5C007AEE22 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		F58377B7444044C7F936BD5E /* Pods_soundstream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundstream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -166,6 +174,8 @@
 			children = (
 				EC5BA4FA1D86F927003FC885 /* MainViewProtocol.swift */,
 				EC5BA4FC1D86F948003FC885 /* MainPresenter.swift */,
+				ECCE50821D897E50007AEE22 /* HomeViewProtocol.swift */,
+				ECCE50841D897E5C007AEE22 /* HomePresenter.swift */,
 			);
 			name = presenter;
 			sourceTree = "<group>";
@@ -174,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				EC5BA4EA1D86F879003FC885 /* MainViewController.swift */,
+				ECCE50801D897D93007AEE22 /* HomeViewController.swift */,
 			);
 			name = viewcontroller;
 			sourceTree = "<group>";
@@ -183,6 +194,7 @@
 			children = (
 				EC5BA4EC1D86F879003FC885 /* Main.storyboard */,
 				EC5BA4F11D86F879003FC885 /* LaunchScreen.storyboard */,
+				ECCE507E1D897D6C007AEE22 /* Home.storyboard */,
 			);
 			name = storyboard;
 			sourceTree = "<group>";
@@ -251,6 +263,7 @@
 				EC5BA4F31D86F879003FC885 /* LaunchScreen.storyboard in Resources */,
 				EC5BA4F01D86F879003FC885 /* Assets.xcassets in Resources */,
 				EC5BA4EE1D86F879003FC885 /* Main.storyboard in Resources */,
+				ECCE507F1D897D6C007AEE22 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,10 +329,13 @@
 				EC421BD11D88391900A54B98 /* ResponseSoundCloudGetResolve.swift in Sources */,
 				EC2410BB1D884DEC00C6D679 /* SoundFactory.swift in Sources */,
 				EC421BC91D88242200A54B98 /* SoundResourceEntity.swift in Sources */,
+				ECCE50851D897E5C007AEE22 /* HomePresenter.swift in Sources */,
 				EC5BA4E91D86F879003FC885 /* AppDelegate.swift in Sources */,
 				EC2410B81D884C9E00C6D679 /* SoundRepository.swift in Sources */,
 				EC2410B51D884BA100C6D679 /* Sound.swift in Sources */,
+				ECCE50831D897E50007AEE22 /* HomeViewProtocol.swift in Sources */,
 				EC5BA4FD1D86F948003FC885 /* MainPresenter.swift in Sources */,
+				ECCE50811D897D93007AEE22 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

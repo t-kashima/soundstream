@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import RxSwift
 
 class SoundRepository {
     static func getNextId() -> Int {
@@ -16,6 +17,21 @@ class SoundRepository {
             return 1
         }
         return lastSound.id + 1
+    }
+    
+    private static func convertRealmToEntity(sound: Sound) -> SoundResourceEntity {
+        return SoundResourceEntity(title: sound.title,
+                                   username: sound.username,
+                                   imageUrl: sound.imageUrl,
+                                   soundUrl: sound.soundUrl)
+    }
+    
+    static func asEntitiesList() -> [SoundResourceEntity] {
+        let realm = try! Realm()
+        let soundList = realm.objects(Sound).sorted("id", ascending: false)
+        return soundList.map({ (sound: Sound) -> SoundResourceEntity in
+            convertRealmToEntity(sound)
+        })
     }
     
     static func store(soundEntity: SoundResourceEntity) {
