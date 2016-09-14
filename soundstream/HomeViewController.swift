@@ -29,8 +29,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SoundCell
         let soundResourceEntity = soundList[indexPath.row]
-        cell.imageThumbnail.sd_setImageWithURL(NSURL(string: soundResourceEntity.imageUrl))
-        cell.textTitle.text = soundResourceEntity.title
+        cell.initialize(soundResourceEntity, presenter: presenter)
         return cell
     }
 }

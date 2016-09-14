@@ -11,9 +11,8 @@ import AVFoundation
 import RxSwift
 
 class MainPresenter {
-    private let contactView: MainViewProtocol
     
-    // private var player: AVAudioPlayer? = nil
+    private let contactView: MainViewProtocol
        
     private let disposeBag = DisposeBag()
     
@@ -46,17 +45,5 @@ class MainPresenter {
                     }
                     
                 }).addDisposableTo(disposeBag)
-        
-        
-//        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-//        let task = session.dataTaskWithURL(soundStreamUrl, completionHandler: { (data, resp, err) in
-//            do {
-//                self.player = try AVAudioPlayer(data: data!)
-//                self.player?.play()
-//            } catch {
-//                print("Failure sound streaming...")
-//            }
-//        })
-//        task.resume()
     }
 }

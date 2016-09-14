@@ -18,38 +18,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7JI-Ut-FnZ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7JI-Ut-FnZ">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="k95-7X-1eF" customClass="SoundCell" customModule="soundstream" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="k95-7X-1eF" customClass="SoundCell" customModule="soundstream" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k95-7X-1eF" id="EJD-9p-qo6">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a7G-nV-j4W">
-                                                    <rect key="frame" x="15" y="5" width="70" height="70"/>
+                                                    <rect key="frame" x="15" y="15" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="cEf-9K-gsp"/>
                                                         <constraint firstAttribute="height" constant="70" id="dcm-61-tQJ"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPi-LM-5hE">
+                                                    <rect key="frame" x="547" y="35" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="ADC-fL-NKZ"/>
+                                                        <constraint firstAttribute="height" constant="30" id="SZh-tc-Psp"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Play"/>
+                                                    <connections>
+                                                        <action selector="onClickButtonPlay:" destination="k95-7X-1eF" eventType="touchUpInside" id="fIi-OW-OSM"/>
+                                                    </connections>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uK-qt-hbH">
-                                                    <rect key="frame" x="105" y="29" width="427" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="95" y="40" width="435" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="LPi-LM-5hE" firstAttribute="leading" secondItem="3uK-qt-hbH" secondAttribute="trailing" constant="14" id="2vX-yr-93i"/>
+                                                <constraint firstItem="LPi-LM-5hE" firstAttribute="trailing" secondItem="EJD-9p-qo6" secondAttribute="trailingMargin" constant="15" id="85C-Vf-USf"/>
                                                 <constraint firstItem="a7G-nV-j4W" firstAttribute="centerY" secondItem="EJD-9p-qo6" secondAttribute="centerY" id="A8N-zN-RHO"/>
+                                                <constraint firstItem="LPi-LM-5hE" firstAttribute="centerY" secondItem="EJD-9p-qo6" secondAttribute="centerY" id="LMm-z2-uhE"/>
                                                 <constraint firstItem="3uK-qt-hbH" firstAttribute="centerY" secondItem="EJD-9p-qo6" secondAttribute="centerY" id="REu-UL-vfW"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="3uK-qt-hbH" secondAttribute="trailing" constant="60" id="VXf-dr-4he"/>
-                                                <constraint firstItem="3uK-qt-hbH" firstAttribute="leading" secondItem="a7G-nV-j4W" secondAttribute="trailing" constant="20" id="fuU-f7-ZEL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LPi-LM-5hE" secondAttribute="trailing" constant="15" id="WkR-7q-AmQ"/>
+                                                <constraint firstItem="LPi-LM-5hE" firstAttribute="trailing" secondItem="EJD-9p-qo6" secondAttribute="trailingMargin" id="e9h-dS-YzX"/>
+                                                <constraint firstItem="3uK-qt-hbH" firstAttribute="leading" secondItem="a7G-nV-j4W" secondAttribute="trailing" constant="10" id="fuU-f7-ZEL"/>
                                                 <constraint firstItem="a7G-nV-j4W" firstAttribute="leading" secondItem="EJD-9p-qo6" secondAttribute="leadingMargin" constant="7" id="jFS-9u-f3M"/>
+                                                <constraint firstItem="LPi-LM-5hE" firstAttribute="leading" secondItem="3uK-qt-hbH" secondAttribute="trailing" constant="30" id="l0V-7g-Y8h"/>
+                                                <constraint firstItem="LPi-LM-5hE" firstAttribute="leading" secondItem="3uK-qt-hbH" secondAttribute="trailing" constant="22" id="mEy-ZJ-kgz"/>
+                                                <constraint firstItem="LPi-LM-5hE" firstAttribute="leading" secondItem="3uK-qt-hbH" secondAttribute="trailing" constant="17" id="pNw-w8-RRG"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="VXf-dr-4he"/>
+                                                    <exclude reference="2vX-yr-93i"/>
+                                                    <exclude reference="85C-Vf-USf"/>
+                                                    <exclude reference="e9h-dS-YzX"/>
+                                                    <exclude reference="l0V-7g-Y8h"/>
+                                                    <exclude reference="mEy-ZJ-kgz"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imageThumbnail" destination="a7G-nV-j4W" id="P6H-aH-mmO"/>
