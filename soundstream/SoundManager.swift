@@ -33,9 +33,13 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             player!.stop()
             player = nil
         }
-        if (index < soundList.count) {
-            self.index = index
-            let soundResourceEntity = soundList[index]
+        var playIndex = index
+        if (playIndex >= soundList.count) {
+            playIndex = 0
+        }
+        if (playIndex < soundList.count) {
+            self.index = playIndex
+            let soundResourceEntity = soundList[playIndex]
             print(soundResourceEntity)
             playSound(soundResourceEntity)
         }
