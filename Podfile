@@ -12,4 +12,5 @@ target 'soundstream' do
   pod 'RxCocoa',    '~> 2.6.0'
   pod 'RealmSwift', '~> 1.0.2'
   pod 'SDWebImage', '~> 3.8'
+  pod 'SVProgressHUD', '~> 2.0.3'
 end

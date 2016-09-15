@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class SearchViewController: UIViewController {
 
@@ -25,5 +26,22 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: SearchViewProtocol {
+    func showProgress() {
+        let heightStatusBar = UIApplication.sharedApplication().statusBarFrame.size.height
+        let heightNavigationBar = navigationController?.navigationBar.frame.size.height ?? 0
+        SVProgressHUD.setOffsetFromCenter(UIOffsetMake(0, heightStatusBar + heightNavigationBar))
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
+        SVProgressHUD.showWithStatus("読み込み中")
+        SVProgressHUD.show()
+    }
     
+    func showProgressSuccess() {
+        SVProgressHUD.showSuccessWithStatus("曲を追加しました！")
+        SVProgressHUD.dismissWithDelay(0.5)
+    }
+    
+    func showProgressError() {
+        SVProgressHUD.showErrorWithStatus("曲を追加できませんでした")
+        SVProgressHUD.dismissWithDelay(0.5)
+    }
 }

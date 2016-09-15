@@ -31,11 +31,15 @@ class SearchPresenter {
             return
         }
         
+        contactView.showProgress()
+        
         APIRepository.getSound(soundUrl)
             .subscribe(onNext: { (soundResourceEntity) in
-                    // TODO: データベースに追加する
                     print(soundResourceEntity)
+
                     SoundRepository.store(soundResourceEntity)
+                
+                    self.contactView.showProgressSuccess()
                 }, onError: { (error) in
                     switch(error) {
                     case ResponseError.NotFoundSound:
@@ -43,7 +47,7 @@ class SearchPresenter {
                     default:
                         print("oError")
                     }
-                    
+                    self.contactView.showProgressError()
                 }).addDisposableTo(disposeBag)
     }
 }

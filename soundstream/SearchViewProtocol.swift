@@ -7,4 +7,9 @@
 //
 
 protocol SearchViewProtocol {
+    func showProgress()
+    
+    func showProgressSuccess()
+    
+    func showProgressError()
 }
