@@ -35,13 +35,20 @@
                                     <action selector="onClickButtonPlaySound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q6l-79-hci"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-Bh-YDr">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-Bh-YDr">
                                 <rect key="frame" x="163" y="285" width="274" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tOe-Bh-YDr" secondAttribute="height" multiplier="137:15" id="I6a-3m-dsL"/>
+                                    <constraint firstAttribute="height" constant="30" id="Kfh-iT-zHI"/>
+                                    <constraint firstAttribute="width" constant="274" id="lkT-pG-Qdj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="I6a-3m-dsL"/>
+                                    </mask>
+                                </variation>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

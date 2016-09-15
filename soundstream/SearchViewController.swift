@@ -9,27 +9,32 @@
 import UIKit
 import SVProgressHUD
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITextFieldDelegate {
 
     private var presenter: SearchPresenter!
+    
+    @IBOutlet weak var textFieldSoundUrl: UITextField!
     
     @IBAction func onClickButtonPlaySound(sender: AnyObject) {
         presenter.onClickButtonPlaySound(textFieldSoundUrl.text)
     }
     
-    @IBOutlet weak var textFieldSoundUrl: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = SearchPresenter(view: self)
+        textFieldSoundUrl.delegate = self
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
 
 extension SearchViewController: SearchViewProtocol {
     func showProgress() {
-        let heightStatusBar = UIApplication.sharedApplication().statusBarFrame.size.height
         let heightNavigationBar = navigationController?.navigationBar.frame.size.height ?? 0
-        SVProgressHUD.setOffsetFromCenter(UIOffsetMake(0, heightStatusBar + heightNavigationBar))
+        SVProgressHUD.setOffsetFromCenter(UIOffsetMake(0, heightNavigationBar))
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
         SVProgressHUD.showWithStatus("読み込み中")
         SVProgressHUD.show()
@@ -43,5 +48,9 @@ extension SearchViewController: SearchViewProtocol {
     func showProgressError() {
         SVProgressHUD.showErrorWithStatus("曲を追加できませんでした")
         SVProgressHUD.dismissWithDelay(0.5)
+    }
+    
+    func clearTextFieldSoundUrl() {
+        textFieldSoundUrl.text = ""
     }
 }

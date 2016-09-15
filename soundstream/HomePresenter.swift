@@ -22,7 +22,7 @@ class HomePresenter: NSObject {
     
     func onViewWillAppear() {
         let soundList = SoundRepository.asEntitiesList()
-        print("count songs: \(soundList.count)")
+        print("\(soundList.count) songs")
         contactView.setSoundList(soundList)
     }
 

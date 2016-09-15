@@ -12,4 +12,6 @@ protocol SearchViewProtocol {
     func showProgressSuccess()
     
     func showProgressError()
+    
+    func clearTextFieldSoundUrl()
 }

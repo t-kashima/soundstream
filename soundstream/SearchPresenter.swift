@@ -39,6 +39,7 @@ class SearchPresenter {
 
                     SoundRepository.store(soundResourceEntity)
                 
+                    self.contactView.clearTextFieldSoundUrl()
                     self.contactView.showProgressSuccess()
                 }, onError: { (error) in
                     switch(error) {
