@@ -9,16 +9,14 @@
 import UIKit
 import AVFoundation
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AVAudioPlayerDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private var presenter: HomePresenter!
     
     private var soundList: [SoundResourceEntity] = []
     
     @IBOutlet weak var tableView: UITableView!
-    
-    private var player: AVAudioPlayer? = nil
-    
+       
     @IBAction func onClickButtonSearch(sender: AnyObject) {
         presenter.onClickButtonSearch()
     }
@@ -45,14 +43,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        presenter.onClickButtonPlay(soundList[indexPath.row])
+        presenter.onClickButtonPlay(indexPath.row)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-        if (flag) {
-            presenter.onFinishPlayingSound()
-        }
     }
 }
 
@@ -66,27 +58,11 @@ extension HomeViewController: HomeViewProtocol {
         self.soundList.removeAll()
         self.soundList.appendContentsOf(soundList)
         tableView.reloadData()
+        SoundManager.sharedManager.setSoundList(soundList)
     }
     
-    func playSound(soundResourceEntity: SoundResourceEntity) {
-        // 再生中の曲を止める
-        if (player != nil) {
-            player!.stop()
-            player = nil
-        }
-        
-        let soundUrl = NSURL(string: soundResourceEntity.getStreamingSoundUrl())
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let task = session.dataTaskWithURL(soundUrl!, completionHandler: { (data, resp, err) in
-            do {
-                self.player = try AVAudioPlayer(data: data!)
-                self.player!.delegate = self
-                self.player!.play()
-            } catch {
-                print("Failure sound streaming...")
-            }
-        })
-        task.resume()
+    func playSound(index: Int) {
+        SoundManager.sharedManager.playSound(index)
     }
     
     func navigateToSearch() {
