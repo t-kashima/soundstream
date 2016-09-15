@@ -16,12 +16,12 @@
 		EC421BD11D88391900A54B98 /* ResponseSoundCloudGetResolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BD01D88391900A54B98 /* ResponseSoundCloudGetResolve.swift */; };
 		EC421BD41D8844FF00A54B98 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BD31D8844FF00A54B98 /* ResponseError.swift */; };
 		EC5BA4E91D86F879003FC885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4E81D86F879003FC885 /* AppDelegate.swift */; };
-		EC5BA4EB1D86F879003FC885 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4EA1D86F879003FC885 /* MainViewController.swift */; };
-		EC5BA4EE1D86F879003FC885 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5BA4EC1D86F879003FC885 /* Main.storyboard */; };
+		EC5BA4EB1D86F879003FC885 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4EA1D86F879003FC885 /* SearchViewController.swift */; };
+		EC5BA4EE1D86F879003FC885 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5BA4EC1D86F879003FC885 /* Search.storyboard */; };
 		EC5BA4F01D86F879003FC885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC5BA4EF1D86F879003FC885 /* Assets.xcassets */; };
 		EC5BA4F31D86F879003FC885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC5BA4F11D86F879003FC885 /* LaunchScreen.storyboard */; };
-		EC5BA4FB1D86F927003FC885 /* MainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4FA1D86F927003FC885 /* MainViewProtocol.swift */; };
-		EC5BA4FD1D86F948003FC885 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4FC1D86F948003FC885 /* MainPresenter.swift */; };
+		EC5BA4FB1D86F927003FC885 /* SearchViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4FA1D86F927003FC885 /* SearchViewProtocol.swift */; };
+		EC5BA4FD1D86F948003FC885 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC5BA4FC1D86F948003FC885 /* SearchPresenter.swift */; };
 		ECCE507F1D897D6C007AEE22 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECCE507E1D897D6C007AEE22 /* Home.storyboard */; };
 		ECCE50811D897D93007AEE22 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50801D897D93007AEE22 /* HomeViewController.swift */; };
 		ECCE50831D897E50007AEE22 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50821D897E50007AEE22 /* HomeViewProtocol.swift */; };
@@ -42,13 +42,13 @@
 		EC421BD31D8844FF00A54B98 /* ResponseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		EC5BA4E51D86F879003FC885 /* soundstream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soundstream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5BA4E81D86F879003FC885 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EC5BA4EA1D86F879003FC885 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		EC5BA4ED1D86F879003FC885 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EC5BA4EA1D86F879003FC885 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		EC5BA4ED1D86F879003FC885 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Search.storyboard; sourceTree = "<group>"; };
 		EC5BA4EF1D86F879003FC885 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC5BA4F21D86F879003FC885 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC5BA4F41D86F879003FC885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EC5BA4FA1D86F927003FC885 /* MainViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewProtocol.swift; sourceTree = "<group>"; };
-		EC5BA4FC1D86F948003FC885 /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		EC5BA4FA1D86F927003FC885 /* SearchViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewProtocol.swift; sourceTree = "<group>"; };
+		EC5BA4FC1D86F948003FC885 /* SearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		ECCE507E1D897D6C007AEE22 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		ECCE50801D897D93007AEE22 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ECCE50821D897E50007AEE22 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
@@ -180,8 +180,8 @@
 		EC5BA4FE1D86FBDB003FC885 /* presenter */ = {
 			isa = PBXGroup;
 			children = (
-				EC5BA4FA1D86F927003FC885 /* MainViewProtocol.swift */,
-				EC5BA4FC1D86F948003FC885 /* MainPresenter.swift */,
+				EC5BA4FA1D86F927003FC885 /* SearchViewProtocol.swift */,
+				EC5BA4FC1D86F948003FC885 /* SearchPresenter.swift */,
 				ECCE50821D897E50007AEE22 /* HomeViewProtocol.swift */,
 				ECCE50841D897E5C007AEE22 /* HomePresenter.swift */,
 			);
@@ -191,7 +191,7 @@
 		EC5BA4FF1D86FBEA003FC885 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
-				EC5BA4EA1D86F879003FC885 /* MainViewController.swift */,
+				EC5BA4EA1D86F879003FC885 /* SearchViewController.swift */,
 				ECCE50801D897D93007AEE22 /* HomeViewController.swift */,
 			);
 			name = viewcontroller;
@@ -200,7 +200,7 @@
 		EC5BA5001D86FBFB003FC885 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				EC5BA4EC1D86F879003FC885 /* Main.storyboard */,
+				EC5BA4EC1D86F879003FC885 /* Search.storyboard */,
 				EC5BA4F11D86F879003FC885 /* LaunchScreen.storyboard */,
 				ECCE507E1D897D6C007AEE22 /* Home.storyboard */,
 			);
@@ -286,7 +286,7 @@
 			files = (
 				EC5BA4F31D86F879003FC885 /* LaunchScreen.storyboard in Resources */,
 				EC5BA4F01D86F879003FC885 /* Assets.xcassets in Resources */,
-				EC5BA4EE1D86F879003FC885 /* Main.storyboard in Resources */,
+				EC5BA4EE1D86F879003FC885 /* Search.storyboard in Resources */,
 				ECCE507F1D897D6C007AEE22 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,10 +348,10 @@
 			files = (
 				EC421BCC1D88339100A54B98 /* APIRepository.swift in Sources */,
 				EC421BD41D8844FF00A54B98 /* ResponseError.swift in Sources */,
-				EC5BA4FB1D86F927003FC885 /* MainViewProtocol.swift in Sources */,
+				EC5BA4FB1D86F927003FC885 /* SearchViewProtocol.swift in Sources */,
 				ECCE508E1D89A9FC007AEE22 /* Constant.swift in Sources */,
 				ECCE50881D898871007AEE22 /* SoundCell.swift in Sources */,
-				EC5BA4EB1D86F879003FC885 /* MainViewController.swift in Sources */,
+				EC5BA4EB1D86F879003FC885 /* SearchViewController.swift in Sources */,
 				EC421BD11D88391900A54B98 /* ResponseSoundCloudGetResolve.swift in Sources */,
 				EC2410BB1D884DEC00C6D679 /* SoundFactory.swift in Sources */,
 				EC421BC91D88242200A54B98 /* SoundResourceEntity.swift in Sources */,
@@ -360,7 +360,7 @@
 				EC2410B81D884C9E00C6D679 /* SoundRepository.swift in Sources */,
 				EC2410B51D884BA100C6D679 /* Sound.swift in Sources */,
 				ECCE50831D897E50007AEE22 /* HomeViewProtocol.swift in Sources */,
-				EC5BA4FD1D86F948003FC885 /* MainPresenter.swift in Sources */,
+				EC5BA4FD1D86F948003FC885 /* SearchPresenter.swift in Sources */,
 				ECCE50811D897D93007AEE22 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,12 +368,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EC5BA4EC1D86F879003FC885 /* Main.storyboard */ = {
+		EC5BA4EC1D86F879003FC885 /* Search.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EC5BA4ED1D86F879003FC885 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Search.storyboard;
 			sourceTree = "<group>";
 		};
 		EC5BA4F11D86F879003FC885 /* LaunchScreen.storyboard */ = {

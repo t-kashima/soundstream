@@ -19,10 +19,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private var player: AVAudioPlayer? = nil
     
+    @IBAction func onClickButtonSearch(sender: AnyObject) {
+        presenter.onClickButtonSearch()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = HomePresenter(view: self)
         presenter.onViewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        presenter.onViewWillAppear()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,5 +87,11 @@ extension HomeViewController: HomeViewProtocol {
             }
         })
         task.resume()
+    }
+    
+    func navigateToSearch() {
+        let storyboard = UIStoryboard(name: "Search", bundle: NSBundle.mainBundle())
+        let searchViewController =  storyboard.instantiateInitialViewController() as! SearchViewController
+        self.navigationController!.pushViewController(searchViewController, animated: true)
     }
 }

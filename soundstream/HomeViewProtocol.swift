@@ -12,4 +12,6 @@ protocol HomeViewProtocol {
     func setSoundList(soundList: [SoundResourceEntity])
     
     func playSound(soundResourceEntity: SoundResourceEntity)
+    
+    func navigateToSearch()
 }

@@ -6,5 +6,5 @@
 //  Copyright © 2016 UNUUU. All rights reserved.
 //
 
-protocol MainViewProtocol {
+protocol SearchViewProtocol {
 }

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class SearchViewController: UIViewController {
 
-    private var presenter: MainPresenter!
+    private var presenter: SearchPresenter!
     
     @IBAction func onClickButtonPlaySound(sender: AnyObject) {
         presenter.onClickButtonPlaySound(textFieldSoundUrl.text)
@@ -20,10 +20,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = MainPresenter(view: self)
+        presenter = SearchPresenter(view: self)
     }
 }
 
-extension MainViewController: MainViewProtocol {
+extension SearchViewController: SearchViewProtocol {
     
 }

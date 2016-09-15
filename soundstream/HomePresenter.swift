@@ -20,6 +20,9 @@ class HomePresenter: NSObject {
     
     func onViewDidLoad() {
         contactView.initialize()
+    }
+    
+    func onViewWillAppear() {
         let soundList = SoundRepository.asEntitiesList()
         print("count songs: \(soundList.count)")
         contactView.setSoundList(soundList)
@@ -54,5 +57,9 @@ class HomePresenter: NSObject {
             print(soundResourceEntity)
             contactView.playSound(soundResourceEntity)
         }
+    }
+    
+    func onClickButtonSearch() {
+        contactView.navigateToSearch()
     }
 }

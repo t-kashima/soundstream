@@ -10,13 +10,13 @@ import Foundation
 import AVFoundation
 import RxSwift
 
-class MainPresenter {
+class SearchPresenter {
     
-    private let contactView: MainViewProtocol
+    private let contactView: SearchViewProtocol
        
     private let disposeBag = DisposeBag()
     
-    init(view: MainViewProtocol) {
+    init(view: SearchViewProtocol) {
         contactView = view
     }
     
