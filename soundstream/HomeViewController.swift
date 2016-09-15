@@ -32,8 +32,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SoundCell
         let soundResourceEntity = soundList[indexPath.row]
-        cell.initialize(soundResourceEntity, presenter: presenter)
+        cell.initialize(soundResourceEntity)
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        presenter.onClickButtonPlay(soundList[indexPath.row])
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
