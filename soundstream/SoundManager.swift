@@ -15,14 +15,14 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     private var player: AVAudioPlayer? = nil
     
-    private var soundList: [SoundResourceEntity] = []
+    private var soundList: [SoundEntity] = []
     private var index = 0
     
     override init() {
         
     }
     
-    func setSoundList(soundList: [SoundResourceEntity]) {
+    func setSoundList(soundList: [SoundEntity]) {
         self.soundList.removeAll()
         self.soundList.appendContentsOf(soundList)
     }
@@ -39,25 +39,33 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         }
         if (playIndex < soundList.count) {
             self.index = playIndex
-            let soundResourceEntity = soundList[playIndex]
-            print(soundResourceEntity)
-            playSound(soundResourceEntity)
+            let soundEntity = soundList[playIndex]
+            print(soundEntity)
+            playSound(soundEntity)
         }
     }
     
-    private func playSound(soundResourceEntity: SoundResourceEntity) {
-        let soundUrl = NSURL(string: soundResourceEntity.getStreamingSoundUrl())
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let task = session.dataTaskWithURL(soundUrl!, completionHandler: { (data, resp, err) in
-            do {
-                self.player = try AVAudioPlayer(data: data!)
-                self.player!.delegate = self
-                self.player!.play()
-            } catch {
-                print("Failure sound streaming...")
-            }
-        })
-        task.resume()
+    private func playSound(soundEntity: SoundEntity) {
+        switch soundEntity.resourceType {
+        case ResourceType.SoundCloud:
+            let resourceEntity = soundEntity.resourceEntity as! SoundCloudResourceEntity
+            let soundUrl = NSURL(string: resourceEntity.getStreamingSoundUrl())
+            let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+            let task = session.dataTaskWithURL(soundUrl!, completionHandler: { (data, resp, err) in
+                do {
+                    self.player = try AVAudioPlayer(data: data!)
+                    self.player!.delegate = self
+                    self.player!.play()
+                } catch {
+                    print("Failure sound streaming...")
+                }
+            })
+            task.resume()
+        case ResourceType.YouTube:
+            break
+        default:
+            break
+        }
     }
 
     func resumeSound() {

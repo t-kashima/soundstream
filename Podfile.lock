@@ -16,6 +16,7 @@ PODS:
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.0.3)
+  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4)
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - RxSwift (~> 2.6.0)
   - SDWebImage (~> 3.8)
   - SVProgressHUD (~> 2.0.3)
+  - youtube-ios-player-helper (~> 0.1.4)
 
 SPEC CHECKSUMS:
   Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
@@ -36,7 +38,8 @@ SPEC CHECKSUMS:
   RxSwift: 77f3a0b15324baa7a1c9bfa9f199648a82424e26
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 86754de1aaeac388a5b991d3a0bbdc58b9c7c673
+PODFILE CHECKSUM: 811116d2a9c1039c6fb79e7b6f833c8a247c8fab
 
 COCOAPODS: 1.0.1

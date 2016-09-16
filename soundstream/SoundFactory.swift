@@ -9,10 +9,11 @@
 import Foundation
 
 class SoundFactory {
-    static func create(responseSoundClound: ResponseSoundCloudGetResolve) -> SoundResourceEntity {
-        return SoundResourceEntity(title: responseSoundClound.title,
+    static func create(soundId: Int, responseSoundClound: ResponseSoundCloudGetResolve) -> SoundEntity {
+        let resourceEntity =  SoundCloudResourceEntity(title: responseSoundClound.title,
                                    username: responseSoundClound.username,
                                    imageUrl: responseSoundClound.imageUrl,
                                    soundUrl: responseSoundClound.soundUrl)
+        return SoundEntity(id: soundId, resourceType: ResourceType.SoundCloud, resourceEntity: resourceEntity)
     }
 }

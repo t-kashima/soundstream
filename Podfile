@@ -13,4 +13,5 @@ target 'soundstream' do
   pod 'RealmSwift', '~> 1.0.2'
   pod 'SDWebImage', '~> 3.8'
   pod 'SVProgressHUD', '~> 2.0.3'
+  pod 'youtube-ios-player-helper', '~> 0.1.4'
 end

@@ -19,44 +19,88 @@ class SoundRepository {
         return lastSound.id + 1
     }
     
-    private static func convertRealmToEntity(sound: Sound) -> SoundResourceEntity {
-        return SoundResourceEntity(title: sound.title,
-                                   username: sound.username,
-                                   imageUrl: sound.imageUrl,
-                                   soundUrl: sound.soundUrl)
+    private static func convertRealmToEntity(sound: Sound) throws -> SoundEntity {
+        guard let resourceType = ResourceType(rawValue: sound.resourceType) else {
+            throw Error.IllegalStateError(message: "not found resource type")
+        }
+        
+        let resourceEntity: SoundResourceEntity
+        let realm = try! Realm()
+        switch resourceType {
+        case ResourceType.SoundCloud:
+            guard let resource = realm.objects(SoundSoundCloud).filter("soundId = \(sound.id)").first else {
+                throw Error.IllegalStateError(message: "not found sound resource")
+            }
+            resourceEntity = SoundCloudResourceEntity(title: resource.title,
+                                                      username: resource.username,
+                                                      imageUrl: resource.imageUrl,
+                                                      soundUrl: resource.soundUrl)
+        case ResourceType.YouTube:
+            guard let resource = realm.objects(SoundYouTube).filter("soundId = \(sound.id)").first else {
+                throw Error.IllegalStateError(message: "not found sound resource")
+            }
+            resourceEntity = YouTubeResourceEntity(title: resource.title,
+                                                   username: resource.username,
+                                                   imageUrl: resource.imageUrl,
+                                                   videoId: resource.videoId)
+        default:
+            throw Error.IllegalStateError(message: "not found resource type")
+        }
+        
+        return SoundEntity(id: sound.id, resourceType: resourceType, resourceEntity: resourceEntity)
     }
     
-    static func asEntitiesList() -> [SoundResourceEntity] {
+    static func asEntitiesList() -> [SoundEntity] {
         let realm = try! Realm()
         let soundList = realm.objects(Sound).sorted("id", ascending: false)
-        return soundList.map({ (sound: Sound) -> SoundResourceEntity in
-            convertRealmToEntity(sound)
-        })
+        do {
+            return try soundList.map { try convertRealmToEntity($0) }
+        } catch Error.IllegalStateError(let message) {
+            print(message)
+            return []
+        } catch {
+            return []
+        }
     }
     
-    static func store(soundEntity: SoundResourceEntity) {
+    static func store(soundEntity: SoundEntity) {
         let realm = try! Realm()
-        // TODO: FactoryでIDを持ったEntityを生成して渡すようにする
-        // 既に曲が存在している時は更新する
-        let soundList = realm.objects(Sound).filter("soundUrl = '\(soundEntity.soundUrl)'")
-        if (soundList.count > 0) {
-            let sound = soundList[0]
+        let sound = Sound()
+        sound.id = soundEntity.id
+        sound.resourceType = soundEntity.resourceType.rawValue
+        
+        switch soundEntity.resourceType {
+        case ResourceType.SoundCloud:
+            let resource = SoundSoundCloud()
+            let resourceEntity = soundEntity.resourceEntity as! SoundCloudResourceEntity
+            resource.soundId = soundEntity.id
+            resource.title = resourceEntity.title
+            resource.username = resourceEntity.username
+            resource.imageUrl = resourceEntity.imageUrl
+            resource.soundUrl = resourceEntity.soundUrl
             try! realm.write {
-                sound.title = soundEntity.title
-                sound.username = soundEntity.username
-                sound.imageUrl = soundEntity.imageUrl
-                sound.soundUrl = soundEntity.soundUrl
+                realm.add(resource)
             }
-        } else {
-            let sound = Sound()
-            sound.id = getNextId()
-            sound.title = soundEntity.title
-            sound.username = soundEntity.username
-            sound.imageUrl = soundEntity.imageUrl
-            sound.soundUrl = soundEntity.soundUrl
             try! realm.write {
                 realm.add(sound)
             }
+        case ResourceType.YouTube:
+            let resource = SoundYouTube()
+            let resourceEntity = soundEntity.resourceEntity as! YouTubeResourceEntity
+            resource.soundId = soundEntity.id
+            resource.title = resourceEntity.title
+            resource.username = resourceEntity.username
+            resource.imageUrl = resourceEntity.imageUrl
+            resource.videoId = resourceEntity.videoId
+            try! realm.write {
+                realm.add(resource)
+            }
+            try! realm.write {
+                realm.add(sound)
+            }
+        default:
+            print("not found resource type")
+            break
         }
     }
 }

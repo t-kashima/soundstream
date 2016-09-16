@@ -9,7 +9,7 @@
 protocol HomeViewProtocol {
     func initialize()
     
-    func setSoundList(soundList: [SoundResourceEntity])
+    func setSoundList(soundList: [SoundEntity])
     
     func playSound(index: Int)
     

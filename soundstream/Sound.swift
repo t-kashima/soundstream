@@ -10,8 +10,5 @@ import RealmSwift
 
 class Sound: Object {
     dynamic var id = 0
-    dynamic var title = ""
-    dynamic var username = ""
-    dynamic var imageUrl = ""
-    dynamic var soundUrl = ""
+    dynamic var resourceType = ResourceType.None.rawValue
 }

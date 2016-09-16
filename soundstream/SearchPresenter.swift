@@ -31,13 +31,15 @@ class SearchPresenter {
             return
         }
         
+        // TODO: URLによってソースを変える
+        
         contactView.showProgress()
         
         APIRepository.getSound(soundUrl)
-            .subscribe(onNext: { (soundResourceEntity) in
-                    print(soundResourceEntity)
+            .subscribe(onNext: { (soundEntity) in
+                    print(soundEntity)
 
-                    SoundRepository.store(soundResourceEntity)
+                    SoundRepository.store(soundEntity)
                 
                     self.contactView.clearTextFieldSoundUrl()
                     self.contactView.showProgressSuccess()
