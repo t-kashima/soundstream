@@ -3,7 +3,6 @@ PODS:
   - AlamofireObjectMapper (3.0.2):
     - Alamofire (~> 3.2)
     - ObjectMapper (~> 1.0)
-  - HCYoutubeParser (0.0.5)
   - ObjectMapper (1.4.0)
   - Realm (1.0.2):
     - Realm/Headers (= 1.0.2)
@@ -21,7 +20,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.4)
   - AlamofireObjectMapper (~> 3.0)
-  - HCYoutubeParser
   - RealmSwift (~> 1.0.2)
   - RxCocoa (~> 2.6.0)
   - RxSwift (~> 2.6.0)
@@ -31,7 +29,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
   AlamofireObjectMapper: 70f97cbf45c01c48d26aa07a1a7059a60ed7411d
-  HCYoutubeParser: bc1db8c062e4b835eda381f2be2f9970f6a8d071
   ObjectMapper: a07ad0462c5adf014adc0f89ef04c29b626e855e
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
@@ -40,6 +37,6 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: 11ec20de6387c0a4d7165a7ea5b484dbf18b9810
+PODFILE CHECKSUM: 86754de1aaeac388a5b991d3a0bbdc58b9c7c673
 
 COCOAPODS: 1.0.1

@@ -49,18 +49,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         switch soundEntity.resourceType {
         case ResourceType.SoundCloud:
             let resourceEntity = soundEntity.resourceEntity as! SoundCloudResourceEntity
-            let url = NSURL(string: resourceEntity.getStreamingSoundUrl())
-            let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-            let task = session.dataTaskWithURL(url!, completionHandler: { (data, resp, err) in
-                do {
-                    self.player = try AVAudioPlayer(data: data!)
-                    self.player!.delegate = self
-                    self.player!.play()
-                } catch {
-                    print("Failure sound streaming...")
-                }
-            })
-            task.resume()
+            self.playSound(NSURL(string: resourceEntity.getStreamingSoundUrl())!)
         case ResourceType.YouTube:
             let resourceEntity = soundEntity.resourceEntity as! YouTubeResourceEntity
             SSYouTubeParser.h264videosWithYoutubeID(resourceEntity.videoId, completionHandler: { (dictionary) in
@@ -71,24 +60,26 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
                     self.playSound(nextIndex)
                     return
                 }
-                let url = NSURL(string: videoMediumURL)
-                let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-                let task = session.dataTaskWithURL(url!, completionHandler: { (data, resp, err) in
-                    do {
-                        self.player = try AVAudioPlayer(data: data!)
-                        self.player!.delegate = self
-                        self.player!.play()
-                    } catch {
-                        print("Failure sound streaming...")
-                    }
-                })
-                task.resume()
-                
+                self.playSound(NSURL(string: videoMediumURL)!)
             })
             break
         default:
             break
         }
+    }
+    
+    private func playSound(url: NSURL) {
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let task = session.dataTaskWithURL(url, completionHandler: { (data, resp, err) in
+            do {
+                self.player = try AVAudioPlayer(data: data!)
+                self.player!.delegate = self
+                self.player!.play()
+            } catch {
+                print("Failure sound streaming...")
+            }
+        })
+        task.resume()
     }
 
     func resumeSound() {
