@@ -14,7 +14,7 @@ class APIRepository {
     private static let SoundCloudResolveEndPoint = "https://api.soundcloud.com/resolve.json"
     private static let YouTubeResolveEndPoint = "https://www.googleapis.com/youtube/v3/videos"
     
-    static func getSound(soundUrl: String) -> Observable<SoundEntity> {
+    static func getSoundCloud(soundUrl: String) -> Observable<SoundEntity> {
         return Observable.create { observer -> Disposable in
             let request = Alamofire.request(.GET, SoundCloudResolveEndPoint, parameters: ["url": soundUrl, "client_id": Constant.SoundCloudClientId])
                 .responseObject { (response: Response<ResponseSoundCloudGetResolve, NSError>) in

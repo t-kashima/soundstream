@@ -60,7 +60,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="textFieldSoundUrl" destination="tOe-Bh-YDr" id="04i-Ka-LPF"/>
+                        <outlet property="textFieldUrl" destination="tOe-Bh-YDr" id="POE-9N-w6z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -13,16 +13,16 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
 
     private var presenter: SearchPresenter!
     
-    @IBOutlet weak var textFieldSoundUrl: UITextField!
+    @IBOutlet weak var textFieldUrl: UITextField!
     
     @IBAction func onClickButtonPlaySound(sender: AnyObject) {
-        presenter.onClickButtonPlaySound(textFieldSoundUrl.text)
+        presenter.onClickButtonPlaySound(textFieldUrl.text)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = SearchPresenter(view: self)
-        textFieldSoundUrl.delegate = self
+        textFieldUrl.delegate = self
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -51,6 +51,6 @@ extension SearchViewController: SearchViewProtocol {
     }
     
     func clearTextFieldSoundUrl() {
-        textFieldSoundUrl.text = ""
+        textFieldUrl.text = ""
     }
 }
