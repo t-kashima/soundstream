@@ -80,8 +80,6 @@ class SoundRepository {
             resource.soundUrl = resourceEntity.soundUrl
             try! realm.write {
                 realm.add(resource)
-            }
-            try! realm.write {
                 realm.add(sound)
             }
         case ResourceType.YouTube:
@@ -94,8 +92,6 @@ class SoundRepository {
             resource.videoId = resourceEntity.videoId
             try! realm.write {
                 realm.add(resource)
-            }
-            try! realm.write {
                 realm.add(sound)
             }
         default:

@@ -10,4 +10,5 @@ import Foundation
 
 class Constant {
     static let SoundCloudClientId = "a3600dee69af488f05b5d8c587559db6"
+    static let YouTubeApiId = "AIzaSyBhCQc_VqagjfXmTMmDGRl8VpTMMqG56jM"
 }

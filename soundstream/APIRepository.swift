@@ -12,11 +12,11 @@ import AlamofireObjectMapper
 
 class APIRepository {
     private static let SoundCloudResolveEndPoint = "https://api.soundcloud.com/resolve.json"
+    private static let YouTubeResolveEndPoint = "https://www.googleapis.com/youtube/v3/videos"
     
     static func getSound(soundUrl: String) -> Observable<SoundEntity> {
         return Observable.create { observer -> Disposable in
-            let resolveUrl = SoundCloudResolveEndPoint + "?url=" + soundUrl + "&client_id=" + Constant.SoundCloudClientId
-            let request = Alamofire.request(.GET, resolveUrl, parameters: nil)
+            let request = Alamofire.request(.GET, SoundCloudResolveEndPoint, parameters: ["url": soundUrl, "client_id": Constant.SoundCloudClientId])
                 .responseObject { (response: Response<ResponseSoundCloudGetResolve, NSError>) in
                     switch(response.result) {
                     case .Success(let responseSoundCloud):
@@ -34,6 +34,30 @@ class APIRepository {
                         observer.onError(error)
                     }
                 }
+            return AnonymousDisposable {
+                request.cancel()
+            }
+        }
+    }
+    
+    static func getYouTube(videoId: String) -> Observable<SoundEntity> {
+        return Observable.create { observer -> Disposable in
+            let request = Alamofire.request(.GET, YouTubeResolveEndPoint, parameters: ["id": videoId, "key": Constant.YouTubeApiId, "part": "snippet,contentDetails,statistics",  "fields": "items(id,snippet(channelTitle,title,thumbnails(default)))"])
+                .responseObject { (response: Response<ResponseYouTubeGetResolve, NSError>) in
+                    switch(response.result) {
+                    case .Success(let responseYouTube):
+                        // 正しく動画を取得できなかった時
+                        if (responseYouTube.items.isEmpty) {
+                            observer.onError(ResponseError.NotFoundSound)
+                            return
+                        }
+                        let soundEntity = SoundFactory.create(SoundRepository.getNextId(), responseYouTubeItem: responseYouTube.items.first!)
+                        observer.onNext(soundEntity)
+                        observer.onCompleted()
+                    case .Failure(let error):
+                        observer.onError(error)
+                    }
+            }
             return AnonymousDisposable {
                 request.cancel()
             }

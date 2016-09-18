@@ -16,4 +16,12 @@ class SoundFactory {
                                    soundUrl: responseSoundClound.soundUrl)
         return SoundEntity(id: soundId, resourceType: ResourceType.SoundCloud, resourceEntity: resourceEntity)
     }
+    
+    static func create(soundId: Int, responseYouTubeItem: ResponseYouTubeGetResolveItem) -> SoundEntity {
+        let resourceEntity =  YouTubeResourceEntity(title: responseYouTubeItem.title,
+                                                    username: responseYouTubeItem.username,
+                                                    imageUrl: responseYouTubeItem.imageUrl,
+                                                    videoId: responseYouTubeItem.id)
+        return SoundEntity(id: soundId, resourceType: ResourceType.YouTube, resourceEntity: resourceEntity)
+    }
 }
