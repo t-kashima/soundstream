@@ -85,9 +85,8 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Yo-1Q-8yJ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="button_play_sound.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Yo-1Q-8yJ">
                                                     <rect key="frame" x="86" y="51.5" width="10" height="10"/>
-                                                    <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="10" id="Apn-yV-H2d"/>
                                                         <constraint firstAttribute="width" constant="10" id="l6A-7G-SZ2"/>
@@ -194,4 +193,7 @@
             <point key="canvasLocation" x="485" y="329"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="button_play_sound.png" width="34" height="67"/>
+    </resources>
 </document>
