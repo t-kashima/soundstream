@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-class SoundManager: NSObject, AVAudioPlayerDelegate {
+class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
     
     static let NotificationNameResumeSound = "NotificationNameResumeSound"
     static let NotificationNamePlaySound = "NotificationNamePlaySound"
@@ -22,12 +22,13 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     private var soundList: [SoundEntity] = []
     
+    private var timer: NSTimer? = nil
+    
     private var playSoundEntity: SoundEntity? = nil
     
     private var sessionTask: NSURLSessionDataTask?
     
     override init() {
-        
     }
     
     func setSoundList(soundList: [SoundEntity]) {
@@ -95,7 +96,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     }
     
     private func playSound(url: NSURL) {
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: NSOperationQueue.mainQueue())
         sessionTask = session.dataTaskWithURL(url, completionHandler: { (data, resp, err) in
             if (err != nil) {
                 print("通信エラーまたはキャンセルされたため曲を取得できませんでした")
@@ -105,6 +106,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
                 self.player = try AVAudioPlayer(data: data!)
                 self.player!.delegate = self
                 self.player!.play()
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.onUpdateTimer), userInfo: nil, repeats: true)
             } catch {
                 print("Failure sound streaming...")
             }
@@ -117,15 +119,28 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             return
         }
         player?.play()
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.onUpdateTimer), userInfo: nil, repeats: true)
         NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameResumeSound, object: nil)
     }
     
     func pauseSound() {
         player?.pause()
+        if (timer != nil) {
+            if (timer!.valid) {
+                timer!.invalidate()
+                timer = nil
+            }
+        }
         NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePauseSound, object: nil)
     }
     
     private func stop() {
+        if (timer != nil) {
+            if (timer!.valid) {
+                timer!.invalidate()
+                timer = nil
+            }
+        }
         if (player != nil) {
             player!.stop()
             player = nil
@@ -146,5 +161,12 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         if (flag) {
             playNextSound()
         }
+    }
+    
+    func onUpdateTimer() {
+        if (self.player == nil) {
+            return
+        }
+        print("\(Int(player!.currentTime)) / \(Int(player!.duration))")
     }
 }
