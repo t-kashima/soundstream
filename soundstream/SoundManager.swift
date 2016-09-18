@@ -23,6 +23,8 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     private static let InitializeIndex = -1
     private var index = InitializeIndex
     
+    private var sessionTask: NSURLSessionDataTask?
+    
     override init() {
         
     }
@@ -79,7 +81,11 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     private func playSound(url: NSURL) {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        let task = session.dataTaskWithURL(url, completionHandler: { (data, resp, err) in
+        sessionTask = session.dataTaskWithURL(url, completionHandler: { (data, resp, err) in
+            if (err != nil) {
+                print("通信エラーまたはキャンセルされたため曲を取得できませんでした")
+                return
+            }
             do {
                 self.player = try AVAudioPlayer(data: data!)
                 self.player!.delegate = self
@@ -88,7 +94,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
                 print("Failure sound streaming...")
             }
         })
-        task.resume()
+        sessionTask!.resume()
     }
 
     func resumeSound() {
@@ -103,6 +109,10 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         if (player != nil) {
             player!.stop()
             player = nil
+        }
+        if (sessionTask != nil) {
+            sessionTask!.cancel()
+            sessionTask = nil
         }
         self.index = SoundManager.InitializeIndex
     }
