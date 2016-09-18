@@ -13,6 +13,7 @@ class SoundCell: UITableViewCell {
     @IBOutlet weak var textName: UILabel!
     @IBOutlet weak var textTitle: UILabel!
     @IBOutlet weak var imagePlayIndicator: UIImageView!
+    @IBOutlet weak var textPlaying: UILabel!
     
     func initialize(soundPlayStateEntity: SoundPlayStateEntity) {
         let resourceEntity = soundPlayStateEntity.soundEntity.resourceEntity
@@ -21,8 +22,10 @@ class SoundCell: UITableViewCell {
         textTitle.text = resourceEntity.title
         if (soundPlayStateEntity.isPlaying) {
             imagePlayIndicator.hidden = true
+            textPlaying.hidden = false
         } else {
             imagePlayIndicator.hidden = false
+            textPlaying.hidden = true
         }
     }
 }

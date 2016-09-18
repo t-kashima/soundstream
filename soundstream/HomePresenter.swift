@@ -8,12 +8,15 @@
 
 import Foundation
 
-class HomePresenter: NSObject {
+class HomePresenter {
     
     private let contactView: HomeViewProtocol
     
     init(view: HomeViewProtocol) {
         contactView = view
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onChangePlayingSound(_:)), name: SoundManager.NotificationNamePlaySound, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onStopSound(_:)), name: SoundManager.NotificationNameStopSound, object: nil)
     }
     
     func onViewDidLoad() {
@@ -32,5 +35,24 @@ class HomePresenter: NSObject {
     
     func onClickButtonSearch() {
         contactView.navigateToSearch()
+    }
+    
+    @objc
+    func onChangePlayingSound(notification: NSNotification?) {
+        print("onChangePlayingSound")
+        guard let notification = notification else {
+            return
+        }
+        let soundEntity = notification.object as! SoundEntity?
+        if (soundEntity == nil) {
+            return
+        }
+        contactView.onChangePlayingSound(soundEntity!)
+    }
+    
+    @objc
+    func onStopSound(notification: NSNotification?) {
+        print("onStopSound")
+        contactView.onStopSound()
     }
 }

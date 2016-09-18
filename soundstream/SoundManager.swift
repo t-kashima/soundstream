@@ -12,13 +12,16 @@ import AVFoundation
 class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     static let NotificationNamePlaySound = "NotificationNamePlaySound"
+    static let NotificationNameStopSound = "NotificationNameStopSound"
     
     static let sharedManager = SoundManager()
     
     private var player: AVAudioPlayer? = nil
     
     private var soundList: [SoundEntity] = []
-    private var index = 0
+    
+    private static let InitializeIndex = -1
+    private var index = InitializeIndex
     
     override init() {
         
@@ -30,11 +33,14 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     }
     
     func playSound(index: Int) {
-        // 再生中の曲を止める
-        if (player != nil) {
-            player!.stop()
-            player = nil
+        // 再生中の曲と同じ時は曲を止めて通知して終わる
+        if (self.index == index) {
+            self.stopSound()
+            NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameStopSound, object: nil)
+            return
         }
+        
+        self.stopSound()
         var playIndex = index
         if (playIndex >= soundList.count) {
             playIndex = 0
@@ -43,7 +49,6 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             self.index = playIndex
             let soundEntity = soundList[playIndex]
             print(soundEntity)
-            // TODO: これから流す音楽を通知する
             NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePlaySound, object: soundEntity)
             playSound(soundEntity)
         }
@@ -99,6 +104,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             player!.stop()
             player = nil
         }
+        self.index = SoundManager.InitializeIndex
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {

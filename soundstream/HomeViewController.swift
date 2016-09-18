@@ -70,4 +70,22 @@ extension HomeViewController: HomeViewProtocol {
         let searchViewController =  storyboard.instantiateInitialViewController() as! SearchViewController
         self.navigationController!.pushViewController(searchViewController, animated: true)
     }
+    
+    func onChangePlayingSound(soundEntity: SoundEntity) {
+        soundList.forEach {
+            if ($0.soundEntity.id == soundEntity.id) {
+                $0.isPlaying = true
+            } else {
+                $0.isPlaying = false
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    func onStopSound() {
+        soundList.forEach {
+            $0.isPlaying = false
+        }
+        tableView.reloadData()
+    }
 }
