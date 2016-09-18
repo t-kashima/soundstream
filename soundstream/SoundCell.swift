@@ -12,15 +12,17 @@ class SoundCell: UITableViewCell {
     @IBOutlet weak var imageThumbnail: UIImageView!
     @IBOutlet weak var textName: UILabel!
     @IBOutlet weak var textTitle: UILabel!
+    @IBOutlet weak var imagePlayIndicator: UIImageView!
     
-    private weak var soundEntity: SoundEntity? = nil
-    
-    func initialize(soundEntity: SoundEntity) {
-        let resourceEntity = soundEntity.resourceEntity
+    func initialize(soundPlayStateEntity: SoundPlayStateEntity) {
+        let resourceEntity = soundPlayStateEntity.soundEntity.resourceEntity
         imageThumbnail.sd_setImageWithURL(NSURL(string: resourceEntity.imageUrl))
         textName.text = resourceEntity.username
         textTitle.text = resourceEntity.title
-        
-        self.soundEntity = soundEntity
+        if (soundPlayStateEntity.isPlaying) {
+            imagePlayIndicator.hidden = true
+        } else {
+            imagePlayIndicator.hidden = false
+        }
     }
 }

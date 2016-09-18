@@ -11,6 +11,8 @@ import AVFoundation
 
 class SoundManager: NSObject, AVAudioPlayerDelegate {
     
+    static let NotificationNamePlaySound = "NotificationNamePlaySound"
+    
     static let sharedManager = SoundManager()
     
     private var player: AVAudioPlayer? = nil
@@ -41,6 +43,8 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             self.index = playIndex
             let soundEntity = soundList[playIndex]
             print(soundEntity)
+            // TODO: これから流す音楽を通知する
+            NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePlaySound, object: soundEntity)
             playSound(soundEntity)
         }
     }

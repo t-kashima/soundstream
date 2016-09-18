@@ -21,6 +21,7 @@
 		EC3AF42E1D8E42B60081C30F /* ResponseYouTubeGetResolveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF42D1D8E42B60081C30F /* ResponseYouTubeGetResolveItem.swift */; };
 		EC3AF4301D8E49FC0081C30F /* ResponseYouTubeGetResolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF42F1D8E49FC0081C30F /* ResponseYouTubeGetResolve.swift */; };
 		EC3AF4321D8E63E60081C30F /* SSYouTubeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF4311D8E63E60081C30F /* SSYouTubeParser.swift */; };
+		EC3AF4341D8E71200081C30F /* SoundPlayStateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF4331D8E71200081C30F /* SoundPlayStateEntity.swift */; };
 		EC421BC91D88242200A54B98 /* SoundResourceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */; };
 		EC421BCC1D88339100A54B98 /* APIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BCB1D88339100A54B98 /* APIRepository.swift */; };
 		EC421BD11D88391900A54B98 /* ResponseSoundCloudGetResolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BD01D88391900A54B98 /* ResponseSoundCloudGetResolve.swift */; };
@@ -57,6 +58,7 @@
 		EC3AF42D1D8E42B60081C30F /* ResponseYouTubeGetResolveItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseYouTubeGetResolveItem.swift; sourceTree = "<group>"; };
 		EC3AF42F1D8E49FC0081C30F /* ResponseYouTubeGetResolve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseYouTubeGetResolve.swift; sourceTree = "<group>"; };
 		EC3AF4311D8E63E60081C30F /* SSYouTubeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSYouTubeParser.swift; sourceTree = "<group>"; };
+		EC3AF4331D8E71200081C30F /* SoundPlayStateEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundPlayStateEntity.swift; sourceTree = "<group>"; };
 		EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundResourceEntity.swift; sourceTree = "<group>"; };
 		EC421BCB1D88339100A54B98 /* APIRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRepository.swift; sourceTree = "<group>"; };
 		EC421BD01D88391900A54B98 /* ResponseSoundCloudGetResolve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSoundCloudGetResolve.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */,
 				EC3AF4251D8C06C20081C30F /* SoundCloudResourceEntity.swift */,
 				EC3AF4271D8C06D00081C30F /* YouTubeResourceEntity.swift */,
+				EC3AF4331D8E71200081C30F /* SoundPlayStateEntity.swift */,
 			);
 			name = entity;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				EC3AF4201D8C030C0081C30F /* SoundYouTube.swift in Sources */,
 				EC3AF4281D8C06D00081C30F /* YouTubeResourceEntity.swift in Sources */,
 				EC3AF42C1D8C0CBE0081C30F /* Error.swift in Sources */,
+				EC3AF4341D8E71200081C30F /* SoundPlayStateEntity.swift in Sources */,
 				EC2410B81D884C9E00C6D679 /* SoundRepository.swift in Sources */,
 				EC2410B51D884BA100C6D679 /* Sound.swift in Sources */,
 				ECCE50831D897E50007AEE22 /* HomeViewProtocol.swift in Sources */,

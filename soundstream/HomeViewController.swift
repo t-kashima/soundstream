@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     private var presenter: HomePresenter!
     
-    private var soundList: [SoundEntity] = []
+    private var soundList: [SoundPlayStateEntity] = []
     
     @IBOutlet weak var tableView: UITableView!
        
@@ -37,8 +37,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SoundCell
-        let soundEntity = soundList[indexPath.row]
-        cell.initialize(soundEntity)
+        let soundPlayStateEntity = soundList[indexPath.row]
+        cell.initialize(soundPlayStateEntity)
         return cell
     }
     
@@ -56,7 +56,7 @@ extension HomeViewController: HomeViewProtocol {
     
     func setSoundList(soundList: [SoundEntity]) {
         self.soundList.removeAll()
-        self.soundList.appendContentsOf(soundList)
+        self.soundList.appendContentsOf(soundList.map { SoundPlayStateEntity(isPlaying: false, soundEntity: $0) })
         tableView.reloadData()
         SoundManager.sharedManager.setSoundList(soundList)
     }
