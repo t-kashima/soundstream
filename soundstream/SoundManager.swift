@@ -49,9 +49,9 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         switch soundEntity.resourceType {
         case ResourceType.SoundCloud:
             let resourceEntity = soundEntity.resourceEntity as! SoundCloudResourceEntity
-            let soundUrl = NSURL(string: resourceEntity.getStreamingSoundUrl())
+            let url = NSURL(string: resourceEntity.getStreamingSoundUrl())
             let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-            let task = session.dataTaskWithURL(soundUrl!, completionHandler: { (data, resp, err) in
+            let task = session.dataTaskWithURL(url!, completionHandler: { (data, resp, err) in
                 do {
                     self.player = try AVAudioPlayer(data: data!)
                     self.player!.delegate = self
@@ -62,6 +62,29 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             })
             task.resume()
         case ResourceType.YouTube:
+            let resourceEntity = soundEntity.resourceEntity as! YouTubeResourceEntity
+            SSYouTubeParser.h264videosWithYoutubeID(resourceEntity.videoId, completionHandler: { (dictionary) in
+                guard let videoMediumURL = dictionary["medium"] else {
+                    print("not found video url")
+                    // 次の曲を再生する
+                    let nextIndex = self.index + 1
+                    self.playSound(nextIndex)
+                    return
+                }
+                let url = NSURL(string: videoMediumURL)
+                let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+                let task = session.dataTaskWithURL(url!, completionHandler: { (data, resp, err) in
+                    do {
+                        self.player = try AVAudioPlayer(data: data!)
+                        self.player!.delegate = self
+                        self.player!.play()
+                    } catch {
+                        print("Failure sound streaming...")
+                    }
+                })
+                task.resume()
+                
+            })
             break
         default:
             break

@@ -20,6 +20,7 @@
 		EC3AF42C1D8C0CBE0081C30F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF42B1D8C0CBE0081C30F /* Error.swift */; };
 		EC3AF42E1D8E42B60081C30F /* ResponseYouTubeGetResolveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF42D1D8E42B60081C30F /* ResponseYouTubeGetResolveItem.swift */; };
 		EC3AF4301D8E49FC0081C30F /* ResponseYouTubeGetResolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF42F1D8E49FC0081C30F /* ResponseYouTubeGetResolve.swift */; };
+		EC3AF4321D8E63E60081C30F /* SSYouTubeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF4311D8E63E60081C30F /* SSYouTubeParser.swift */; };
 		EC421BC91D88242200A54B98 /* SoundResourceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */; };
 		EC421BCC1D88339100A54B98 /* APIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BCB1D88339100A54B98 /* APIRepository.swift */; };
 		EC421BD11D88391900A54B98 /* ResponseSoundCloudGetResolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BD01D88391900A54B98 /* ResponseSoundCloudGetResolve.swift */; };
@@ -55,6 +56,7 @@
 		EC3AF42B1D8C0CBE0081C30F /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		EC3AF42D1D8E42B60081C30F /* ResponseYouTubeGetResolveItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseYouTubeGetResolveItem.swift; sourceTree = "<group>"; };
 		EC3AF42F1D8E49FC0081C30F /* ResponseYouTubeGetResolve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseYouTubeGetResolve.swift; sourceTree = "<group>"; };
+		EC3AF4311D8E63E60081C30F /* SSYouTubeParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSYouTubeParser.swift; sourceTree = "<group>"; };
 		EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundResourceEntity.swift; sourceTree = "<group>"; };
 		EC421BCB1D88339100A54B98 /* APIRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRepository.swift; sourceTree = "<group>"; };
 		EC421BD01D88391900A54B98 /* ResponseSoundCloudGetResolve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSoundCloudGetResolve.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				ECCE50901D8AF822007AEE22 /* SoundManager.swift */,
+				EC3AF4311D8E63E60081C30F /* SSYouTubeParser.swift */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				ECCE508E1D89A9FC007AEE22 /* Constant.swift in Sources */,
 				ECCE50881D898871007AEE22 /* SoundCell.swift in Sources */,
 				EC5BA4EB1D86F879003FC885 /* SearchViewController.swift in Sources */,
+				EC3AF4321D8E63E60081C30F /* SSYouTubeParser.swift in Sources */,
 				EC421BD11D88391900A54B98 /* ResponseSoundCloudGetResolve.swift in Sources */,
 				EC2410BB1D884DEC00C6D679 /* SoundFactory.swift in Sources */,
 				EC421BC91D88242200A54B98 /* SoundResourceEntity.swift in Sources */,
