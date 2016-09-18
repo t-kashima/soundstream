@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var soundList: [SoundPlayStateEntity] = []
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var soundPlayStateView: SoundPlayStateView!
        
     @IBAction func onClickButtonSearch(sender: AnyObject) {
         presenter.onClickButtonSearch()
@@ -80,6 +81,8 @@ extension HomeViewController: HomeViewProtocol {
             }
         }
         tableView.reloadData()
+        
+        soundPlayStateView.playSound(soundEntity)
     }
     
     func onStopSound() {
@@ -87,5 +90,7 @@ extension HomeViewController: HomeViewProtocol {
             $0.isPlaying = false
         }
         tableView.reloadData()
+        
+        soundPlayStateView.stopSound()
     }
 }

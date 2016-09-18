@@ -8,6 +8,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SoundPlayStateView" customModule="soundstream" customModuleProvider="target">
             <connections>
+                <outlet property="buttonPauseSound" destination="WJ4-gZ-jNW" id="MqO-cj-Ucr"/>
+                <outlet property="buttonPlaySound" destination="Abo-8K-8Y9" id="nVh-3e-rrk"/>
                 <outlet property="textName" destination="qXP-E2-9GL" id="0BD-ya-doK"/>
                 <outlet property="textTitle" destination="XFc-q7-l7r" id="Eae-lf-qxD"/>
             </connections>
@@ -54,9 +56,9 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ラベル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXP-E2-9GL">
-                    <rect key="frame" x="53" y="95" width="536" height="12.5"/>
+                    <rect key="frame" x="53" y="86" width="536" height="21.5"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="12.5" id="NYd-1O-ltD"/>
+                        <constraint firstAttribute="height" constant="21.5" id="NYd-1O-ltD"/>
                         <constraint firstAttribute="width" secondItem="qXP-E2-9GL" secondAttribute="height" multiplier="50:21" id="OQQ-kh-cdz"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
@@ -68,13 +70,25 @@
                         </mask>
                     </variation>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJ4-gZ-jNW">
+                    <rect key="frame" x="24" y="101" width="18" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Gy5-sX-Rja"/>
+                        <constraint firstAttribute="width" constant="18" id="nVh-GM-ASU"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="button_stop_sound.png"/>
+                    <connections>
+                        <action selector="onClickButtonPauseSound:" destination="-1" eventType="touchUpInside" id="CSO-4S-Uo9"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="qXP-E2-9GL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0ga-W5-NvG"/>
                 <constraint firstAttribute="trailing" secondItem="qXP-E2-9GL" secondAttribute="trailing" constant="17" id="1wb-mW-2Qg"/>
                 <constraint firstItem="qXP-E2-9GL" firstAttribute="leading" secondItem="Abo-8K-8Y9" secondAttribute="trailing" constant="10" id="2IS-2S-KSK"/>
                 <constraint firstAttribute="trailing" secondItem="XFc-q7-l7r" secondAttribute="trailing" constant="17" id="37X-mg-wP9"/>
+                <constraint firstItem="WJ4-gZ-jNW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4jr-e0-c8Z"/>
                 <constraint firstItem="XFc-q7-l7r" firstAttribute="top" secondItem="qXP-E2-9GL" secondAttribute="bottom" id="4xS-nD-jfH"/>
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="A0T-8J-0jz"/>
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="Ba4-KY-rgB"/>
@@ -88,7 +102,8 @@
                 <constraint firstItem="XFc-q7-l7r" firstAttribute="leading" secondItem="Abo-8K-8Y9" secondAttribute="trailing" constant="10" id="MhC-7Y-gxw"/>
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="77" id="SxI-6B-TVK"/>
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="amC-hz-gjG"/>
-                <constraint firstItem="qXP-E2-9GL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-10" id="iuZ-R6-l1v"/>
+                <constraint firstItem="WJ4-gZ-jNW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="if0-qD-hiX"/>
+                <constraint firstItem="qXP-E2-9GL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-14.25" id="iuZ-R6-l1v"/>
                 <constraint firstItem="qXP-E2-9GL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="jo7-0F-e49"/>
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="77" id="moO-Pp-R5y"/>
                 <constraint firstItem="XFc-q7-l7r" firstAttribute="top" secondItem="qXP-E2-9GL" secondAttribute="bottom" constant="8" id="tG8-UZ-GyS"/>
@@ -100,6 +115,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="0ga-W5-NvG"/>
+                    <exclude reference="ENK-j6-q2p"/>
+                    <exclude reference="FKQ-g8-Pgs"/>
+                    <exclude reference="jo7-0F-e49"/>
                     <exclude reference="FcA-xH-Iq2"/>
                     <exclude reference="GvI-St-cYo"/>
                     <exclude reference="HIQ-TP-lZ2"/>
@@ -107,10 +126,6 @@
                     <exclude reference="amC-hz-gjG"/>
                     <exclude reference="moO-Pp-R5y"/>
                     <exclude reference="x4B-Ga-7kO"/>
-                    <exclude reference="0ga-W5-NvG"/>
-                    <exclude reference="ENK-j6-q2p"/>
-                    <exclude reference="FKQ-g8-Pgs"/>
-                    <exclude reference="jo7-0F-e49"/>
                     <exclude reference="FfO-QY-Htt"/>
                     <exclude reference="I5f-g9-wv8"/>
                     <exclude reference="tG8-UZ-GyS"/>
@@ -123,5 +138,6 @@
     </objects>
     <resources>
         <image name="button_play_sound.png" width="34" height="67"/>
+        <image name="button_stop_sound.png" width="34" height="42"/>
     </resources>
 </document>

@@ -13,11 +13,19 @@ class SoundPlayStateView: UIView {
     
     @IBOutlet weak var textName: UILabel!
     @IBOutlet weak var textTitle: UILabel!
+    @IBOutlet weak var buttonPauseSound: UIButton!
+    @IBOutlet weak var buttonPlaySound: UIButton!
+    
+    private var soundEntity: SoundEntity? = nil
     
     @IBAction func onClickButtonPlaySound(sender: AnyObject) {
-        
+        // SoundManager.sharedManager.playSound(index: Int)
     }
 
+    @IBAction func onClickButtonPauseSound(sender: AnyObject) {
+        SoundManager.sharedManager.stopSound()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialize()
@@ -52,5 +60,20 @@ class SoundPlayStateView: UIView {
         borderLayer.backgroundColor = UIColor.lightGrayColor().CGColor
         borderLayer.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), 0.5)
         self.layer.addSublayer(borderLayer)
+        
+        buttonPauseSound.hidden = true
+        buttonPlaySound.hidden = false
+    }
+    
+    func playSound(soundEntity: SoundEntity) {
+        textTitle.text = soundEntity.resourceEntity.title
+        textName.text = soundEntity.resourceEntity.username
+        buttonPauseSound.hidden = false
+        buttonPlaySound.hidden = true
+    }
+    
+    func stopSound() {
+        buttonPauseSound.hidden = true
+        buttonPlaySound.hidden = false
     }
 }

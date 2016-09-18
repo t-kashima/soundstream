@@ -43,6 +43,7 @@
 		ECCE50881D898871007AEE22 /* SoundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50871D898871007AEE22 /* SoundCell.swift */; };
 		ECCE508E1D89A9FC007AEE22 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE508D1D89A9FC007AEE22 /* Constant.swift */; };
 		ECCE50911D8AF822007AEE22 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50901D8AF822007AEE22 /* SoundManager.swift */; };
+		ECF506761D8EB5AB0090E60A /* button_stop_sound.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF506751D8EB5AB0090E60A /* button_stop_sound.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		ECCE508B1D898BB0007AEE22 /* SoundStream-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SoundStream-Bridging-Header.h"; sourceTree = "<group>"; };
 		ECCE508D1D89A9FC007AEE22 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		ECCE50901D8AF822007AEE22 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		ECF506751D8EB5AB0090E60A /* button_stop_sound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_stop_sound.png; sourceTree = "<group>"; };
 		F58377B7444044C7F936BD5E /* Pods_soundstream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundstream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -149,6 +151,7 @@
 		EC3AF4351D8E911F0081C30F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				ECF506751D8EB5AB0090E60A /* button_stop_sound.png */,
 				EC3AF4361D8E911F0081C30F /* button_play_sound.png */,
 			);
 			path = images;
@@ -353,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECF506761D8EB5AB0090E60A /* button_stop_sound.png in Resources */,
 				EC3AF4371D8E911F0081C30F /* button_play_sound.png in Resources */,
 				EC5BA4F31D86F879003FC885 /* LaunchScreen.storyboard in Resources */,
 				EC5BA4F01D86F879003FC885 /* Assets.xcassets in Resources */,

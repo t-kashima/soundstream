@@ -37,12 +37,11 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     func playSound(index: Int) {
         // 再生中の曲と同じ時は曲を止めて通知して終わる
         if (self.index == index) {
-            self.stopSound()
-            NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameStopSound, object: nil)
+            stopSound()
             return
         }
         
-        self.stopSound()
+        stop()
         var playIndex = index
         if (playIndex >= soundList.count) {
             playIndex = 0
@@ -105,7 +104,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         player?.pause()
     }
     
-    func stopSound() {
+    private func stop() {
         if (player != nil) {
             player!.stop()
             player = nil
@@ -115,6 +114,11 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             sessionTask = nil
         }
         self.index = SoundManager.InitializeIndex
+    }
+    
+    func stopSound() {
+        stop()
+        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameStopSound, object: nil)
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {

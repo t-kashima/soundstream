@@ -202,6 +202,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="soundPlayStateView" destination="tPK-zD-05A" id="DtB-8a-o3h"/>
                         <outlet property="tableView" destination="7JI-Ut-FnZ" id="RvU-2z-GEl"/>
                     </connections>
                 </viewController>
