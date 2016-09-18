@@ -15,6 +15,10 @@ class SoundCell: UITableViewCell {
     @IBOutlet weak var imagePlayIndicator: UIImageView!
     @IBOutlet weak var textPlaying: UILabel!
     
+    @IBAction func onClickButtonSoundDetail(sender: AnyObject) {
+        print("onClickButtonSoundDetail")
+    }
+    
     func initialize(soundPlayStateEntity: SoundPlayStateEntity) {
         let resourceEntity = soundPlayStateEntity.soundEntity.resourceEntity
         imageThumbnail.sd_setImageWithURL(NSURL(string: resourceEntity.imageUrl))

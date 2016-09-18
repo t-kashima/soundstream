@@ -74,7 +74,6 @@ class HomePresenter {
     
     @objc
     func onSetCurrentTime(notification: NSNotification?) {
-        print("onSetCurrentTime")
         guard let notification = notification else {
             return
         }
@@ -84,7 +83,6 @@ class HomePresenter {
     
     @objc
     func onSetDuration(notification: NSNotification?) {
-        print("onSetDuration")
         guard let notification = notification else {
             return
         }

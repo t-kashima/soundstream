@@ -45,9 +45,17 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
             return
         }
         
-        // 再生中の曲と同じ時は曲を止めて通知して終わる
+        // 再生中の曲と同じ時は曲の時
         if (self.playSoundEntity == soundEntity) {
-            stopSound()
+            if (self.player != nil) {
+                if (self.player!.playing) {
+                    pauseSound()
+                } else {
+                    resumeSound()
+                }
+            } else {
+                stopSound()
+            }
             return
         }
         stop()

@@ -76,7 +76,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uK-qt-hbH">
-                                                    <rect key="frame" x="85" y="31" width="487" height="14"/>
+                                                    <rect key="frame" x="85" y="31" width="478" height="14"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="47" id="19W-bh-OGv"/>
                                                         <constraint firstAttribute="height" constant="44" id="RnA-4s-Yto"/>
@@ -110,6 +110,17 @@
                                                     <color key="textColor" red="1" green="0.28897843144966451" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzx-OC-oFD">
+                                                    <rect key="frame" x="570" y="47.5" width="15" height="5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="7bq-qD-Sep"/>
+                                                        <constraint firstAttribute="height" constant="5" id="d51-hI-Ozm"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="button_sound_detail.png"/>
+                                                    <connections>
+                                                        <action selector="onClickButtonSoundDetail:" destination="k95-7X-1eF" eventType="touchUpInside" id="T6b-kL-8AX"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="3uK-qt-hbH" firstAttribute="leading" secondItem="a7G-nV-j4W" secondAttribute="trailing" constant="10" id="0HY-bI-uJm"/>
@@ -130,7 +141,8 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="3uK-qt-hbH" secondAttribute="trailing" constant="60" id="VXf-dr-4he"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="3Yo-1Q-8yJ" secondAttribute="bottom" constant="3" id="Xhm-ld-rav"/>
                                                 <constraint firstItem="2Vf-Yj-vs9" firstAttribute="top" secondItem="EJD-9p-qo6" secondAttribute="topMargin" constant="5" id="Y6u-mr-TqA"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="3uK-qt-hbH" secondAttribute="trailing" constant="20" id="f3o-sp-KD7"/>
+                                                <constraint firstItem="gzx-OC-oFD" firstAttribute="centerY" secondItem="EJD-9p-qo6" secondAttribute="centerY" id="a8r-cC-g32"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3uK-qt-hbH" secondAttribute="trailing" constant="29" id="f3o-sp-KD7"/>
                                                 <constraint firstItem="3uK-qt-hbH" firstAttribute="leading" secondItem="a7G-nV-j4W" secondAttribute="trailing" constant="10" id="fuU-f7-ZEL"/>
                                                 <constraint firstItem="a7G-nV-j4W" firstAttribute="leading" secondItem="EJD-9p-qo6" secondAttribute="leadingMargin" constant="7" id="jFS-9u-f3M"/>
                                                 <constraint firstItem="3Yo-1Q-8yJ" firstAttribute="top" secondItem="3uK-qt-hbH" secondAttribute="bottom" constant="6" id="juw-eN-eEv"/>
@@ -139,6 +151,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="3uK-qt-hbH" secondAttribute="bottom" constant="0.5" id="plI-3D-ZQw"/>
                                                 <constraint firstItem="KgS-NT-qhU" firstAttribute="leading" secondItem="3uK-qt-hbH" secondAttribute="leading" id="stS-lE-oDe"/>
                                                 <constraint firstItem="2Vf-Yj-vs9" firstAttribute="leading" secondItem="a7G-nV-j4W" secondAttribute="trailing" constant="10" id="vax-eW-oMh"/>
+                                                <constraint firstItem="gzx-OC-oFD" firstAttribute="trailing" secondItem="EJD-9p-qo6" secondAttribute="trailingMargin" constant="-7" id="wU3-iM-Jih"/>
                                                 <constraint firstItem="3uK-qt-hbH" firstAttribute="top" secondItem="2Vf-Yj-vs9" secondAttribute="bottom" constant="0.5" id="xkS-as-miJ"/>
                                                 <constraint firstItem="3uK-qt-hbH" firstAttribute="top" secondItem="2Vf-Yj-vs9" secondAttribute="bottom" constant="2" id="z2r-je-Ese"/>
                                                 <constraint firstItem="3uK-qt-hbH" firstAttribute="top" secondItem="2Vf-Yj-vs9" secondAttribute="bottom" constant="6" id="zC3-P2-VUy"/>
@@ -213,5 +226,6 @@
     </scenes>
     <resources>
         <image name="button_play_sound.png" width="34" height="67"/>
+        <image name="button_sound_detail.png" width="60" height="18"/>
     </resources>
 </document>
