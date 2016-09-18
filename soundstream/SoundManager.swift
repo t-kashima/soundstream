@@ -77,7 +77,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     }
     
     private func playNextSound() {
-        if (playSoundEntity != nil) {
+        if (playSoundEntity == nil) {
             print("not found sound entity")
             stopSound()
             return
