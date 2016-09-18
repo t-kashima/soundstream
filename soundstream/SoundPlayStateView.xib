@@ -12,6 +12,7 @@
                 <outlet property="buttonPlaySound" destination="Abo-8K-8Y9" id="nVh-3e-rrk"/>
                 <outlet property="textName" destination="qXP-E2-9GL" id="0BD-ya-doK"/>
                 <outlet property="textTitle" destination="XFc-q7-l7r" id="Eae-lf-qxD"/>
+                <outlet property="viewProgress" destination="f25-Db-5jo" id="54Q-cE-NT7"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFc-q7-l7r">
-                    <rect key="frame" x="53" y="107.5" width="536" height="21"/>
+                    <rect key="frame" x="53" y="111.5" width="536" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Rsf-K9-HOD"/>
                     </constraints>
@@ -56,7 +57,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXP-E2-9GL">
-                    <rect key="frame" x="53" y="86" width="536" height="21.5"/>
+                    <rect key="frame" x="53" y="90.5" width="536" height="21.5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21.5" id="NYd-1O-ltD"/>
                         <constraint firstAttribute="width" secondItem="qXP-E2-9GL" secondAttribute="height" multiplier="50:21" id="OQQ-kh-cdz"/>
@@ -81,6 +82,14 @@
                         <action selector="onClickButtonPauseSound:" destination="-1" eventType="touchUpInside" id="CSO-4S-Uo9"/>
                     </connections>
                 </button>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f25-Db-5jo">
+                    <rect key="frame" x="0.0" y="0.0" width="606" height="5"/>
+                    <color key="tintColor" red="1" green="0.52475357733624139" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="5" id="w7u-0R-hvP"/>
+                    </constraints>
+                    <color key="trackTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.073410560344827583" colorSpace="calibratedRGB"/>
+                </progressView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -101,11 +110,15 @@
                 <constraint firstAttribute="bottom" secondItem="XFc-q7-l7r" secondAttribute="bottom" constant="89" id="I5f-g9-wv8"/>
                 <constraint firstItem="XFc-q7-l7r" firstAttribute="leading" secondItem="Abo-8K-8Y9" secondAttribute="trailing" constant="10" id="MhC-7Y-gxw"/>
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="77" id="SxI-6B-TVK"/>
+                <constraint firstAttribute="trailing" secondItem="f25-Db-5jo" secondAttribute="trailing" id="UIg-6K-TeJ"/>
+                <constraint firstItem="f25-Db-5jo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Uve-cJ-3yX"/>
+                <constraint firstAttribute="bottom" secondItem="f25-Db-5jo" secondAttribute="bottom" id="YeO-9U-hbB"/>
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="amC-hz-gjG"/>
                 <constraint firstItem="WJ4-gZ-jNW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="if0-qD-hiX"/>
-                <constraint firstItem="qXP-E2-9GL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-14" id="iuZ-R6-l1v"/>
+                <constraint firstItem="qXP-E2-9GL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-10" id="iuZ-R6-l1v"/>
                 <constraint firstItem="qXP-E2-9GL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="jo7-0F-e49"/>
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="77" id="moO-Pp-R5y"/>
+                <constraint firstItem="f25-Db-5jo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nVm-Pq-sT7"/>
                 <constraint firstItem="XFc-q7-l7r" firstAttribute="top" secondItem="qXP-E2-9GL" secondAttribute="bottom" constant="8" id="tG8-UZ-GyS"/>
                 <constraint firstItem="XFc-q7-l7r" firstAttribute="leading" secondItem="Abo-8K-8Y9" secondAttribute="trailing" constant="25" id="vGF-P1-UEv"/>
                 <constraint firstAttribute="bottom" secondItem="Abo-8K-8Y9" secondAttribute="bottom" constant="78" id="x4B-Ga-7kO"/>
@@ -115,6 +128,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="YeO-9U-hbB"/>
                     <exclude reference="0ga-W5-NvG"/>
                     <exclude reference="ENK-j6-q2p"/>
                     <exclude reference="FKQ-g8-Pgs"/>

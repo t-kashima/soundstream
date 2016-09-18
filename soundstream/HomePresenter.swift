@@ -19,6 +19,8 @@ class HomePresenter {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onStopSound(_:)), name: SoundManager.NotificationNameStopSound, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onPauseSound(_:)), name: SoundManager.NotificationNamePauseSound, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onResumeSound(_:)), name: SoundManager.NotificationNameResumeSound, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onSetDuration(_:)), name: SoundManager.NotificationNameSetDuration, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onSetCurrentTime(_:)), name: SoundManager.NotificationNameSetCurrentTime, object: nil)
     }
     
     func onViewDidLoad() {
@@ -68,5 +70,25 @@ class HomePresenter {
     func onResumeSound(notification: NSNotification?) {
         print("onResumeSound")
         contactView.onResumeSound()
+    }
+    
+    @objc
+    func onSetCurrentTime(notification: NSNotification?) {
+        print("onSetCurrentTime")
+        guard let notification = notification else {
+            return
+        }
+        let currentTime = notification.object as! Int
+        contactView.onSetCurrentTime(currentTime)
+    }
+    
+    @objc
+    func onSetDuration(notification: NSNotification?) {
+        print("onSetDuration")
+        guard let notification = notification else {
+            return
+        }
+        let duration = notification.object as! Int
+        contactView.onSetDuration(duration)
     }
 }

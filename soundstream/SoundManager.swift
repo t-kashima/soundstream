@@ -15,6 +15,8 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
     static let NotificationNamePlaySound = "NotificationNamePlaySound"
     static let NotificationNameStopSound = "NotificationNameStopSound"
     static let NotificationNamePauseSound = "NotificationNamePauseSound"
+    static let NotificationNameSetCurrentTime = "NotificationNameSetCurrentTime"
+    static let NotificationNameSetDuration = "NotificationNameSetDuration"
     
     static let sharedManager = SoundManager()
     
@@ -106,6 +108,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
                 self.player = try AVAudioPlayer(data: data!)
                 self.player!.delegate = self
                 self.player!.play()
+                NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameSetDuration, object: self.player!.duration)
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.onUpdateTimer), userInfo: nil, repeats: true)
             } catch {
                 print("Failure sound streaming...")
@@ -167,6 +170,6 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
         if (self.player == nil) {
             return
         }
-        print("\(Int(player!.currentTime)) / \(Int(player!.duration))")
+        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameSetCurrentTime, object: Int(player!.currentTime))
     }
 }

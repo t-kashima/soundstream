@@ -15,6 +15,9 @@ class SoundPlayStateView: UIView {
     @IBOutlet weak var textTitle: UILabel!
     @IBOutlet weak var buttonPauseSound: UIButton!
     @IBOutlet weak var buttonPlaySound: UIButton!
+    @IBOutlet weak var viewProgress: UIProgressView!
+    
+    private var duration: Int = 0
     
     @IBAction func onClickButtonPlaySound(sender: AnyObject) {
         SoundManager.sharedManager.resumeSound()
@@ -68,6 +71,7 @@ class SoundPlayStateView: UIView {
         textName.text = soundEntity.resourceEntity.username
         buttonPauseSound.hidden = false
         buttonPlaySound.hidden = true
+        viewProgress.progress = 0
     }
     
     func stopSound() {
@@ -83,5 +87,14 @@ class SoundPlayStateView: UIView {
     func resumeSound() {
         buttonPauseSound.hidden = false
         buttonPlaySound.hidden = true
+    }
+    
+    func setDuration(duration: Int) {
+        self.duration = duration
+        viewProgress.progress = 0
+    }
+    
+    func setCurrentTime(currentTime: Int) {
+        viewProgress.progress = Float(currentTime) / Float(duration)
     }
 }

@@ -21,5 +21,9 @@ protocol HomeViewProtocol {
     
     func onResumeSound()
     
+    func onSetCurrentTime(currentTime: Int)
+    
+    func onSetDuration(duration: Int)
+    
     func navigateToSearch()
 }

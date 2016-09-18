@@ -101,4 +101,12 @@ extension HomeViewController: HomeViewProtocol {
     func onResumeSound() {
         soundPlayStateView.resumeSound()
     }
+    
+    func onSetCurrentTime(currentTime: Int) {
+        soundPlayStateView.setCurrentTime(currentTime)
+    }
+    
+    func onSetDuration(duration: Int) {
+        soundPlayStateView.setDuration(duration)
+    }
 }
