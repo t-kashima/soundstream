@@ -11,8 +11,10 @@ import AVFoundation
 
 class SoundManager: NSObject, AVAudioPlayerDelegate {
     
+    static let NotificationNameResumeSound = "NotificationNameResumeSound"
     static let NotificationNamePlaySound = "NotificationNamePlaySound"
     static let NotificationNameStopSound = "NotificationNameStopSound"
+    static let NotificationNamePauseSound = "NotificationNamePauseSound"
     
     static let sharedManager = SoundManager()
     
@@ -20,8 +22,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     private var soundList: [SoundEntity] = []
     
-    private static let InitializeIndex = -1
-    private var index = InitializeIndex
+    private var playSoundEntity: SoundEntity? = nil
     
     private var sessionTask: NSURLSessionDataTask?
     
@@ -34,28 +35,27 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         self.soundList.appendContentsOf(soundList)
     }
     
-    func playSound(index: Int) {
-        // 再生中の曲と同じ時は曲を止めて通知して終わる
-        if (self.index == index) {
+    func playSound(soundEntity: SoundEntity) {
+        if !soundList.contains(soundEntity) {
+            print("not found sound entity")
             stopSound()
             return
         }
         
+        // 再生中の曲と同じ時は曲を止めて通知して終わる
+        if (self.playSoundEntity == soundEntity) {
+            stopSound()
+            return
+        }
         stop()
-        var playIndex = index
-        if (playIndex >= soundList.count) {
-            playIndex = 0
-        }
-        if (playIndex < soundList.count) {
-            self.index = playIndex
-            let soundEntity = soundList[playIndex]
-            print(soundEntity)
-            NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePlaySound, object: soundEntity)
-            playSound(soundEntity)
-        }
+        
+        self.playSoundEntity = soundEntity
+        print(soundEntity)
+        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePlaySound, object: soundEntity)
+        play(soundEntity)
     }
     
-    private func playSound(soundEntity: SoundEntity) {
+    private func play(soundEntity: SoundEntity) {
         switch soundEntity.resourceType {
         case ResourceType.SoundCloud:
             let resourceEntity = soundEntity.resourceEntity as! SoundCloudResourceEntity
@@ -65,9 +65,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             SSYouTubeParser.h264videosWithYoutubeID(resourceEntity.videoId, completionHandler: { (dictionary) in
                 guard let videoMediumURL = dictionary["medium"] else {
                     print("not found video url")
-                    // 次の曲を再生する
-                    let nextIndex = self.index + 1
-                    self.playSound(nextIndex)
+                    self.playNextSound()
                     return
                 }
                 self.playSound(NSURL(string: videoMediumURL)!)
@@ -76,6 +74,24 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         default:
             break
         }
+    }
+    
+    private func playNextSound() {
+        if (playSoundEntity != nil) {
+            print("not found sound entity")
+            stopSound()
+            return
+        }
+        guard let index = soundList.indexOf(playSoundEntity!) else {
+            print("not found sound entity")
+            stopSound()
+            return
+        }
+        var nextIndex = index + 1
+        if (nextIndex >= soundList.count) {
+           nextIndex = 0
+        }
+        self.playSound(soundList[nextIndex])
     }
     
     private func playSound(url: NSURL) {
@@ -97,11 +113,16 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     }
 
     func resumeSound() {
+        if (playSoundEntity == nil) {
+            return
+        }
         player?.play()
+        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameResumeSound, object: nil)
     }
     
     func pauseSound() {
         player?.pause()
+        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePauseSound, object: nil)
     }
     
     private func stop() {
@@ -113,7 +134,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             sessionTask!.cancel()
             sessionTask = nil
         }
-        self.index = SoundManager.InitializeIndex
+        self.playSoundEntity = nil
     }
     
     func stopSound() {
@@ -123,9 +144,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         if (flag) {
-            // 次の曲を再生する
-            let nextIndex = index + 1
-            playSound(nextIndex)
+            playNextSound()
         }
     }
 }

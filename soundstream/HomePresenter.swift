@@ -17,6 +17,8 @@ class HomePresenter {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onChangePlayingSound(_:)), name: SoundManager.NotificationNamePlaySound, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onStopSound(_:)), name: SoundManager.NotificationNameStopSound, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onPauseSound(_:)), name: SoundManager.NotificationNamePauseSound, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onResumeSound(_:)), name: SoundManager.NotificationNameResumeSound, object: nil)
     }
     
     func onViewDidLoad() {
@@ -29,8 +31,8 @@ class HomePresenter {
         contactView.setSoundList(soundList)
     }
 
-    func onClickButtonPlay(index: Int) {
-        contactView.playSound(index)
+    func onClickButtonPlay(soundEntity: SoundEntity) {
+        contactView.playSound(soundEntity)
     }
     
     func onClickButtonSearch() {
@@ -54,5 +56,17 @@ class HomePresenter {
     func onStopSound(notification: NSNotification?) {
         print("onStopSound")
         contactView.onStopSound()
+    }
+    
+    @objc
+    func onPauseSound(notification: NSNotification?) {
+        print("onPauseSound")
+        contactView.onPauseSound()
+    }
+    
+    @objc
+    func onResumeSound(notification: NSNotification?) {
+        print("onResumeSound")
+        contactView.onResumeSound()
     }
 }

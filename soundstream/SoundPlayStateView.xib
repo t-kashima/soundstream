@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="606" height="222"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFc-q7-l7r">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFc-q7-l7r">
                     <rect key="frame" x="53" y="107.5" width="536" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Rsf-K9-HOD"/>
@@ -55,7 +55,7 @@
                         <action selector="onClickButtonPlaySound:" destination="-1" eventType="touchUpInside" id="rg6-yD-y6h"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ラベル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXP-E2-9GL">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXP-E2-9GL">
                     <rect key="frame" x="53" y="86" width="536" height="21.5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21.5" id="NYd-1O-ltD"/>
@@ -103,7 +103,7 @@
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="77" id="SxI-6B-TVK"/>
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="amC-hz-gjG"/>
                 <constraint firstItem="WJ4-gZ-jNW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="if0-qD-hiX"/>
-                <constraint firstItem="qXP-E2-9GL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-14.25" id="iuZ-R6-l1v"/>
+                <constraint firstItem="qXP-E2-9GL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-14" id="iuZ-R6-l1v"/>
                 <constraint firstItem="qXP-E2-9GL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="jo7-0F-e49"/>
                 <constraint firstItem="Abo-8K-8Y9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="77" id="moO-Pp-R5y"/>
                 <constraint firstItem="XFc-q7-l7r" firstAttribute="top" secondItem="qXP-E2-9GL" secondAttribute="bottom" constant="8" id="tG8-UZ-GyS"/>

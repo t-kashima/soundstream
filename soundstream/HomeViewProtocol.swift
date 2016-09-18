@@ -11,11 +11,15 @@ protocol HomeViewProtocol {
     
     func setSoundList(soundList: [SoundEntity])
     
-    func playSound(index: Int)
+    func playSound(soundEntity: SoundEntity)
     
     func onChangePlayingSound(soundEntity: SoundEntity)
     
     func onStopSound()
+    
+    func onPauseSound()
+    
+    func onResumeSound()
     
     func navigateToSearch()
 }

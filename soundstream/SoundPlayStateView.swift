@@ -16,14 +16,12 @@ class SoundPlayStateView: UIView {
     @IBOutlet weak var buttonPauseSound: UIButton!
     @IBOutlet weak var buttonPlaySound: UIButton!
     
-    private var soundEntity: SoundEntity? = nil
-    
     @IBAction func onClickButtonPlaySound(sender: AnyObject) {
-        // SoundManager.sharedManager.playSound(index: Int)
+        SoundManager.sharedManager.resumeSound()
     }
 
     @IBAction func onClickButtonPauseSound(sender: AnyObject) {
-        SoundManager.sharedManager.stopSound()
+        SoundManager.sharedManager.pauseSound()
     }
     
     override init(frame: CGRect) {
@@ -75,5 +73,15 @@ class SoundPlayStateView: UIView {
     func stopSound() {
         buttonPauseSound.hidden = true
         buttonPlaySound.hidden = false
+    }
+    
+    func pauseSound() {
+        buttonPauseSound.hidden = true
+        buttonPlaySound.hidden = false
+    }
+    
+    func resumeSound() {
+        buttonPauseSound.hidden = false
+        buttonPlaySound.hidden = true
     }
 }

@@ -44,7 +44,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        presenter.onClickButtonPlay(indexPath.row)
+        presenter.onClickButtonPlay(soundList[indexPath.row].soundEntity)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
@@ -62,8 +62,8 @@ extension HomeViewController: HomeViewProtocol {
         SoundManager.sharedManager.setSoundList(soundList)
     }
     
-    func playSound(index: Int) {
-        SoundManager.sharedManager.playSound(index)
+    func playSound(soundEntity: SoundEntity) {
+        SoundManager.sharedManager.playSound(soundEntity)
     }
     
     func navigateToSearch() {
@@ -92,5 +92,13 @@ extension HomeViewController: HomeViewProtocol {
         tableView.reloadData()
         
         soundPlayStateView.stopSound()
+    }
+    
+    func onPauseSound() {
+        soundPlayStateView.pauseSound()
+    }
+    
+    func onResumeSound() {
+        soundPlayStateView.resumeSound()
     }
 }
