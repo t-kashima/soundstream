@@ -89,4 +89,15 @@ class HomePresenter {
         let duration = notification.object as! Int
         contactView.onSetDuration(duration)
     }
+    
+    func onClickButtonSoundDetail(soundEntity: SoundEntity) {
+        contactView.showSoundDetail(soundEntity)
+    }
+    
+    func onClickActionDelete(soundEntity: SoundEntity) {
+        SoundRepository.delete(soundEntity)
+        let soundList = SoundRepository.asEntitiesList()
+        print("\(soundList.count) songs")
+        contactView.setSoundList(soundList)
+    }
 }

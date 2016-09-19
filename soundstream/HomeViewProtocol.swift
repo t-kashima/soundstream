@@ -25,5 +25,7 @@ protocol HomeViewProtocol {
     
     func onSetDuration(duration: Int)
     
+    func showSoundDetail(soundEntity: SoundEntity)
+    
     func navigateToSearch()
 }

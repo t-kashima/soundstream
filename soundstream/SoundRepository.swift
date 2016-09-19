@@ -99,4 +99,25 @@ class SoundRepository {
             break
         }
     }
+    
+    static func delete(soundEntity: SoundEntity) {
+        let realm = try! Realm()
+        guard let sound = realm.objects(Sound).filter("id = \(soundEntity.id)").first else { return }
+        switch soundEntity.resourceType {
+        case ResourceType.SoundCloud:
+            guard let resource = realm.objects(SoundSoundCloud).filter("soundId = \(soundEntity.id)").first else { return }
+            try! realm.write {
+                realm.delete(resource)
+                realm.delete(sound)
+            }
+        case ResourceType.YouTube:
+            guard let resource = realm.objects(SoundYouTube).filter("soundId = \(soundEntity.id)").first else { return }
+            try! realm.write {
+                realm.delete(resource)
+                realm.delete(sound)
+            }
+        default:
+            break
+        }
+    }
 }

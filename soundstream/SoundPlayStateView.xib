@@ -91,7 +91,7 @@
                     </constraints>
                     <color key="trackTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.073410560344827583" colorSpace="calibratedRGB"/>
                 </progressView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WDH-Nt-r4e">
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="WDH-Nt-r4e">
                     <rect key="frame" x="22" y="101" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Hsj-Id-Myk"/>

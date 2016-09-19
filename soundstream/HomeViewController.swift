@@ -39,7 +39,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SoundCell
         let soundPlayStateEntity = soundList[indexPath.row]
-        cell.initialize(soundPlayStateEntity)
+        cell.initialize(soundPlayStateEntity, presenter: presenter)
         return cell
     }
     
@@ -109,5 +109,19 @@ extension HomeViewController: HomeViewProtocol {
     func onSetDuration(duration: Int) {
         soundPlayStateView.setDuration(duration)
         soundPlayStateView.playSound()
+    }
+    
+    func showSoundDetail(soundEntity: SoundEntity) {
+        let alertSheet = UIAlertController(title: soundEntity.resourceEntity.title, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let actionDelete = UIAlertAction(title: "delete", style: UIAlertActionStyle.Destructive, handler: {
+            (action: UIAlertAction!) in
+            self.presenter.onClickActionDelete(soundEntity)
+        })
+        let actionCancel = UIAlertAction(title: "cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+        
+        alertSheet.addAction(actionDelete)
+        alertSheet.addAction(actionCancel)
+        self.presentViewController(alertSheet, animated: true, completion: nil)
     }
 }
