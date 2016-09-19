@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import MediaPlayer
 
 class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
     
@@ -31,6 +32,13 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
     private var sessionTask: NSURLSessionDataTask?
     
     override init() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("not set background audio")
+        }
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
     }
     
     func setSoundList(soundList: [SoundEntity]) {
@@ -63,7 +71,20 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
         self.playSoundEntity = soundEntity
         print(soundEntity)
         NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePlaySound, object: soundEntity)
+        setPlayingInfo(soundEntity)
+        
         play(soundEntity)
+    }
+    
+    private func setPlayingInfo(soundEntity: SoundEntity) {
+        var songInfo = [String : AnyObject]()
+        songInfo[MPMediaItemPropertyTitle] = soundEntity.resourceEntity.title
+        songInfo[MPMediaItemPropertyArtist] = soundEntity.resourceEntity.username
+        songInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: UIImage(named: "button_stop_sound.png")!)
+        if self.player != nil {
+            songInfo[MPMediaItemPropertyPlaybackDuration] = player!.duration
+        }
+        MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = songInfo
     }
     
     private func play(soundEntity: SoundEntity) {
@@ -116,6 +137,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
                 self.player = try AVAudioPlayer(data: data!)
                 self.player!.delegate = self
                 self.player!.play()
+                self.setPlayingInfo(self.playSoundEntity!)
                 NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameSetDuration, object: self.player!.duration)
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.onUpdateTimer), userInfo: nil, repeats: true)
             } catch {

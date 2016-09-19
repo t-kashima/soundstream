@@ -29,6 +29,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         presenter.onViewWillAppear()
     }
     
