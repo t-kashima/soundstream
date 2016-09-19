@@ -44,7 +44,7 @@
 		ECCE508E1D89A9FC007AEE22 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE508D1D89A9FC007AEE22 /* Constant.swift */; };
 		ECCE50911D8AF822007AEE22 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE50901D8AF822007AEE22 /* SoundManager.swift */; };
 		ECF506761D8EB5AB0090E60A /* button_stop_sound.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF506751D8EB5AB0090E60A /* button_stop_sound.png */; };
-		ECF506781D8EF6170090E60A /* button_sound_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF506771D8EF6170090E60A /* button_sound_detail.png */; };
+		ECF5067A1D8F72770090E60A /* button_sound_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF506791D8F72770090E60A /* button_sound_detail.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,7 +89,7 @@
 		ECCE508D1D89A9FC007AEE22 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		ECCE50901D8AF822007AEE22 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		ECF506751D8EB5AB0090E60A /* button_stop_sound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_stop_sound.png; sourceTree = "<group>"; };
-		ECF506771D8EF6170090E60A /* button_sound_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_sound_detail.png; sourceTree = "<group>"; };
+		ECF506791D8F72770090E60A /* button_sound_detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_sound_detail.png; sourceTree = "<group>"; };
 		F58377B7444044C7F936BD5E /* Pods_soundstream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_soundstream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -153,7 +153,7 @@
 		EC3AF4351D8E911F0081C30F /* images */ = {
 			isa = PBXGroup;
 			children = (
-				ECF506771D8EF6170090E60A /* button_sound_detail.png */,
+				ECF506791D8F72770090E60A /* button_sound_detail.png */,
 				ECF506751D8EB5AB0090E60A /* button_stop_sound.png */,
 				EC3AF4361D8E911F0081C30F /* button_play_sound.png */,
 			);
@@ -359,7 +359,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECF506781D8EF6170090E60A /* button_sound_detail.png in Resources */,
+				ECF5067A1D8F72770090E60A /* button_sound_detail.png in Resources */,
 				ECF506761D8EB5AB0090E60A /* button_stop_sound.png in Resources */,
 				EC3AF4371D8E911F0081C30F /* button_play_sound.png in Resources */,
 				EC5BA4F31D86F879003FC885 /* LaunchScreen.storyboard in Resources */,

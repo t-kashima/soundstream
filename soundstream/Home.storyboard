@@ -47,7 +47,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="k95-7X-1eF" customClass="SoundCell" customModule="soundstream" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k95-7X-1eF" id="EJD-9p-qo6">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
@@ -111,10 +111,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzx-OC-oFD">
-                                                    <rect key="frame" x="570" y="47.5" width="15" height="5"/>
+                                                    <rect key="frame" x="565" y="39.5" width="20" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="7bq-qD-Sep"/>
-                                                        <constraint firstAttribute="height" constant="5" id="d51-hI-Ozm"/>
+                                                        <constraint firstAttribute="width" constant="20" id="7bq-qD-Sep"/>
+                                                        <constraint firstAttribute="height" constant="21" id="d51-hI-Ozm"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="button_sound_detail.png"/>
                                                     <connections>
@@ -226,6 +226,6 @@
     </scenes>
     <resources>
         <image name="button_play_sound.png" width="34" height="67"/>
-        <image name="button_sound_detail.png" width="60" height="18"/>
+        <image name="button_sound_detail.png" width="154" height="144"/>
     </resources>
 </document>
