@@ -16,6 +16,7 @@ class SoundPlayStateView: UIView {
     @IBOutlet weak var buttonPauseSound: UIButton!
     @IBOutlet weak var buttonPlaySound: UIButton!
     @IBOutlet weak var viewProgress: UIProgressView!
+    @IBOutlet weak var viewIndicator: UIActivityIndicatorView!
     
     private var duration: Int = 0
     
@@ -64,29 +65,40 @@ class SoundPlayStateView: UIView {
         
         buttonPauseSound.hidden = true
         buttonPlaySound.hidden = false
+        viewIndicator.hidden = true
     }
     
-    func playSound(soundEntity: SoundEntity) {
+    func prepareSound(soundEntity: SoundEntity) {
         textTitle.text = soundEntity.resourceEntity.title
         textName.text = soundEntity.resourceEntity.username
+        buttonPauseSound.hidden = true
+        buttonPlaySound.hidden = true
+        viewIndicator.hidden = false
+        viewProgress.progress = 0
+    }
+    
+    func playSound() {
         buttonPauseSound.hidden = false
         buttonPlaySound.hidden = true
-        viewProgress.progress = 0
+        viewIndicator.hidden = true
     }
     
     func stopSound() {
         buttonPauseSound.hidden = true
         buttonPlaySound.hidden = false
+        viewIndicator.hidden = true
     }
     
     func pauseSound() {
         buttonPauseSound.hidden = true
         buttonPlaySound.hidden = false
+        viewIndicator.hidden = true
     }
     
     func resumeSound() {
         buttonPauseSound.hidden = false
         buttonPlaySound.hidden = true
+        viewIndicator.hidden = true
     }
     
     func setDuration(duration: Int) {

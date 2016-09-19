@@ -82,7 +82,7 @@ extension HomeViewController: HomeViewProtocol {
         }
         tableView.reloadData()
         
-        soundPlayStateView.playSound(soundEntity)
+        soundPlayStateView.prepareSound(soundEntity)
     }
     
     func onStopSound() {
@@ -108,5 +108,6 @@ extension HomeViewController: HomeViewProtocol {
     
     func onSetDuration(duration: Int) {
         soundPlayStateView.setDuration(duration)
+        soundPlayStateView.playSound()
     }
 }

@@ -45,7 +45,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
             return
         }
         
-        // 再生中の曲と同じ時は曲の時
+        // 再生中の曲と同じ時は曲
         if (self.playSoundEntity == soundEntity) {
             if (self.player != nil) {
                 if (self.player!.playing) {
