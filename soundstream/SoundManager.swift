@@ -205,7 +205,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
             let playerItem = object as! AVPlayerItem
             if (playerItem.status == AVPlayerItemStatus.Failed) {
                 let error = playerItem.error
-                print("曲を読み込めませんでした \(error)")
+                print("can't load a track \(error)")
                 isPlaying = false
             } else if (playerItem.status == AVPlayerItemStatus.ReadyToPlay) {
                 play()
@@ -231,6 +231,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         if (isPlaying == false) {
             player!.play()
             isPlaying = true
+            updatePlayingInfo()
             
             NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameSetDuration, object: CMTimeGetSeconds(self.player!.currentItem!.asset.duration))
             self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.onUpdateTimer), userInfo: nil, repeats: true)
