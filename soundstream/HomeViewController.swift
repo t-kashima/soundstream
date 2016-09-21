@@ -27,6 +27,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         presenter = HomePresenter(view: self)
         presenter.onViewDidLoad()
+        SoundManager.sharedManager.delegate = presenter
     }
     
     override func viewWillAppear(animated: Bool) {

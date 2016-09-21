@@ -13,15 +13,23 @@ import RxSwift
 
 var playAudioContext = "playAudioContext"
 
-class SoundManager: NSObject, NSURLSessionDelegate {
+@objc protocol SoundManagerDelegate {
+    func onResumeSound()
     
-    static let NotificationNameResumeSound = "NotificationNameResumeSound"
-    static let NotificationNamePlaySound = "NotificationNamePlaySound"
-    static let NotificationNameStopSound = "NotificationNameStopSound"
-    static let NotificationNamePauseSound = "NotificationNamePauseSound"
-    static let NotificationNameSetCurrentTime = "NotificationNameSetCurrentTime"
-    static let NotificationNameSetDuration = "NotificationNameSetDuration"
-    static let NotificationNameErrorNetwork = "NotificationNameErrorNetwork"
+    func onChangePlaySound(soundEntity: SoundEntity)
+    
+    func onStopSound()
+    
+    func onPauseSound()
+    
+    func onSetCurrentTime(currentTime: Double)
+    
+    func onSetDuration(duration: Double)
+    
+    func onNetworkError()
+}
+
+class SoundManager: NSObject, NSURLSessionDelegate {
     
     static let sharedManager = SoundManager()
     
@@ -40,6 +48,8 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     private var musicPlayerItems = [AVPlayerItem]()
     
     private var artworks = [String: MPMediaItemArtwork]()
+    
+    weak var delegate: SoundManagerDelegate?
     
     private let disposeBag = DisposeBag()
     
@@ -90,7 +100,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         
         self.playSoundEntity = soundEntity
         print(soundEntity)
-        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePlaySound, object: soundEntity)
+        delegate?.onChangePlaySound(soundEntity)
         updatePlayingInfo()
         play(soundEntity)
     }
@@ -162,7 +172,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     }
     
     private func postNotworkError() {
-        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameErrorNetwork, object: nil)
+        delegate?.onNetworkError()
     }
     
     func playNextSound() {
@@ -245,8 +255,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
             player!.play()
             isPlaying = true
             updatePlayingInfo()
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameSetDuration, object: CMTimeGetSeconds(self.player!.currentItem!.asset.duration))
+            delegate?.onSetDuration(CMTimeGetSeconds(self.player!.currentItem!.asset.duration))
             self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.onUpdateTimer), userInfo: nil, repeats: true)
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onFinishMusic), name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player!.currentItem)
@@ -260,7 +269,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         player?.play()
         isPlaying = true
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.onUpdateTimer), userInfo: nil, repeats: true)
-        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameResumeSound, object: nil)
+        delegate?.onResumeSound()
     }
     
     func pauseSound() {
@@ -272,7 +281,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
             }
         }
         isPlaying = false
-        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePauseSound, object: nil)
+        delegate?.onPauseSound()
     }
     
     private func stop() {
@@ -296,13 +305,13 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     
     func stopSound() {
         stop()
-        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameStopSound, object: nil)
+        delegate?.onStopSound()
     }
     
     func onUpdateTimer() {
         if (self.player == nil) {
             return
         }
-        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameSetCurrentTime, object: CMTimeGetSeconds(player!.currentTime()))
+        delegate?.onSetCurrentTime(CMTimeGetSeconds(player!.currentTime()))
     }
 }

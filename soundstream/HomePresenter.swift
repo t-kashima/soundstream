@@ -8,24 +8,12 @@
 
 import Foundation
 
-class HomePresenter {
+class HomePresenter: NSObject, SoundManagerDelegate {
     
     private let contactView: HomeViewProtocol
     
     init(view: HomeViewProtocol) {
         contactView = view
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onChangePlayingSound(_:)), name: SoundManager.NotificationNamePlaySound, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onStopSound(_:)), name: SoundManager.NotificationNameStopSound, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onPauseSound(_:)), name: SoundManager.NotificationNamePauseSound, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onResumeSound(_:)), name: SoundManager.NotificationNameResumeSound, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onSetDuration(_:)), name: SoundManager.NotificationNameSetDuration, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onSetCurrentTime(_:)), name: SoundManager.NotificationNameSetCurrentTime, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onNetworkError(_:)), name: SoundManager.NotificationNameErrorNetwork, object: nil)
-    }
-    
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func onViewDidLoad() {
@@ -46,57 +34,31 @@ class HomePresenter {
         contactView.navigateToSearch()
     }
     
-    @objc
-    func onChangePlayingSound(notification: NSNotification?) {
-        print("onChangePlayingSound")
-        guard let notification = notification else {
-            return
-        }
-        let soundEntity = notification.object as! SoundEntity?
-        if (soundEntity == nil) {
-            return
-        }
-        contactView.onChangePlayingSound(soundEntity!)
-    }
-    
-    @objc
-    func onStopSound(notification: NSNotification?) {
-        print("onStopSound")
-        contactView.onStopSound()
-    }
-    
-    @objc
-    func onPauseSound(notification: NSNotification?) {
-        print("onPauseSound")
-        contactView.onPauseSound()
-    }
-    
-    @objc
-    func onResumeSound(notification: NSNotification?) {
-        print("onResumeSound")
+    func onResumeSound() {
         contactView.onResumeSound()
     }
     
-    @objc
-    func onSetCurrentTime(notification: NSNotification?) {
-        guard let notification = notification else {
-            return
-        }
-        let currentTime = notification.object as! Int
-        contactView.onSetCurrentTime(currentTime)
+    func onChangePlaySound(soundEntity: SoundEntity) {
+        contactView.onChangePlayingSound(soundEntity)
     }
     
-    @objc
-    func onSetDuration(notification: NSNotification?) {
-        guard let notification = notification else {
-            return
-        }
-        let duration = notification.object as! Int
-        contactView.onSetDuration(duration)
+    func onStopSound() {
+        contactView.onStopSound()
     }
     
-    @objc
-    func onNetworkError(notification: NSNotification?) {
+    func onPauseSound() {
+        contactView.onPauseSound()
+    }
+    
+    func onSetCurrentTime(currentTime: Double) {
+        contactView.onSetCurrentTime(Int(currentTime))
+    }
+    
+    func onSetDuration(duration: Double) {
+        contactView.onSetDuration(Int(duration))
+    }
+    
+    func onNetworkError() {
         contactView.showNetworkError()
     }
     
