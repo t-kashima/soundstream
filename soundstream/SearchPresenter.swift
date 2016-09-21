@@ -36,6 +36,7 @@ class SearchPresenter {
             if (videoId != nil) {
                 getYouTube(videoId!)
             } else {
+                contactView.showProgressError()
                 print("not found a sound source")
             }
         }
@@ -79,6 +80,7 @@ class SearchPresenter {
     }
     
     private func getYouTube(videoId: String) {
+        contactView.showProgress()
         APIRepository.getYouTube(videoId)
             .subscribe(onNext: { (soundEntity) in
                 print(soundEntity)

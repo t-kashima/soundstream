@@ -37,17 +37,30 @@ extension SearchViewController: SearchViewProtocol {
         SVProgressHUD.setOffsetFromCenter(UIOffsetMake(0, heightNavigationBar))
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
         SVProgressHUD.showWithStatus("読み込み中")
-        SVProgressHUD.show()
     }
     
     func showProgressSuccess() {
+        let heightNavigationBar = navigationController?.navigationBar.frame.size.height ?? 0
+        SVProgressHUD.setOffsetFromCenter(UIOffsetMake(0, heightNavigationBar))
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
         SVProgressHUD.showSuccessWithStatus("曲を追加しました！")
-        SVProgressHUD.dismissWithDelay(0.5)
+        let delay = 0.5 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            SVProgressHUD.dismiss()
+        })
     }
     
     func showProgressError() {
+        let heightNavigationBar = self.navigationController?.navigationBar.frame.size.height ?? 0
+        SVProgressHUD.setOffsetFromCenter(UIOffsetMake(0, heightNavigationBar))
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
         SVProgressHUD.showErrorWithStatus("曲を追加できませんでした")
-        SVProgressHUD.dismissWithDelay(0.5)
+        let delay = 0.5 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            SVProgressHUD.dismiss()
+        })
     }
     
     func clearTextFieldSoundUrl() {
