@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B2524DBA26BD55295904CCE /* Pods_soundstream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58377B7444044C7F936BD5E /* Pods_soundstream.framework */; };
 		EC1E7AEE1D92EC1200CAE0FD /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AED1D92EC1200CAE0FD /* NSURL.swift */; };
+		EC1E7AF01D92F16D00CAE0FD /* bg_artwork_none.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E7AEF1D92F16D00CAE0FD /* bg_artwork_none.png */; };
 		EC2410B51D884BA100C6D679 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410B41D884BA100C6D679 /* Sound.swift */; };
 		EC2410B81D884C9E00C6D679 /* SoundRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410B71D884C9E00C6D679 /* SoundRepository.swift */; };
 		EC2410BB1D884DEC00C6D679 /* SoundFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410BA1D884DEC00C6D679 /* SoundFactory.swift */; };
@@ -52,6 +53,7 @@
 		6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.release.xcconfig"; sourceTree = "<group>"; };
 		D5E67E77C5187B83BD56C53E /* Pods-soundstream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1E7AED1D92EC1200CAE0FD /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
+		EC1E7AEF1D92F16D00CAE0FD /* bg_artwork_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_artwork_none.png; sourceTree = "<group>"; };
 		EC2410B41D884BA100C6D679 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		EC2410B71D884C9E00C6D679 /* SoundRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundRepository.swift; sourceTree = "<group>"; };
 		EC2410BA1D884DEC00C6D679 /* SoundFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundFactory.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		EC3AF4351D8E911F0081C30F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EC1E7AEF1D92F16D00CAE0FD /* bg_artwork_none.png */,
 				ECF506791D8F72770090E60A /* button_sound_detail.png */,
 				ECF506751D8EB5AB0090E60A /* button_stop_sound.png */,
 				EC3AF4361D8E911F0081C30F /* button_play_sound.png */,
@@ -377,6 +380,7 @@
 			files = (
 				ECF5067A1D8F72770090E60A /* button_sound_detail.png in Resources */,
 				ECF506761D8EB5AB0090E60A /* button_stop_sound.png in Resources */,
+				EC1E7AF01D92F16D00CAE0FD /* bg_artwork_none.png in Resources */,
 				EC3AF4371D8E911F0081C30F /* button_play_sound.png in Resources */,
 				EC5BA4F31D86F879003FC885 /* LaunchScreen.storyboard in Resources */,
 				EC5BA4F01D86F879003FC885 /* Assets.xcassets in Resources */,

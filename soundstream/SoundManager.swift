@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import MediaPlayer
+import RxSwift
 
 var playAudioContext = "playAudioContext"
 
@@ -36,6 +37,10 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     private var isPlaying = false
     
     private var musicPlayerItems = [AVPlayerItem]()
+    
+    private var artworks = [String: MPMediaItemArtwork]()
+    
+    private let disposeBag = DisposeBag()
     
     override init() {
         do {
@@ -85,20 +90,46 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         self.playSoundEntity = soundEntity
         print(soundEntity)
         NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePlaySound, object: soundEntity)
-        updatePlayingInfo(soundEntity)
-        
+        updatePlayingInfo()
         play(soundEntity)
     }
     
-    private func updatePlayingInfo(soundEntity: SoundEntity) {
+    private func updatePlayingInfo() {
+        guard let soundEntity = playSoundEntity else { return }
         var songInfo = [String : AnyObject]()
         songInfo[MPMediaItemPropertyTitle] = soundEntity.resourceEntity.title
         songInfo[MPMediaItemPropertyArtist] = soundEntity.resourceEntity.username
-        songInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: UIImage(named: "button_stop_sound.png")!)
-        if self.player != nil {
+        let artwork = getArtwork(soundEntity.resourceEntity.imageUrl)
+        if (artwork != nil) {
+            songInfo[MPMediaItemPropertyArtwork] = artwork
+        } else {
+            songInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: UIImage(named: "bg_artwork_none.png")!)
+        }
+        
+        if self.player?.currentItem != nil {
             songInfo[MPMediaItemPropertyPlaybackDuration] = CMTimeGetSeconds((player!.currentItem?.asset.duration)!)
         }
         MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = songInfo
+    }
+    
+    private func getArtwork(url: String) -> MPMediaItemArtwork? {
+        let artwork = artworks[url]
+        if (artwork != nil) {
+            return artwork
+        } else {
+            APIRepository.getArtwork(url).subscribe(onNext: { (data) in
+                guard let image = UIImage(data: data) else {
+                    print("error can't retrieve artwork.")
+                    return
+                }
+                let newArtwork = MPMediaItemArtwork(image: image)
+                self.artworks[url] = newArtwork
+                self.updatePlayingInfo()
+            }, onError: { (error) in
+                print("error can't retrieve artwork.")
+            }).addDisposableTo(disposeBag)
+        }
+        return nil
     }
     
     private func play(soundEntity: SoundEntity) {
