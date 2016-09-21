@@ -139,6 +139,10 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="YeO-9U-hbB"/>
+                    <exclude reference="0ga-W5-NvG"/>
+                    <exclude reference="ENK-j6-q2p"/>
+                    <exclude reference="FKQ-g8-Pgs"/>
+                    <exclude reference="jo7-0F-e49"/>
                     <exclude reference="FcA-xH-Iq2"/>
                     <exclude reference="GvI-St-cYo"/>
                     <exclude reference="HIQ-TP-lZ2"/>
@@ -146,10 +150,6 @@
                     <exclude reference="amC-hz-gjG"/>
                     <exclude reference="moO-Pp-R5y"/>
                     <exclude reference="x4B-Ga-7kO"/>
-                    <exclude reference="0ga-W5-NvG"/>
-                    <exclude reference="ENK-j6-q2p"/>
-                    <exclude reference="FKQ-g8-Pgs"/>
-                    <exclude reference="jo7-0F-e49"/>
                     <exclude reference="FfO-QY-Htt"/>
                     <exclude reference="I5f-g9-wv8"/>
                     <exclude reference="tG8-UZ-GyS"/>
