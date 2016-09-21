@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="-278" y="323"/>
         </scene>
-        <!--Title-->
+        <!--stream-->
         <scene sceneID="q2g-uT-5Qh">
             <objects>
                 <viewController id="MFb-du-yJY" customClass="HomeViewController" customModule="soundstream" customModuleProvider="target" sceneMemberID="viewController">
@@ -207,8 +207,8 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="D3D-eM-YZ7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="AK8-8S-ium">
+                    <navigationItem key="navigationItem" title="stream" id="D3D-eM-YZ7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="AK8-8S-ium">
                             <connections>
                                 <action selector="onClickButtonSearch:" destination="MFb-du-yJY" id="702-hR-mF2"/>
                             </connections>

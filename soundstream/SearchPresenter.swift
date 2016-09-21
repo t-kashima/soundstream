@@ -16,11 +16,27 @@ class SearchPresenter {
        
     private let disposeBag = DisposeBag()
     
+    private var searchSoundEntity: SoundEntity? = nil
+    
     init(view: SearchViewProtocol) {
         contactView = view
     }
     
-    func onClickButtonPlaySound(url: String?) {
+    func onViewDidLoad() {
+        contactView.initialize()
+    }
+    
+    func onClickButtonAddTrack() {
+        guard let searchSoundEntity = searchSoundEntity else {
+            contactView.showProgressError()
+            return
+        }
+        SoundRepository.store(searchSoundEntity)
+        contactView.disableButtonAddTrack()
+        contactView.showProgressSuccess()
+    }
+    
+    func onTextFieldShouldReturn(url: String?) {
         guard let url = url else {
             return
         }
@@ -28,6 +44,8 @@ class SearchPresenter {
         if (url.isEmpty) {
             return
         }
+        
+        contactView.hideSoundInfo()
         
         if url.rangeOfString("soundcloud") != nil {
             getSoundCloud(url)
@@ -47,8 +65,13 @@ class SearchPresenter {
         APIRepository.getSoundCloud(url)
             .subscribe(onNext: { (soundEntity) in
                 print(soundEntity)
+
+                self.searchSoundEntity = soundEntity
                 
-                SoundRepository.store(soundEntity)
+                self.contactView.clearTextFieldSoundUrl()
+                self.contactView.showSoundInfo(soundEntity)
+                self.contactView.dismissProgress()
+                
                 
                 self.contactView.clearTextFieldSoundUrl()
                 self.contactView.showProgressSuccess()
@@ -85,10 +108,12 @@ class SearchPresenter {
             .subscribe(onNext: { (soundEntity) in
                 print(soundEntity)
                 
-                SoundRepository.store(soundEntity)
+                self.searchSoundEntity = soundEntity
                 
                 self.contactView.clearTextFieldSoundUrl()
-                self.contactView.showProgressSuccess()
+                self.contactView.showSoundInfo(soundEntity)
+                self.contactView.dismissProgress()
+                
                 }, onError: { (error) in
                     switch(error) {
                     case ResponseError.NotFoundSound:

@@ -7,11 +7,23 @@
 //
 
 protocol SearchViewProtocol {
+    func initialize()
+    
     func showProgress()
+    
+    func dismissProgress()
     
     func showProgressSuccess()
     
     func showProgressError()
     
     func clearTextFieldSoundUrl()
+    
+    func showSoundInfo(soundEntity: SoundEntity)
+    
+    func hideSoundInfo()
+    
+    func enableButtonAddTrack()
+    
+    func disableButtonAddTrack()
 }
