@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B2524DBA26BD55295904CCE /* Pods_soundstream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58377B7444044C7F936BD5E /* Pods_soundstream.framework */; };
+		EC1E7AEE1D92EC1200CAE0FD /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AED1D92EC1200CAE0FD /* NSURL.swift */; };
 		EC2410B51D884BA100C6D679 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410B41D884BA100C6D679 /* Sound.swift */; };
 		EC2410B81D884C9E00C6D679 /* SoundRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410B71D884C9E00C6D679 /* SoundRepository.swift */; };
 		EC2410BB1D884DEC00C6D679 /* SoundFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410BA1D884DEC00C6D679 /* SoundFactory.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.release.xcconfig"; sourceTree = "<group>"; };
 		D5E67E77C5187B83BD56C53E /* Pods-soundstream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.debug.xcconfig"; sourceTree = "<group>"; };
+		EC1E7AED1D92EC1200CAE0FD /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
 		EC2410B41D884BA100C6D679 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		EC2410B71D884C9E00C6D679 /* SoundRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundRepository.swift; sourceTree = "<group>"; };
 		EC2410BA1D884DEC00C6D679 /* SoundFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundFactory.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 				6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EC1E7AEC1D92EBEF00CAE0FD /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				EC1E7AED1D92EC1200CAE0FD /* NSURL.swift */,
+			);
+			name = extension;
 			sourceTree = "<group>";
 		};
 		EC2410B31D884B8000C6D679 /* realm */ = {
@@ -220,6 +230,7 @@
 		EC5BA4E71D86F879003FC885 /* soundstream */ = {
 			isa = PBXGroup;
 			children = (
+				EC1E7AEC1D92EBEF00CAE0FD /* extension */,
 				EC3AF4351D8E911F0081C30F /* images */,
 				EC3AF42A1D8C0CAD0081C30F /* error */,
 				ECCE508F1D8AF816007AEE22 /* manager */,
@@ -430,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC1E7AEE1D92EC1200CAE0FD /* NSURL.swift in Sources */,
 				EC3AF4261D8C06C20081C30F /* SoundCloudResourceEntity.swift in Sources */,
 				EC421BCC1D88339100A54B98 /* APIRepository.swift in Sources */,
 				EC421BD41D8844FF00A54B98 /* ResponseError.swift in Sources */,

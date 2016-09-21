@@ -31,10 +31,13 @@ class SearchPresenter {
         
         if url.rangeOfString("soundcloud") != nil {
             getSoundCloud(url)
-        } else if url.rangeOfString("youtube") != nil {
-            getYouTube(url)
         } else {
-            print("not found a sound source")
+            let videoId = getVideoIdFromUrl(url)
+            if (videoId != nil) {
+                getYouTube(videoId!)
+            } else {
+                print("not found a sound source")
+            }
         }
     }
     
@@ -59,15 +62,23 @@ class SearchPresenter {
             }).addDisposableTo(disposeBag)
     }
     
-    private func getYouTube(url: String) {
-        let pattern = "v=([^&]+)"
-        let regex = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
-        let matches = regex.matchesInString(url, options: [], range: NSMakeRange(0, url.characters.count))
-        var results: [String] = []
-        matches.forEach { (match) -> () in
-            results.append( (url as NSString).substringWithRange(match.rangeAtIndex(1)) )
+    private func getVideoIdFromUrl(url: String) -> String? {
+        guard let youtubeUrl = NSURL(string: url) else { return nil }
+        var videoId: String? = nil
+        if (youtubeUrl.host ==  "youtu.be") {
+            videoId = youtubeUrl.pathComponents?[1]
+        } else if(youtubeUrl.absoluteString.containsString("www.youtube.com/embed")) {
+            videoId = youtubeUrl.pathComponents?[2]
+        } else if(youtubeUrl.host == "youtube.googleapis.com" ||
+            youtubeUrl.pathComponents?.first == "www.youtube.com") {
+            videoId = youtubeUrl.pathComponents?[2]
+        } else {
+            videoId = youtubeUrl.queryItems?["v"]
         }
-        let videoId = results[0]
+        return videoId
+    }
+    
+    private func getYouTube(videoId: String) {
         APIRepository.getYouTube(videoId)
             .subscribe(onNext: { (soundEntity) in
                 print(soundEntity)
