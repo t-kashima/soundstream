@@ -153,13 +153,13 @@ class SoundManager: NSObject, NSURLSessionDelegate {
             SSYouTubeParser.h264videosWithYoutubeID(resourceEntity.videoId, completionHandler: { (dictionary) in
                 guard let dictionary = dictionary else {
                     print("not found video url")
-                    self.postNotworkError()
+                    self.delegate?.onNetworkError()
                     self.stopSound()
                     return
                 }
                 guard let videoMediumURL = dictionary["medium"] else {
                     print("not found video url")
-                    self.postNotworkError()
+                    self.delegate?.onNetworkError()
                     self.stopSound()
                     return
                 }
@@ -169,10 +169,6 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         default:
             break
         }
-    }
-    
-    private func postNotworkError() {
-        delegate?.onNetworkError()
     }
     
     func playNextSound() {
@@ -229,7 +225,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
                 let error = playerItem.error
                 print("can't load a track \(error)")
                 stopSound()
-                postNotworkError()
+                delegate?.onNetworkError()
             } else if (playerItem.status == AVPlayerItemStatus.ReadyToPlay) {
                 play()
             } else {
@@ -264,6 +260,10 @@ class SoundManager: NSObject, NSURLSessionDelegate {
 
     func resumeSound() {
         if (playSoundEntity == nil) {
+            // 曲はあるが何も再生していない時は1曲目を再生する
+            if (!soundList.isEmpty) {
+                playSound(soundList.first!)
+            }
             return
         }
         player?.play()
