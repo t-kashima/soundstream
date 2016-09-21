@@ -10,7 +10,9 @@ import Foundation
 import AVFoundation
 import MediaPlayer
 
-class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
+var playAudioContext = "playAudioContext"
+
+class SoundManager: NSObject, NSURLSessionDelegate {
     
     static let NotificationNameResumeSound = "NotificationNameResumeSound"
     static let NotificationNamePlaySound = "NotificationNamePlaySound"
@@ -21,7 +23,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
     
     static let sharedManager = SoundManager()
     
-    private var player: AVAudioPlayer? = nil
+    private var player: AVPlayer? = nil
     
     private var soundList: [SoundEntity] = []
     
@@ -31,6 +33,10 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
     
     private var sessionTask: NSURLSessionDataTask?
     
+    private var isPlaying = false
+    
+    private var musicPlayerItems = [AVPlayerItem]()
+    
     override init() {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -39,6 +45,14 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
             print("not set background audio")
         }
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+    }
+    
+    deinit {
+        for item in musicPlayerItems {
+            item.removeObserver(self, forKeyPath: "status")
+        }
+        UIApplication.sharedApplication().endReceivingRemoteControlEvents()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func setSoundList(soundList: [SoundEntity]) {
@@ -56,7 +70,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
         // 再生中の曲と同じ時は曲
         if (self.playSoundEntity == soundEntity) {
             if (self.player != nil) {
-                if (self.player!.playing) {
+                if (self.isPlaying) {
                     pauseSound()
                 } else {
                     resumeSound()
@@ -71,18 +85,18 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
         self.playSoundEntity = soundEntity
         print(soundEntity)
         NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePlaySound, object: soundEntity)
-        setPlayingInfo(soundEntity)
+        updatePlayingInfo(soundEntity)
         
         play(soundEntity)
     }
     
-    private func setPlayingInfo(soundEntity: SoundEntity) {
+    private func updatePlayingInfo(soundEntity: SoundEntity) {
         var songInfo = [String : AnyObject]()
         songInfo[MPMediaItemPropertyTitle] = soundEntity.resourceEntity.title
         songInfo[MPMediaItemPropertyArtist] = soundEntity.resourceEntity.username
         songInfo[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: UIImage(named: "button_stop_sound.png")!)
         if self.player != nil {
-            songInfo[MPMediaItemPropertyPlaybackDuration] = player!.duration
+            songInfo[MPMediaItemPropertyPlaybackDuration] = CMTimeGetSeconds((player!.currentItem?.asset.duration)!)
         }
         MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = songInfo
     }
@@ -108,7 +122,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
         }
     }
     
-    private func playNextSound() {
+    func playNextSound() {
         if (playSoundEntity == nil) {
             print("not found sound entity")
             stopSound()
@@ -126,25 +140,72 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
         self.playSound(soundList[nextIndex])
     }
     
+    func playPrevSound() {
+        if (playSoundEntity == nil) {
+            print("not found sound entity")
+            stopSound()
+            return
+        }
+        guard let index = soundList.indexOf(playSoundEntity!) else {
+            print("not found sound entity")
+            stopSound()
+            return
+        }
+        var prevIndex = index - 1
+        if (prevIndex < 0) {
+            prevIndex = 0
+        }
+        self.playSound(soundList[prevIndex])
+    }
+    
     private func playSound(url: NSURL) {
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        sessionTask = session.dataTaskWithURL(url, completionHandler: { (data, resp, err) in
-            if (err != nil) {
-                print("通信エラーまたはキャンセルされたため曲を取得できませんでした")
-                return
+        let playerItem = AVPlayerItem(URL: url)
+        player = AVPlayer(playerItem: playerItem)
+        playerItem.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: &playAudioContext)
+        musicPlayerItems.append(playerItem)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?,
+                                         ofObject object: AnyObject?,
+                                                  change: [String : AnyObject]?,
+                                                  context: UnsafeMutablePointer<Void>) {
+        
+        if (context == &playAudioContext) {
+            let playerItem = object as! AVPlayerItem
+            if (playerItem.status == AVPlayerItemStatus.Failed) {
+                let error = playerItem.error
+                print("曲を読み込めませんでした \(error)")
+                isPlaying = false
+            } else if (playerItem.status == AVPlayerItemStatus.ReadyToPlay) {
+                play()
+            } else {
+                print("AVPlayerItemStatusNone: \(object)")
             }
-            do {
-                self.player = try AVAudioPlayer(data: data!)
-                self.player!.delegate = self
-                self.player!.play()
-                self.setPlayingInfo(self.playSoundEntity!)
-                NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameSetDuration, object: self.player!.duration)
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.onUpdateTimer), userInfo: nil, repeats: true)
-            } catch {
-                print("Failure sound streaming...")
-            }
-        })
-        sessionTask!.resume()
+        }
+    }
+    
+    func onFinishMusic() {
+        playNextSound()
+    }
+    
+    func resumeOrPauseSound() {
+        if (isPlaying) {
+            pauseSound()
+        } else {
+            resumeSound()
+        }
+    }
+    
+    func play() {
+        if (isPlaying == false) {
+            player!.play()
+            isPlaying = true
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameSetDuration, object: CMTimeGetSeconds(self.player!.currentItem!.asset.duration))
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.onUpdateTimer), userInfo: nil, repeats: true)
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onFinishMusic), name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player!.currentItem)
+        }
     }
 
     func resumeSound() {
@@ -152,6 +213,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
             return
         }
         player?.play()
+        isPlaying = true
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.onUpdateTimer), userInfo: nil, repeats: true)
         NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameResumeSound, object: nil)
     }
@@ -164,6 +226,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
                 timer = nil
             }
         }
+        isPlaying = false
         NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNamePauseSound, object: nil)
     }
     
@@ -175,7 +238,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
             }
         }
         if (player != nil) {
-            player!.stop()
+            player!.pause()
             player = nil
         }
         if (sessionTask != nil) {
@@ -183,6 +246,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
             sessionTask = nil
         }
         self.playSoundEntity = nil
+        self.isPlaying = false
     }
     
     func stopSound() {
@@ -190,16 +254,10 @@ class SoundManager: NSObject, AVAudioPlayerDelegate, NSURLSessionDelegate {
         NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameStopSound, object: nil)
     }
     
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-        if (flag) {
-            playNextSound()
-        }
-    }
-    
     func onUpdateTimer() {
         if (self.player == nil) {
             return
         }
-        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameSetCurrentTime, object: Int(player!.currentTime))
+        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameSetCurrentTime, object: CMTimeGetSeconds(player!.currentTime()))
     }
 }

@@ -48,14 +48,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         switch event.subtype {
         case .RemoteControlTogglePlayPause:
+            SoundManager.sharedManager.resumeOrPauseSound()
             break
         case .RemoteControlPause:
+            SoundManager.sharedManager.pauseSound()
             break
         case .RemoteControlPlay:
+            SoundManager.sharedManager.resumeSound()
             break
         case .RemoteControlNextTrack:
+            SoundManager.sharedManager.playNextSound()
             break
         case .RemoteControlPreviousTrack:
+            SoundManager.sharedManager.playPrevSound()
             break
         default:
             break
