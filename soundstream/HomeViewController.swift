@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import SVProgressHUD
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -124,5 +125,17 @@ extension HomeViewController: HomeViewProtocol {
         alertSheet.addAction(actionDelete)
         alertSheet.addAction(actionCancel)
         self.presentViewController(alertSheet, animated: true, completion: nil)
+    }
+    
+    func showNetworkError() {
+        let heightNavigationBar = self.navigationController?.navigationBar.frame.size.height ?? 0
+        SVProgressHUD.setOffsetFromCenter(UIOffsetMake(0, heightNavigationBar))
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
+        SVProgressHUD.showErrorWithStatus("通信に失敗しました")
+        let delay = 0.5 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            SVProgressHUD.dismiss()
+        })
     }
 }

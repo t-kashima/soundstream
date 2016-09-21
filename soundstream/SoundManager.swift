@@ -21,6 +21,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     static let NotificationNamePauseSound = "NotificationNamePauseSound"
     static let NotificationNameSetCurrentTime = "NotificationNameSetCurrentTime"
     static let NotificationNameSetDuration = "NotificationNameSetDuration"
+    static let NotificationNameErrorNetwork = "NotificationNameErrorNetwork"
     
     static let sharedManager = SoundManager()
     
@@ -140,9 +141,16 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         case ResourceType.YouTube:
             let resourceEntity = soundEntity.resourceEntity as! YouTubeResourceEntity
             SSYouTubeParser.h264videosWithYoutubeID(resourceEntity.videoId, completionHandler: { (dictionary) in
+                guard let dictionary = dictionary else {
+                    print("not found video url")
+                    self.postNotworkError()
+                    self.stopSound()
+                    return
+                }
                 guard let videoMediumURL = dictionary["medium"] else {
                     print("not found video url")
-                    self.playNextSound()
+                    self.postNotworkError()
+                    self.stopSound()
                     return
                 }
                 self.playSound(NSURL(string: videoMediumURL)!)
@@ -151,6 +159,10 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         default:
             break
         }
+    }
+    
+    private func postNotworkError() {
+        NSNotificationCenter.defaultCenter().postNotificationName(SoundManager.NotificationNameErrorNetwork, object: nil)
     }
     
     func playNextSound() {
@@ -206,7 +218,8 @@ class SoundManager: NSObject, NSURLSessionDelegate {
             if (playerItem.status == AVPlayerItemStatus.Failed) {
                 let error = playerItem.error
                 print("can't load a track \(error)")
-                isPlaying = false
+                stopSound()
+                postNotworkError()
             } else if (playerItem.status == AVPlayerItemStatus.ReadyToPlay) {
                 play()
             } else {

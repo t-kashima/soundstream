@@ -24,18 +24,23 @@ class SSYouTubeParser: NSObject {
     static let kAdaptiveFmts:String = "(adaptive_fmts=)(.*?)(&)"
     
     
-    class func h264videosWithYoutubeID(youtubeID :String, completionHandler handler:(videoDictionary :[String:String]) -> Void) {
+    class func h264videosWithYoutubeID(youtubeID :String, completionHandler handler:(videoDictionary :[String:String]?) -> Void) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-            let videoDictionary = self.getStreams(youtubeID)
-            
-            dispatch_async(dispatch_get_main_queue() , { () -> Void in
-                handler(videoDictionary: videoDictionary)
-            })
+            do {
+                let videoDictionary = try self.getStreams(youtubeID)
+                dispatch_async(dispatch_get_main_queue() , { () -> Void in
+                    handler(videoDictionary: videoDictionary)
+                })
+            } catch {
+                dispatch_async(dispatch_get_main_queue() , { () -> Void in
+                    handler(videoDictionary: nil)
+                })
+            }
         })
     }
     
-    private class func getStreams(youtubeID :String) -> [String:String] {
+    private class func getStreams(youtubeID :String) throws -> [String:String] {
         var videoDictionary = [String:String]()
         
         let urlStr = NSString(format: kYoutubeVideoInfoURL, youtubeID)
@@ -44,7 +49,7 @@ class SSYouTubeParser: NSObject {
         req.addValue("en", forHTTPHeaderField: "Accept-Language")
         
         var uRLResponse : NSURLResponse?
-        let data:NSData = try! NSURLConnection.sendSynchronousRequest(req, returningResponse: &uRLResponse)
+        let data:NSData = try NSURLConnection.sendSynchronousRequest(req, returningResponse: &uRLResponse)
         if data.length == 0 {
             return videoDictionary
         }

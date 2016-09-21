@@ -21,6 +21,11 @@ class HomePresenter {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onResumeSound(_:)), name: SoundManager.NotificationNameResumeSound, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onSetDuration(_:)), name: SoundManager.NotificationNameSetDuration, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onSetCurrentTime(_:)), name: SoundManager.NotificationNameSetCurrentTime, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.onNetworkError(_:)), name: SoundManager.NotificationNameErrorNetwork, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     func onViewDidLoad() {
@@ -88,6 +93,11 @@ class HomePresenter {
         }
         let duration = notification.object as! Int
         contactView.onSetDuration(duration)
+    }
+    
+    @objc
+    func onNetworkError(notification: NSNotification?) {
+        contactView.showNetworkError()
     }
     
     func onClickButtonSoundDetail(soundEntity: SoundEntity) {

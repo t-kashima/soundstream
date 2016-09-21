@@ -25,6 +25,8 @@ protocol HomeViewProtocol {
     
     func onSetDuration(duration: Int)
     
+    func showNetworkError()
+    
     func showSoundDetail(soundEntity: SoundEntity)
     
     func navigateToSearch()
