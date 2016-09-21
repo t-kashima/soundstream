@@ -76,6 +76,13 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         self.soundList.appendContentsOf(soundList)
     }
     
+    func isPlayingBySoundId(soundId: Int) -> Bool {
+        if playSoundEntity != nil {
+            return playSoundEntity!.id == soundId
+        }
+        return false
+    }
+    
     func playSound(soundEntity: SoundEntity) {
         if !soundList.contains(soundEntity) {
             print("not found sound entity")

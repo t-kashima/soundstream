@@ -60,7 +60,9 @@ extension HomeViewController: HomeViewProtocol {
     
     func setSoundList(soundList: [SoundEntity]) {
         self.soundList.removeAll()
-        self.soundList.appendContentsOf(soundList.map { SoundPlayStateEntity(isPlaying: false, soundEntity: $0) })
+        self.soundList.appendContentsOf(soundList.map {
+            SoundPlayStateEntity(isPlaying: SoundManager.sharedManager.isPlayingBySoundId($0.id), soundEntity: $0)
+        })
         tableView.reloadData()
         SoundManager.sharedManager.setSoundList(soundList)
     }
