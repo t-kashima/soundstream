@@ -7,12 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CAC7E25BB560C82C86A7B55 /* Pods_shareextension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E30838EC5C9F04D5E405074 /* Pods_shareextension.framework */; };
 		7B2524DBA26BD55295904CCE /* Pods_soundstream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58377B7444044C7F936BD5E /* Pods_soundstream.framework */; };
 		EC1E7AEE1D92EC1200CAE0FD /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AED1D92EC1200CAE0FD /* NSURL.swift */; };
 		EC1E7AF01D92F16D00CAE0FD /* bg_artwork_none.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E7AEF1D92F16D00CAE0FD /* bg_artwork_none.png */; };
 		EC1E7AF41D939D4000CAE0FD /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AF31D939D4000CAE0FD /* Cache.swift */; };
 		EC1E7AF71D939EC900CAE0FD /* CacheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AF61D939EC900CAE0FD /* CacheObject.swift */; };
 		EC1E7AF91D93A45B00CAE0FD /* AudioLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AF81D93A45B00CAE0FD /* AudioLoader.swift */; };
+		EC1E7B011D94074700CAE0FD /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7B001D94074700CAE0FD /* ShareViewController.swift */; };
+		EC1E7B041D94074700CAE0FD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1E7B021D94074700CAE0FD /* MainInterface.storyboard */; };
+		EC1E7B081D94074700CAE0FD /* shareextension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EC1E7AFE1D94074600CAE0FD /* shareextension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EC1E7B0E1D9416FC00CAE0FD /* APIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BCB1D88339100A54B98 /* APIRepository.swift */; };
+		EC1E7B131D941DAE00CAE0FD /* SoundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF4211D8C05390081C30F /* SoundEntity.swift */; };
+		EC1E7B141D941E3500CAE0FD /* ResourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF4231D8C059F0081C30F /* ResourceType.swift */; };
+		EC1E7B151D941E4E00CAE0FD /* SoundResourceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BC81D88242200A54B98 /* SoundResourceEntity.swift */; };
+		EC1E7B161D941E5700CAE0FD /* ResponseSoundCloudGetResolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BD01D88391900A54B98 /* ResponseSoundCloudGetResolve.swift */; };
+		EC1E7B171D941E6100CAE0FD /* ResponseYouTubeGetResolveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF42D1D8E42B60081C30F /* ResponseYouTubeGetResolveItem.swift */; };
+		EC1E7B181D941E6100CAE0FD /* ResponseYouTubeGetResolve.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF42F1D8E49FC0081C30F /* ResponseYouTubeGetResolve.swift */; };
+		EC1E7B191D941E6F00CAE0FD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCE508D1D89A9FC007AEE22 /* Constant.swift */; };
+		EC1E7B1A1D941E7D00CAE0FD /* SoundFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410BA1D884DEC00C6D679 /* SoundFactory.swift */; };
+		EC1E7B1B1D941E8300CAE0FD /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC421BD31D8844FF00A54B98 /* ResponseError.swift */; };
+		EC1E7B1C1D941E8900CAE0FD /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410B41D884BA100C6D679 /* Sound.swift */; };
+		EC1E7B1D1D941E9400CAE0FD /* SoundRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410B71D884C9E00C6D679 /* SoundRepository.swift */; };
+		EC1E7B1E1D941E9D00CAE0FD /* SoundCloudResourceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF4251D8C06C20081C30F /* SoundCloudResourceEntity.swift */; };
+		EC1E7B1F1D941EA200CAE0FD /* YouTubeResourceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF4271D8C06D00081C30F /* YouTubeResourceEntity.swift */; };
+		EC1E7B201D941EB000CAE0FD /* SoundSoundCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF41D1D8C03010081C30F /* SoundSoundCloud.swift */; };
+		EC1E7B211D941EB400CAE0FD /* SoundYouTube.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF41F1D8C030C0081C30F /* SoundYouTube.swift */; };
+		EC1E7B221D941ECB00CAE0FD /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3AF42B1D8C0CBE0081C30F /* Error.swift */; };
+		EC1E7B241D941F2B00CAE0FD /* SharePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7B231D941F2B00CAE0FD /* SharePresenter.swift */; };
+		EC1E7B261D941FA300CAE0FD /* ShareViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7B251D941FA300CAE0FD /* ShareViewProtocol.swift */; };
+		EC1E7B271D9423FF00CAE0FD /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AED1D92EC1200CAE0FD /* NSURL.swift */; };
+		EC1E7B2B1D94299000CAE0FD /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7B2A1D94299000CAE0FD /* DatabaseManager.swift */; };
+		EC1E7B2C1D942ACE00CAE0FD /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7B2A1D94299000CAE0FD /* DatabaseManager.swift */; };
 		EC2410B51D884BA100C6D679 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410B41D884BA100C6D679 /* Sound.swift */; };
 		EC2410B81D884C9E00C6D679 /* SoundRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410B71D884C9E00C6D679 /* SoundRepository.swift */; };
 		EC2410BB1D884DEC00C6D679 /* SoundFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2410BA1D884DEC00C6D679 /* SoundFactory.swift */; };
@@ -52,14 +78,52 @@
 		ECF5067A1D8F72770090E60A /* button_sound_detail.png in Resources */ = {isa = PBXBuildFile; fileRef = ECF506791D8F72770090E60A /* button_sound_detail.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EC1E7B061D94074700CAE0FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC5BA4DD1D86F879003FC885 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC1E7AFD1D94074600CAE0FD;
+			remoteInfo = shareextension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EC1E7B0C1D94074700CAE0FD /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EC1E7B081D94074700CAE0FD /* shareextension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0E30838EC5C9F04D5E405074 /* Pods_shareextension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shareextension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F9A0013A82F46E9F5451770 /* Pods-shareextension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shareextension.release.xcconfig"; path = "Pods/Target Support Files/Pods-shareextension/Pods-shareextension.release.xcconfig"; sourceTree = "<group>"; };
 		6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.release.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.release.xcconfig"; sourceTree = "<group>"; };
+		996839D38AB69706F7B237CE /* Pods-shareextension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shareextension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-shareextension/Pods-shareextension.debug.xcconfig"; sourceTree = "<group>"; };
 		D5E67E77C5187B83BD56C53E /* Pods-soundstream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-soundstream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-soundstream/Pods-soundstream.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1E7AED1D92EC1200CAE0FD /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
 		EC1E7AEF1D92F16D00CAE0FD /* bg_artwork_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_artwork_none.png; sourceTree = "<group>"; };
 		EC1E7AF31D939D4000CAE0FD /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		EC1E7AF61D939EC900CAE0FD /* CacheObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheObject.swift; sourceTree = "<group>"; };
 		EC1E7AF81D93A45B00CAE0FD /* AudioLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLoader.swift; sourceTree = "<group>"; };
+		EC1E7AFE1D94074600CAE0FD /* shareextension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = shareextension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC1E7B001D94074700CAE0FD /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		EC1E7B031D94074700CAE0FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		EC1E7B051D94074700CAE0FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC1E7B0F1D9417F900CAE0FD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/soundstream-cnpvcjjtuixvtddpvlpkzxdrjyxy/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
+		EC1E7B111D94180800CAE0FD /* Pods_soundstream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_soundstream.framework; path = "../../Library/Developer/Xcode/DerivedData/soundstream-cnpvcjjtuixvtddpvlpkzxdrjyxy/Build/Products/Debug-iphonesimulator/Pods_soundstream.framework"; sourceTree = "<group>"; };
+		EC1E7B231D941F2B00CAE0FD /* SharePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePresenter.swift; sourceTree = "<group>"; };
+		EC1E7B251D941FA300CAE0FD /* ShareViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewProtocol.swift; sourceTree = "<group>"; };
+		EC1E7B281D9428EC00CAE0FD /* soundstream.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = soundstream.entitlements; sourceTree = "<group>"; };
+		EC1E7B291D94295800CAE0FD /* shareextension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = shareextension.entitlements; sourceTree = "<group>"; };
+		EC1E7B2A1D94299000CAE0FD /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		EC2410B41D884BA100C6D679 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		EC2410B71D884C9E00C6D679 /* SoundRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundRepository.swift; sourceTree = "<group>"; };
 		EC2410BA1D884DEC00C6D679 /* SoundFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundFactory.swift; sourceTree = "<group>"; };
@@ -104,6 +168,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EC1E7AFB1D94074600CAE0FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CAC7E25BB560C82C86A7B55 /* Pods_shareextension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EC5BA4E21D86F879003FC885 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,7 +190,10 @@
 		369C8E1C3A55A16EE3526E6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC1E7B111D94180800CAE0FD /* Pods_soundstream.framework */,
+				EC1E7B0F1D9417F900CAE0FD /* RxSwift.framework */,
 				F58377B7444044C7F936BD5E /* Pods_soundstream.framework */,
+				0E30838EC5C9F04D5E405074 /* Pods_shareextension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,6 +203,8 @@
 			children = (
 				D5E67E77C5187B83BD56C53E /* Pods-soundstream.debug.xcconfig */,
 				6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */,
+				996839D38AB69706F7B237CE /* Pods-shareextension.debug.xcconfig */,
+				4F9A0013A82F46E9F5451770 /* Pods-shareextension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -147,6 +224,19 @@
 				EC1E7AF61D939EC900CAE0FD /* CacheObject.swift */,
 			);
 			name = cache;
+			sourceTree = "<group>";
+		};
+		EC1E7AFF1D94074700CAE0FD /* shareextension */ = {
+			isa = PBXGroup;
+			children = (
+				EC1E7B291D94295800CAE0FD /* shareextension.entitlements */,
+				EC1E7B001D94074700CAE0FD /* ShareViewController.swift */,
+				EC1E7B021D94074700CAE0FD /* MainInterface.storyboard */,
+				EC1E7B051D94074700CAE0FD /* Info.plist */,
+				EC1E7B231D941F2B00CAE0FD /* SharePresenter.swift */,
+				EC1E7B251D941FA300CAE0FD /* ShareViewProtocol.swift */,
+			);
+			path = shareextension;
 			sourceTree = "<group>";
 		};
 		EC2410B31D884B8000C6D679 /* realm */ = {
@@ -231,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				EC5BA4E71D86F879003FC885 /* soundstream */,
+				EC1E7AFF1D94074700CAE0FD /* shareextension */,
 				EC5BA4E61D86F879003FC885 /* Products */,
 				9D172DA4FADB691F62210E25 /* Pods */,
 				369C8E1C3A55A16EE3526E6D /* Frameworks */,
@@ -241,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				EC5BA4E51D86F879003FC885 /* soundstream.app */,
+				EC1E7AFE1D94074600CAE0FD /* shareextension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,6 +340,7 @@
 		EC5BA4E71D86F879003FC885 /* soundstream */ = {
 			isa = PBXGroup;
 			children = (
+				EC1E7B281D9428EC00CAE0FD /* soundstream.entitlements */,
 				EC1E7AF51D939E9C00CAE0FD /* cache */,
 				EC1E7AEC1D92EBEF00CAE0FD /* extension */,
 				EC3AF4351D8E911F0081C30F /* images */,
@@ -325,6 +418,7 @@
 				ECCE50901D8AF822007AEE22 /* SoundManager.swift */,
 				EC3AF4311D8E63E60081C30F /* SSYouTubeParser.swift */,
 				EC1E7AF81D93A45B00CAE0FD /* AudioLoader.swift */,
+				EC1E7B2A1D94299000CAE0FD /* DatabaseManager.swift */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -332,6 +426,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EC1E7AFD1D94074600CAE0FD /* shareextension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC1E7B091D94074700CAE0FD /* Build configuration list for PBXNativeTarget "shareextension" */;
+			buildPhases = (
+				2CABD7CD991CB3537C065610 /* [CP] Check Pods Manifest.lock */,
+				EC1E7AFA1D94074600CAE0FD /* Sources */,
+				EC1E7AFB1D94074600CAE0FD /* Frameworks */,
+				EC1E7AFC1D94074600CAE0FD /* Resources */,
+				C04494C62AA4083833F604CE /* [CP] Embed Pods Frameworks */,
+				EF5960A017CB6D28518D4348 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = shareextension;
+			productName = shareextension;
+			productReference = EC1E7AFE1D94074600CAE0FD /* shareextension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		EC5BA4E41D86F879003FC885 /* soundstream */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC5BA4F71D86F879003FC885 /* Build configuration list for PBXNativeTarget "soundstream" */;
@@ -342,10 +456,12 @@
 				EC5BA4E31D86F879003FC885 /* Resources */,
 				8A5C102B4B9E066A6E09CE20 /* [CP] Embed Pods Frameworks */,
 				85DC4FF8BAA9F2B3091F1B56 /* [CP] Copy Pods Resources */,
+				EC1E7B0C1D94074700CAE0FD /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EC1E7B071D94074700CAE0FD /* PBXTargetDependency */,
 			);
 			name = soundstream;
 			productName = soundstream;
@@ -362,9 +478,25 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = UNUUU;
 				TargetAttributes = {
+					EC1E7AFD1D94074600CAE0FD = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = U3G33TW96T;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
+					};
 					EC5BA4E41D86F879003FC885 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = U3G33TW96T;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -386,11 +518,20 @@
 			projectRoot = "";
 			targets = (
 				EC5BA4E41D86F879003FC885 /* soundstream */,
+				EC1E7AFD1D94074600CAE0FD /* shareextension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EC1E7AFC1D94074600CAE0FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC1E7B041D94074700CAE0FD /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EC5BA4E31D86F879003FC885 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -410,6 +551,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2CABD7CD991CB3537C065610 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		85DC4FF8BAA9F2B3091F1B56 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -440,6 +596,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-soundstream/Pods-soundstream-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C04494C62AA4083833F604CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-shareextension/Pods-shareextension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EAF81651A7E13049A4D542C2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -455,9 +626,53 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		EF5960A017CB6D28518D4348 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-shareextension/Pods-shareextension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EC1E7AFA1D94074600CAE0FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC1E7B2C1D942ACE00CAE0FD /* DatabaseManager.swift in Sources */,
+				EC1E7B271D9423FF00CAE0FD /* NSURL.swift in Sources */,
+				EC1E7B221D941ECB00CAE0FD /* Error.swift in Sources */,
+				EC1E7B211D941EB400CAE0FD /* SoundYouTube.swift in Sources */,
+				EC1E7B201D941EB000CAE0FD /* SoundSoundCloud.swift in Sources */,
+				EC1E7B1F1D941EA200CAE0FD /* YouTubeResourceEntity.swift in Sources */,
+				EC1E7B1E1D941E9D00CAE0FD /* SoundCloudResourceEntity.swift in Sources */,
+				EC1E7B1D1D941E9400CAE0FD /* SoundRepository.swift in Sources */,
+				EC1E7B1C1D941E8900CAE0FD /* Sound.swift in Sources */,
+				EC1E7B1B1D941E8300CAE0FD /* ResponseError.swift in Sources */,
+				EC1E7B1A1D941E7D00CAE0FD /* SoundFactory.swift in Sources */,
+				EC1E7B191D941E6F00CAE0FD /* Constant.swift in Sources */,
+				EC1E7B261D941FA300CAE0FD /* ShareViewProtocol.swift in Sources */,
+				EC1E7B171D941E6100CAE0FD /* ResponseYouTubeGetResolveItem.swift in Sources */,
+				EC1E7B181D941E6100CAE0FD /* ResponseYouTubeGetResolve.swift in Sources */,
+				EC1E7B161D941E5700CAE0FD /* ResponseSoundCloudGetResolve.swift in Sources */,
+				EC1E7B151D941E4E00CAE0FD /* SoundResourceEntity.swift in Sources */,
+				EC1E7B241D941F2B00CAE0FD /* SharePresenter.swift in Sources */,
+				EC1E7B141D941E3500CAE0FD /* ResourceType.swift in Sources */,
+				EC1E7B131D941DAE00CAE0FD /* SoundEntity.swift in Sources */,
+				EC1E7B0E1D9416FC00CAE0FD /* APIRepository.swift in Sources */,
+				EC1E7B011D94074700CAE0FD /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EC5BA4E11D86F879003FC885 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,6 +681,7 @@
 				EC3AF4261D8C06C20081C30F /* SoundCloudResourceEntity.swift in Sources */,
 				EC421BCC1D88339100A54B98 /* APIRepository.swift in Sources */,
 				EC421BD41D8844FF00A54B98 /* ResponseError.swift in Sources */,
+				EC1E7B2B1D94299000CAE0FD /* DatabaseManager.swift in Sources */,
 				EC3AF42E1D8E42B60081C30F /* ResponseYouTubeGetResolveItem.swift in Sources */,
 				EC5BA4FB1D86F927003FC885 /* SearchViewProtocol.swift in Sources */,
 				ECCE508E1D89A9FC007AEE22 /* Constant.swift in Sources */,
@@ -500,7 +716,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EC1E7B071D94074700CAE0FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC1E7AFD1D94074600CAE0FD /* shareextension */;
+			targetProxy = EC1E7B061D94074700CAE0FD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		EC1E7B021D94074700CAE0FD /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EC1E7B031D94074700CAE0FD /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		EC5BA4EC1D86F879003FC885 /* Search.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -520,6 +752,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		EC1E7B0A1D94074700CAE0FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 996839D38AB69706F7B237CE /* Pods-shareextension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = shareextension/shareextension.entitlements;
+				INFOPLIST_FILE = shareextension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.soundstream.shareextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EC1E7B0B1D94074700CAE0FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F9A0013A82F46E9F5451770 /* Pods-shareextension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = shareextension/shareextension.entitlements;
+				INFOPLIST_FILE = shareextension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.soundstream.shareextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		EC5BA4F51D86F879003FC885 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -610,6 +868,8 @@
 			baseConfigurationReference = D5E67E77C5187B83BD56C53E /* Pods-soundstream.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = soundstream/soundstream.entitlements;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = soundstream/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soundstream;
@@ -623,6 +883,8 @@
 			baseConfigurationReference = 6F4AC6970226195137027B89 /* Pods-soundstream.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = soundstream/soundstream.entitlements;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = soundstream/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.soundstream;
@@ -634,6 +896,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EC1E7B091D94074700CAE0FD /* Build configuration list for PBXNativeTarget "shareextension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC1E7B0A1D94074700CAE0FD /* Debug */,
+				EC1E7B0B1D94074700CAE0FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EC5BA4E01D86F879003FC885 /* Build configuration list for PBXProject "soundstream" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

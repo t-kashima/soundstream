@@ -343,6 +343,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         } else {
             print("Audio resource \(url) not found in audioCache.")
             let scheme = url.scheme
+            // asset = AVURLAsset(URL: url, options: nil)
             asset = AVURLAsset(URL: urlWithCustomScheme(url, scheme: scheme + "streaming"), options: nil)
         }
         asset.resourceLoader.setDelegate(audioLoader, queue: dispatch_get_main_queue())
@@ -352,6 +353,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     private func urlWithCustomScheme(url: NSURL, scheme: String) -> NSURL {
         let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
         components.scheme = scheme
+        print("URL: \(components.URL!)")
         return components.URL!
     }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2016 UNUUU. All rights reserved.
 //
 
+import Foundation
 import AVFoundation
 import MobileCoreServices
 
@@ -36,6 +37,7 @@ class AudioLoader: NSObject, AVAssetResourceLoaderDelegate, NSURLConnectionDataD
         let url = getActualURL(connection.currentRequest.URL!)
         let urlString = url.absoluteString
         if (audioCache.objectForKey(urlString) != nil) {
+            print("already cached a url: \(urlString)")
             return
         }
         audioCache[urlString] = songData
@@ -46,6 +48,7 @@ class AudioLoader: NSObject, AVAssetResourceLoaderDelegate, NSURLConnectionDataD
     }
     
     func resourceLoader(resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
+        print("resourceLoader:shouldWaitForLoadingOfRequestedResource")
         let interceptedURL = loadingRequest.request.URL
         let actualURL = getActualURL(interceptedURL!)
         let urlString = actualURL.absoluteString
@@ -61,11 +64,8 @@ class AudioLoader: NSObject, AVAssetResourceLoaderDelegate, NSURLConnectionDataD
     }
     
     func resourceLoader(resourceLoader: AVAssetResourceLoader, didCancelLoadingRequest loadingRequest: AVAssetResourceLoadingRequest) {
+        print("resourceLoader:didCancelLoadingRequest")
         pendingRequests = pendingRequests.filter({ $0 != loadingRequest })
-    }
-    
-    func resourceLoader(resourceLoader: AVAssetResourceLoader, shouldWaitForRenewalOfRequestedResource renewalRequest: AVAssetResourceRenewalRequest) -> Bool {
-        return true
     }
     
     private func processPendingRequests() {
@@ -136,3 +136,4 @@ class AudioLoader: NSObject, AVAssetResourceLoaderDelegate, NSURLConnectionDataD
         return actualURLComponents!.URL!
     }
 }
+

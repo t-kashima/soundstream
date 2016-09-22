@@ -12,7 +12,7 @@ import RxSwift
 
 class SoundRepository {
     static func getNextId() -> Int {
-        let realm = try! Realm()
+        let realm = DatabaseManager.getInstance()
         guard let lastSound = realm.objects(Sound).last else {
             return 1
         }
@@ -25,7 +25,7 @@ class SoundRepository {
         }
         
         let resourceEntity: SoundResourceEntity
-        let realm = try! Realm()
+        let realm = DatabaseManager.getInstance()
         switch resourceType {
         case ResourceType.SoundCloud:
             guard let resource = realm.objects(SoundSoundCloud).filter("soundId = \(sound.id)").first else {
@@ -51,7 +51,7 @@ class SoundRepository {
     }
     
     static func asEntitiesList() -> [SoundEntity] {
-        let realm = try! Realm()
+        let realm = DatabaseManager.getInstance()
         let soundList = realm.objects(Sound).sorted("id", ascending: false)
         do {
             return try soundList.map { try convertRealmToEntity($0) }
@@ -64,7 +64,7 @@ class SoundRepository {
     }
     
     static func store(soundEntity: SoundEntity) {
-        let realm = try! Realm()
+        let realm = DatabaseManager.getInstance()
         let sound = Sound()
         sound.id = soundEntity.id
         sound.resourceType = soundEntity.resourceType.rawValue
@@ -101,7 +101,7 @@ class SoundRepository {
     }
     
     static func delete(soundEntity: SoundEntity) {
-        let realm = try! Realm()
+        let realm = DatabaseManager.getInstance()
         guard let sound = realm.objects(Sound).filter("id = \(soundEntity.id)").first else { return }
         switch soundEntity.resourceType {
         case ResourceType.SoundCloud:

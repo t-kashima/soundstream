@@ -14,3 +14,13 @@ target 'soundstream' do
   pod 'SDWebImage', '~> 3.8'
   pod 'SVProgressHUD', '~> 2.0.3'
 end
+
+target 'shareextension' do
+  use_frameworks!
+
+  pod 'Alamofire', '~> 3.4'
+  pod 'AlamofireObjectMapper', '~> 3.0'
+  pod 'RxSwift',    '~> 2.6.0'
+  pod 'RxCocoa',    '~> 2.6.0'
+  pod 'RealmSwift', '~> 1.0.2'
+end
