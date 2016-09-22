@@ -222,8 +222,9 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     }
     
     private func playSound(url: NSURL) {
-        let asset = loadAssetFromCacheOrWeb(url)
-        let playerItem = AVPlayerItem(asset: asset)
+        // let asset = loadAssetFromCacheOrWeb(url)
+        // let playerItem = AVPlayerItem(asset: asset)
+        let playerItem = AVPlayerItem(URL: url)
         player = AVPlayer(playerItem: playerItem)
         playerItem.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: &playAudioContext)
         musicPlayerItems.append(playerItem)
