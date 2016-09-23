@@ -13,7 +13,6 @@
 		EC1E7AF01D92F16D00CAE0FD /* bg_artwork_none.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E7AEF1D92F16D00CAE0FD /* bg_artwork_none.png */; };
 		EC1E7AF41D939D4000CAE0FD /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AF31D939D4000CAE0FD /* Cache.swift */; };
 		EC1E7AF71D939EC900CAE0FD /* CacheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AF61D939EC900CAE0FD /* CacheObject.swift */; };
-		EC1E7AF91D93A45B00CAE0FD /* AudioLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AF81D93A45B00CAE0FD /* AudioLoader.swift */; };
 		EC1E7B011D94074700CAE0FD /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7B001D94074700CAE0FD /* ShareViewController.swift */; };
 		EC1E7B041D94074700CAE0FD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1E7B021D94074700CAE0FD /* MainInterface.storyboard */; };
 		EC1E7B081D94074700CAE0FD /* shareextension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EC1E7AFE1D94074600CAE0FD /* shareextension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -112,7 +111,6 @@
 		EC1E7AEF1D92F16D00CAE0FD /* bg_artwork_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_artwork_none.png; sourceTree = "<group>"; };
 		EC1E7AF31D939D4000CAE0FD /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		EC1E7AF61D939EC900CAE0FD /* CacheObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheObject.swift; sourceTree = "<group>"; };
-		EC1E7AF81D93A45B00CAE0FD /* AudioLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLoader.swift; sourceTree = "<group>"; };
 		EC1E7AFE1D94074600CAE0FD /* shareextension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = shareextension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1E7B001D94074700CAE0FD /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		EC1E7B031D94074700CAE0FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -417,7 +415,6 @@
 			children = (
 				ECCE50901D8AF822007AEE22 /* SoundManager.swift */,
 				EC3AF4311D8E63E60081C30F /* SSYouTubeParser.swift */,
-				EC1E7AF81D93A45B00CAE0FD /* AudioLoader.swift */,
 				EC1E7B2A1D94299000CAE0FD /* DatabaseManager.swift */,
 			);
 			name = manager;
@@ -701,7 +698,6 @@
 				EC3AF4341D8E71200081C30F /* SoundPlayStateEntity.swift in Sources */,
 				EC2410B81D884C9E00C6D679 /* SoundRepository.swift in Sources */,
 				EC2410B51D884BA100C6D679 /* Sound.swift in Sources */,
-				EC1E7AF91D93A45B00CAE0FD /* AudioLoader.swift in Sources */,
 				EC1E7AF71D939EC900CAE0FD /* CacheObject.swift in Sources */,
 				ECCE50831D897E50007AEE22 /* HomeViewProtocol.swift in Sources */,
 				EC5BA4FD1D86F948003FC885 /* SearchPresenter.swift in Sources */,

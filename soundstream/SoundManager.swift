@@ -51,16 +51,9 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     
     weak var delegate: SoundManagerDelegate?
     
-    private var audioCache: Cache<NSData>
-    
-    private var audioLoader: AudioLoader
-    
     private let disposeBag = DisposeBag()
     
     override init() {
-        audioCache = Cache(name: "audioCache")
-        audioLoader = AudioLoader(cache: audioCache)
-        
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -222,12 +215,12 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     }
     
     private func playSound(url: NSURL) {
-        // let asset = loadAssetFromCacheOrWeb(url)
-        // let playerItem = AVPlayerItem(asset: asset)
-        let playerItem = AVPlayerItem(URL: url)
-        player = AVPlayer(playerItem: playerItem)
-        playerItem.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: &playAudioContext)
-        musicPlayerItems.append(playerItem)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            let playerItem = AVPlayerItem(URL: url)
+            self.player = AVPlayer(playerItem: playerItem)
+            playerItem.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: &playAudioContext)
+            self.musicPlayerItems.append(playerItem)
+        })
     }
     
     override func observeValueForKeyPath(keyPath: String?,
@@ -329,31 +322,5 @@ class SoundManager: NSObject, NSURLSessionDelegate {
             return
         }
         delegate?.onSetCurrentTime(CMTimeGetSeconds(player!.currentTime()))
-    }
-    
-    private func loadAssetFromCacheOrWeb(url: NSURL) -> AVURLAsset {
-        let urlString = url.absoluteString
-        var asset: AVURLAsset
-        if (audioCache.objectForKey(urlString) != nil) {
-            print("Audio resource \(url) found in audioCache.")
-            let path = audioCache.pathForKey(urlString)
-            print("path is ", path)
-            let filePathURL = NSURL.fileURLWithPath(path)
-            asset = AVURLAsset(URL: filePathURL, options: nil)
-        } else {
-            print("Audio resource \(url) not found in audioCache.")
-            let scheme = url.scheme
-            // asset = AVURLAsset(URL: url, options: nil)
-            asset = AVURLAsset(URL: urlWithCustomScheme(url, scheme: scheme + "streaming"), options: nil)
-        }
-        asset.resourceLoader.setDelegate(audioLoader, queue: dispatch_get_main_queue())
-        return asset
-    }
-    
-    private func urlWithCustomScheme(url: NSURL, scheme: String) -> NSURL {
-        let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)!
-        components.scheme = scheme
-        print("URL: \(components.URL!)")
-        return components.URL!
     }
 }

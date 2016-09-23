@@ -119,12 +119,17 @@ extension HomeViewController: HomeViewProtocol {
     func showSoundDetail(soundEntity: SoundEntity) {
         let alertSheet = UIAlertController(title: soundEntity.resourceEntity.title, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
+        let actionDownload = UIAlertAction(title: "download", style: UIAlertActionStyle.Default, handler: {
+            (action: UIAlertAction!) in
+            // self.presenter.onClickActionDelete(soundEntity)
+        })
         let actionDelete = UIAlertAction(title: "delete", style: UIAlertActionStyle.Destructive, handler: {
             (action: UIAlertAction!) in
             self.presenter.onClickActionDelete(soundEntity)
         })
         let actionCancel = UIAlertAction(title: "cancel", style: UIAlertActionStyle.Cancel, handler: nil)
         
+        alertSheet.addAction(actionDownload)
         alertSheet.addAction(actionDelete)
         alertSheet.addAction(actionCancel)
         self.presentViewController(alertSheet, animated: true, completion: nil)
