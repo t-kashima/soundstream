@@ -121,7 +121,7 @@ extension HomeViewController: HomeViewProtocol {
         
         let actionDownload = UIAlertAction(title: "download", style: UIAlertActionStyle.Default, handler: {
             (action: UIAlertAction!) in
-            // self.presenter.onClickActionDelete(soundEntity)
+            self.presenter.onClickActionDownload(soundEntity)
         })
         let actionDelete = UIAlertAction(title: "delete", style: UIAlertActionStyle.Destructive, handler: {
             (action: UIAlertAction!) in

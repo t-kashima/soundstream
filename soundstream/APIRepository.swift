@@ -14,6 +14,24 @@ class APIRepository {
     private static let SoundCloudResolveEndPoint = "https://api.soundcloud.com/resolve.json"
     private static let YouTubeResolveEndPoint = "https://www.googleapis.com/youtube/v3/videos"
     
+    static func getSound(soundUrl: String) -> Observable<NSData> {
+        return Observable.create { observer -> Disposable in
+            let request = Alamofire.request(.GET, soundUrl, parameters: nil)
+                .responseData { response in
+                    switch(response.result) {
+                    case .Success(let data):
+                        observer.onNext(data)
+                        observer.onCompleted()
+                    case .Failure(let error):
+                        observer.onError(error)
+                    }
+            }
+            return AnonymousDisposable {
+                request.cancel()
+            }
+        }
+    }
+    
     static func getArtwork(artworkUrl: String) -> Observable<NSData> {
         return Observable.create { observer -> Disposable in
             let request = Alamofire.request(.GET, artworkUrl, parameters: nil)

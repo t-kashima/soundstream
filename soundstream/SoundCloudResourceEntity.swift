@@ -21,4 +21,8 @@ class SoundCloudResourceEntity: SoundResourceEntity {
     func getStreamingSoundUrl() -> String {
         return soundUrl + "?client_id=" + Constant.SoundCloudClientId
     }
+    
+    override func getFileName() -> String {
+        return soundUrl + ".mp3"
+    }
 }

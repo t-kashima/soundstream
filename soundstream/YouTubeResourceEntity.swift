@@ -17,4 +17,8 @@ class YouTubeResourceEntity: SoundResourceEntity {
         self.videoId = videoId
         super.init(title: title, username: username, imageUrl: imageUrl)
     }
+    
+    override func getFileName() -> String {
+        return videoId + ".mp4"
+    }
 }

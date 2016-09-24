@@ -49,11 +49,16 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     
     private var artworks = [String: MPMediaItemArtwork]()
     
+    private let soundCache: Cache<NSData>
+    
     weak var delegate: SoundManagerDelegate?
     
     private let disposeBag = DisposeBag()
     
     override init() {
+        let dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first as String!
+        let cacheDirectory = dir.stringByAppendingFormat("/com.soundstream.cache/soundCache")
+        soundCache = Cache(name: "soundCache", directory: cacheDirectory)
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -154,9 +159,13 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         switch soundEntity.resourceType {
         case ResourceType.SoundCloud:
             let resourceEntity = soundEntity.resourceEntity as! SoundCloudResourceEntity
-            self.playSound(NSURL(string: resourceEntity.getStreamingSoundUrl())!)
+            self.playSound(NSURL(string: resourceEntity.getStreamingSoundUrl())!, key: resourceEntity.getFileName())
         case ResourceType.YouTube:
             let resourceEntity = soundEntity.resourceEntity as! YouTubeResourceEntity
+            if (self.soundCache.objectForKey(resourceEntity.getFileName()) != nil) {
+                self.playSound(NSURL(), key: resourceEntity.getFileName())
+                return
+            }
             SSYouTubeParser.h264videosWithYoutubeID(resourceEntity.videoId, completionHandler: { (dictionary) in
                 guard let dictionary = dictionary else {
                     print("not found video url")
@@ -170,7 +179,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
                     self.stopSound()
                     return
                 }
-                self.playSound(NSURL(string: videoMediumURL)!)
+                self.playSound(NSURL(string: videoMediumURL)!, key: resourceEntity.getFileName())
             })
             break
         default:
@@ -214,9 +223,19 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         self.playSound(soundList[prevIndex])
     }
     
-    private func playSound(url: NSURL) {
+    private func playSound(url: NSURL, key: String) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
-            let playerItem = AVPlayerItem(URL: url)
+            let playerItem: AVPlayerItem
+            if (self.soundCache.objectForKey(key) != nil) {
+                print("Audio resource \(key) found in soundCache.")
+                let path = self.soundCache.pathForKey(key)
+                let filePathURL = NSURL.fileURLWithPath(path)
+                playerItem = AVPlayerItem(URL: filePathURL)
+                print("path is \(path)")
+            } else {
+                print("Audio resource \(key) not found in soundCache.")
+                playerItem = AVPlayerItem(URL: url)
+            }
             self.player = AVPlayer(playerItem: playerItem)
             playerItem.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.New, context: &playAudioContext)
             self.musicPlayerItems.append(playerItem)
@@ -323,4 +342,49 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         }
         delegate?.onSetCurrentTime(CMTimeGetSeconds(player!.currentTime()))
     }
+    
+    func downloadSound(soundEntity: SoundEntity) {
+        switch soundEntity.resourceType {
+        case .SoundCloud:
+            let resourceEntity = soundEntity.resourceEntity as! SoundCloudResourceEntity
+            download(resourceEntity.getStreamingSoundUrl(), key: resourceEntity.getFileName())
+            break
+        case .YouTube:
+            let resourceEntity = soundEntity.resourceEntity as! YouTubeResourceEntity
+            SSYouTubeParser.h264videosWithYoutubeID(resourceEntity.videoId, completionHandler: { (dictionary) in
+                guard let dictionary = dictionary else {
+                    print("not found video url")
+                    self.delegate?.onNetworkError()
+                    return
+                }
+                guard let videoMediumURL = dictionary["medium"] else {
+                    print("not found video url")
+                    self.delegate?.onNetworkError()
+                    return
+                }
+                self.download(videoMediumURL, key: resourceEntity.getFileName())
+            })
+            break
+        default:
+            break
+        }
+    }
+    
+    private func download(url: String, key: String) {
+        print("start download")
+        if (self.soundCache.objectForKey(key) != nil) {
+            print("already cached: \(key)")
+            return
+        }
+        APIRepository.getSound(url).subscribe(onNext: { (data) in
+            if (self.soundCache.objectForKey(key) != nil) {
+                print("already cached: \(key)")
+                return
+            }
+            self.soundCache[key] = data
+            print("cached: \(key)")
+        }, onError: { (error) in
+            print("error unable to download a sound.")
+        }).addDisposableTo(disposeBag)
+    }    
 }

@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import RxSwift
 
 class HomePresenter: NSObject, SoundManagerDelegate {
+    
+    private let disposeBag = DisposeBag()
     
     private let contactView: HomeViewProtocol
     
@@ -71,5 +74,9 @@ class HomePresenter: NSObject, SoundManagerDelegate {
         let soundList = SoundRepository.asEntitiesList()
         print("\(soundList.count) songs")
         contactView.setSoundList(soundList)
+    }
+    
+    func onClickActionDownload(soundEntity: SoundEntity) {
+        SoundManager.sharedManager.downloadSound(soundEntity)
     }
 }

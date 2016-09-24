@@ -20,4 +20,9 @@ class SoundResourceEntity: NSObject {
         self.username = username
         self.imageUrl = imageUrl
     }
+    
+    func getFileName() -> String {
+        assertionFailure("getKey() method was not implements")
+        return ""
+    }
 }
