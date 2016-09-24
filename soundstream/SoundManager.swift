@@ -57,8 +57,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     
     override init() {
         let dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first as String!
-        let cacheDirectory = dir.stringByAppendingFormat("/com.soundstream.cache/soundCache124")
-        soundCache = Cache(name: "soundCache124", directory: cacheDirectory)
+        soundCache = Cache(name: "soundCache")
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
