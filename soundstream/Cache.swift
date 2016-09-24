@@ -8,13 +8,7 @@
 
 import Foundation
 
-public enum CacheExpiry {
-    case Never
-    case Seconds(NSTimeInterval)
-    case Date(NSDate)
-}
-
-class Cache<T: NSCoding> {
+class Cache {
     let name: String
     let cacheDirectory: String
     
@@ -47,12 +41,12 @@ class Cache<T: NSCoding> {
     }
     
     
-    func setObjectForKey(key: String, cacheBlock: ((T, CacheExpiry) -> (), (NSError?) -> ()) -> (), completion: (T?, Bool, NSError?) -> ()) {
+    func setObjectForKey(key: String, cacheBlock: (NSData -> (), (NSError?) -> ()) -> (), completion: (NSData?, Bool, NSError?) -> ()) {
         if let object = objectForKey(key) {
             completion(object, true,nil)
         } else {
-            let successBlock: (T, CacheExpiry) -> () = { (obj, expires) in
-                self.setObject(obj, forKey: key, expires: expires)
+            let successBlock: (NSData) -> () = { (obj) in
+                self.saveObject(obj, forKey: key)
                 completion(obj, false, nil)
             }
             let failureBlock: (NSError?) -> () = { (error) in
@@ -62,41 +56,28 @@ class Cache<T: NSCoding> {
         }
     }
     
-    func objectForKey(key: String) -> T? {
-        var possibleObject = cache.objectForKey(key) as? CacheObject
-        
-        if possibleObject == nil {
-            dispatch_sync(diskQueue) {
-                let path = self.pathForKey(key)
-                if self.fileManager.fileExistsAtPath(path) {
-                    possibleObject = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? CacheObject
+    func objectForKey(key: String) -> NSData? {
+        var possibleObject: NSData? = nil
+        dispatch_sync(diskQueue) {
+            let path = self.pathForKey(key)
+            if self.fileManager.fileExistsAtPath(path) {
+                let fileHandle = NSFileHandle(forReadingAtPath: path)
+                if (fileHandle != nil) {
+                    possibleObject = fileHandle!.readDataToEndOfFile()
                 }
             }
         }
-        
-        if let object = possibleObject {
-            if !object.isExpired() {
-                return object.value as? T
-            } else {
-                removeObjectForKey(key)
-            }
-        }
-        
-        return nil
+        return possibleObject
     }
     
-    func setObject(object: T, forKey key: String) {
-        self.setObject(object, forKey: key, expires: .Never)
+    func setObject(object: NSData, forKey key: String) {
+        self.saveObject(object, forKey: key)
     }
     
-    func setObject(object: T, forKey key: String, expires: CacheExpiry) {
-        let expiryDate = expiryDateForCacheExpiry(expires)
-        let cacheObject = CacheObject(value: object, expiryDate: expiryDate)
-        cache.setObject(cacheObject, forKey: key)
-        
+    func saveObject(object: NSData, forKey key: String) {
         dispatch_async(diskQueue) {
             let path = self.pathForKey(key)
-            NSKeyedArchiver.archiveRootObject(cacheObject, toFile: path)
+            object.writeToFile(path, atomically: true)
         }
     }
     
@@ -115,7 +96,7 @@ class Cache<T: NSCoding> {
     
     // MARK: Subscripting
     
-    subscript(key: String) -> T? {
+    subscript(key: String) -> NSData? {
         get {
             return objectForKey(escapeSlashes(key))
         }
@@ -133,17 +114,6 @@ class Cache<T: NSCoding> {
         let escapedKey = escapeSlashes(key)
         let pathURL = directoryURL!.URLByAppendingPathComponent(escapedKey)
         return pathURL.absoluteString
-    }
-    
-    private func expiryDateForCacheExpiry(expiry: CacheExpiry) -> NSDate {
-        switch expiry {
-        case .Never:
-            return NSDate.distantFuture()
-        case .Seconds(let seconds):
-            return NSDate().dateByAddingTimeInterval(seconds)
-        case .Date(let date):
-            return date
-        }
     }
     
     private func escapeSlashes(key: String) -> String {

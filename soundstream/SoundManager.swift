@@ -49,7 +49,7 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     
     private var artworks = [String: MPMediaItemArtwork]()
     
-    private let soundCache: Cache<NSData>
+    private let soundCache: Cache
     
     weak var delegate: SoundManagerDelegate?
     
@@ -57,8 +57,8 @@ class SoundManager: NSObject, NSURLSessionDelegate {
     
     override init() {
         let dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first as String!
-        let cacheDirectory = dir.stringByAppendingFormat("/com.soundstream.cache/soundCache")
-        soundCache = Cache(name: "soundCache", directory: cacheDirectory)
+        let cacheDirectory = dir.stringByAppendingFormat("/com.soundstream.cache/soundCache124")
+        soundCache = Cache(name: "soundCache124", directory: cacheDirectory)
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -386,5 +386,5 @@ class SoundManager: NSObject, NSURLSessionDelegate {
         }, onError: { (error) in
             print("error unable to download a sound.")
         }).addDisposableTo(disposeBag)
-    }    
+    }
 }

@@ -12,7 +12,6 @@
 		EC1E7AEE1D92EC1200CAE0FD /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AED1D92EC1200CAE0FD /* NSURL.swift */; };
 		EC1E7AF01D92F16D00CAE0FD /* bg_artwork_none.png in Resources */ = {isa = PBXBuildFile; fileRef = EC1E7AEF1D92F16D00CAE0FD /* bg_artwork_none.png */; };
 		EC1E7AF41D939D4000CAE0FD /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AF31D939D4000CAE0FD /* Cache.swift */; };
-		EC1E7AF71D939EC900CAE0FD /* CacheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7AF61D939EC900CAE0FD /* CacheObject.swift */; };
 		EC1E7B011D94074700CAE0FD /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1E7B001D94074700CAE0FD /* ShareViewController.swift */; };
 		EC1E7B041D94074700CAE0FD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC1E7B021D94074700CAE0FD /* MainInterface.storyboard */; };
 		EC1E7B081D94074700CAE0FD /* shareextension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EC1E7AFE1D94074600CAE0FD /* shareextension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -110,7 +109,6 @@
 		EC1E7AED1D92EC1200CAE0FD /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
 		EC1E7AEF1D92F16D00CAE0FD /* bg_artwork_none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_artwork_none.png; sourceTree = "<group>"; };
 		EC1E7AF31D939D4000CAE0FD /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		EC1E7AF61D939EC900CAE0FD /* CacheObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheObject.swift; sourceTree = "<group>"; };
 		EC1E7AFE1D94074600CAE0FD /* shareextension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = shareextension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1E7B001D94074700CAE0FD /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		EC1E7B031D94074700CAE0FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				EC1E7AF31D939D4000CAE0FD /* Cache.swift */,
-				EC1E7AF61D939EC900CAE0FD /* CacheObject.swift */,
 			);
 			name = cache;
 			sourceTree = "<group>";
@@ -698,7 +695,6 @@
 				EC3AF4341D8E71200081C30F /* SoundPlayStateEntity.swift in Sources */,
 				EC2410B81D884C9E00C6D679 /* SoundRepository.swift in Sources */,
 				EC2410B51D884BA100C6D679 /* Sound.swift in Sources */,
-				EC1E7AF71D939EC900CAE0FD /* CacheObject.swift in Sources */,
 				ECCE50831D897E50007AEE22 /* HomeViewProtocol.swift in Sources */,
 				EC5BA4FD1D86F948003FC885 /* SearchPresenter.swift in Sources */,
 				EC3AF4241D8C059F0081C30F /* ResourceType.swift in Sources */,

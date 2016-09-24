@@ -19,7 +19,7 @@ import Foundation
 class SSYouTubeParser: NSObject {
     
     static let kYoutubeURL:String = "https://www.youtube.com/watch?v="
-    static let kYoutubeVideoInfoURL:NSString = "https://www.youtube.com/get_video_info?video_id=%@&asv=3&el=detailpage&ps=default&hl=en_US"
+    static let kYoutubeVideoInfoURL:NSString = "https://www.youtube.com/get_video_info?video_id=%@&asv=3&el=embedded&ps=default&hl=en_US"
     static let kURLEncodedFmtStreamMap:String = "(url_encoded_fmt_stream_map=)(.*?)(&)"
     static let kAdaptiveFmts:String = "(adaptive_fmts=)(.*?)(&)"
     
